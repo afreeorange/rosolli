@@ -1,6 +1,4 @@
-
-
-# ------
+# ---------- Automatically Generated Stuff ----------
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,node,react,yarn
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,node,react,yarn
@@ -13,7 +11,6 @@
 
 # Icon must end with two \r
 Icon
-
 
 # Thumbnails
 ._*

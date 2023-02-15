@@ -8,7 +8,17 @@ import { AppRouter } from "@rosolli/server";
 export const trpc = createTRPCReact<AppRouter>();
 
 const Component: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            retry: false, // Fail immediately!
+          },
+        },
+      })
+  );
+
   const [trpcClient] = useState(() =>
     trpc.createClient({
       links: [

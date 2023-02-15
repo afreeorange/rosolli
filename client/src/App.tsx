@@ -3,9 +3,11 @@ import State, { trpc } from "./State";
 import "./App.css";
 
 const Component = () => {
-  const hello = trpc.greet.useQuery("Lol");
-  if (!hello.data) return <div>Loading&hellip;</div>;
-  return <div>{hello.data.greeting}</div>;
+  const { data, error, isError } = trpc.greet.useQuery("Lol");
+
+  if (isError) return <div>Something went wrong upstream...</div>;
+  if (!data) return <div>Loading&hellip;</div>;
+  return <div>{data.greeting}</div>;
 };
 
 function App() {
