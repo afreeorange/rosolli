@@ -6,7 +6,7 @@ import {
 import express, { Request, Response } from "express";
 import cors from "cors";
 
-import db from "./database";
+import db, { statistics } from "./database";
 
 // ---------- tRPC Stuff ----------
 
@@ -23,12 +23,7 @@ const publicProcedure = t.procedure;
 const router = t.router;
 
 const appRouter = router({
-  greet: publicProcedure
-    .input((v: unknown) => {
-      if (typeof v === "string") return v;
-      throw new Error(`Invalid input: ${typeof v}`);
-    })
-    .query(({ input }) => ({ greeting: `hello, ${input}!` })),
+  statistics: publicProcedure.query(() => statistics()),
 });
 
 // ---------- Express Stuff ----------
@@ -42,7 +37,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("Welcome to the Rosolli API! 🍠");
 });
 
-console.log("db.name :>> ", db.name);
+console.log("Database is", db.name);
 
 app.listen(port, () => {
   console.log(`⚡️ Rosolli server is running at http://localhost:${port}`);
