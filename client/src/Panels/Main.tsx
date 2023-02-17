@@ -4,7 +4,7 @@ import ListeningTime from "../Components/ListeningTime";
 
 const Component = () => {
   return (
-    <div className="panel half-width">
+    <div className="panel">
       <Search />
       <Links />
       <ListeningTime />
