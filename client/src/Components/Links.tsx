@@ -1,7 +1,6 @@
 import numeral from "numeral";
-import { MdOutlineAccountTree } from "react-icons/md";
 
-import { useStore } from "./State";
+import { useStore } from "../State";
 import styles from "./Links.module.scss";
 
 const Component = () => {

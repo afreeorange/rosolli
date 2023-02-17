@@ -1,10 +1,13 @@
-import Links from "../Links";
-import styles from "./Main.module.scss";
+import Links from "../Components/Links";
+import Search from "../Components/Search";
+import ListeningTime from "../Components/ListeningTime";
 
 const Component = () => {
   return (
-    <div className={`${styles.main} panel`}>
+    <div className="panel half-width">
+      <Search />
       <Links />
+      <ListeningTime />
     </div>
   );
 };

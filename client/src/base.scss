@@ -6,7 +6,7 @@
   --font-line-height: 1.25;
 
   --padding-panel: 0.4em;
-  --panel-size-min: 15em;
+  --panel-size: 20em;
 }
 
 /* Scrollbar - width */
@@ -39,14 +39,8 @@
   margin: 0;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 body {
   line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
 }
 
 img,
@@ -91,20 +85,10 @@ ol {
   isolation: isolate;
 }
 
-@mixin panel {
-  overflow-y: scroll;
-}
-
-@mixin no-wrap {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-@mixin panel {
+.panel {
   flex-grow: 0;
   flex-shrink: 0;
-  width: var(--panel-size-min);
+  width: var(--panel-size);
   border-right: 1px dotted #ccc;
   height: 100%;
 
@@ -125,16 +109,23 @@ ol {
   // NOTE: This is the outer container for virtualization. It needs the
   // height prop set to work!
   // Reference: https://github.com/bvaughn/react-window/issues/249#issuecomment-739682222
+  // TODO:
   ul {
-    height: calc(95% - var(--padding-panel));
+    height: 100%;
 
     li {
-      @include no-wrap;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
       height: 35px;
       line-height: 30px;
       padding: calc(var(--padding-panel) / 2) var(--padding-panel);
-      border-bottom: 1px dotted #ddd;
       cursor: pointer;
+    }
+
+    li:not(:last-child) {
+      border-bottom: 1px dotted #ddd;
     }
 
     li:hover {
@@ -142,4 +133,8 @@ ol {
       color: white;
     }
   }
+}
+
+.panel.half-width {
+  width: calc(var(--panel-size) / 1.25);
 }

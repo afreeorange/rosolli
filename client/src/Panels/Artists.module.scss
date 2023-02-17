@@ -1,6 +1,0 @@
-@use "../base";
-
-.artists {
-  @include base.panel;
-  width: calc(var(--panel-size-min) * 1.5);
-}

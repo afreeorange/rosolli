@@ -1,0 +1,34 @@
+.links {
+  ul {
+    font-size: calc(var(--font-size-base) * 1.125);
+
+    li {
+      // padding: calc(var(--padding-panel) / 3) var(--padding-panel);
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      span:nth-of-type(1) {
+        font-weight: bold;
+      }
+
+      span:nth-of-type(2) {
+        opacity: 0.25;
+      }
+
+      &:hover {
+        background: red;
+        color: white;
+
+        span {
+          opacity: 1;
+        }
+      }
+    }
+
+    li:not(:last-child) {
+      border-bottom: 1px dotted #ddd;
+    }
+  }
+}

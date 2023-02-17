@@ -1,0 +1,20 @@
+@use "../base";
+
+.search {
+  width: 100%;
+
+  input {
+    width: 100%;
+    border: 0;
+    opacity: 0.5;
+    padding: var(--padding-panel);
+    font-size: calc(var(--font-size-base) * 1.25);
+    border-bottom: 1px dotted #ddd;
+  }
+
+  input:focus {
+    opacity: 1;
+    outline: none;
+    color: red;
+  }
+}

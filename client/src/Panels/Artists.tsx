@@ -3,13 +3,12 @@ import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
 import { useStore } from "../State";
-import styles from "./Artists.module.scss";
 
 const Component = () => {
   const { artists } = useStore();
 
   return (
-    <div className={`${styles.artists} panel`}>
+    <div className="panel">
       <h1>
         Artists <span>{numeral(artists.length).format("0,0")}</span>
       </h1>

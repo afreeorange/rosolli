@@ -3,13 +3,12 @@ import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
 import { useStore } from "../State";
-import styles from "./Genres.module.scss";
 
 const Component = () => {
   const { genres } = useStore();
 
   return (
-    <div className={`${styles.genres} panel`}>
+    <div className="panel half-width">
       <h1>
         Genres <span>{numeral(genres.length).format("0,0")}</span>
       </h1>

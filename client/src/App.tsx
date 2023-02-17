@@ -1,5 +1,5 @@
 import State from "./State";
-import MainPanel from "./Panels/Main";
+import Main from "./Panels/Main";
 import Genres from "./Panels/Genres";
 import Albums from "./Panels/Albums";
 import Artists from "./Panels/Artists";
@@ -11,10 +11,10 @@ import "./App.scss";
 const App = () => (
   <State>
     <main>
-      <MainPanel />
+      <Main />
       <Genres />
-      <Albums />
       <Artists />
+      <Albums />
       <Songs />
     </main>
   </State>
