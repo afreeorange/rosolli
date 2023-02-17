@@ -13,15 +13,22 @@
     "@trpc/client": "^10.11.1",
     "@trpc/react": "^9.27.4",
     "@trpc/react-query": "^10.11.1",
+    "numeral": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.7.1"
+    "react-icons": "^4.7.1",
+    "react-virtualized-auto-sizer": "^1.0.7",
+    "react-window": "^1.8.8",
+    "zustand": "^4.3.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@types/react-icons": "^3.0.0",
+    "@types/react-virtualized-auto-sizer": "^1.0.1",
+    "@types/react-window": "^1.8.5",
     "@vitejs/plugin-react-swc": "^3.0.0",
+    "sass": "^1.58.2",
     "typescript": "^4.9.3",
     "vite": "^4.1.0"
   }

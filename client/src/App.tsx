@@ -1,20 +1,21 @@
-import State, { trpc } from "./State";
+import State from "./State";
+import MainPanel from "./Panels/Main";
+import Genres from "./Panels/Genres";
+import Albums from "./Panels/Albums";
+import Artists from "./Panels/Artists";
+import Songs from "./Panels/Songs";
 
-import "./App.css";
-
-const Component = () => {
-  const { data: statistics, isError, isLoading } = trpc.statistics.useQuery();
-
-  if (isError) return <div>Something went wrong upstream...</div>;
-  if (isLoading) return <div>Loading&hellip;</div>;
-
-  return <div>{statistics?.albums}</div>;
-};
+import "./base.scss";
+import "./App.scss";
 
 const App = () => (
   <State>
     <main>
-      <Component />
+      <MainPanel />
+      <Genres />
+      <Albums />
+      <Artists />
+      <Songs />
     </main>
   </State>
 );

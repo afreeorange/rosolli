@@ -1,0 +1,24 @@
+@use "./base";
+
+.links {
+  @include base.panel;
+
+  ul {
+    font-size: calc(var(--font-size-base) * 1.25);
+
+    li {
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      span:nth-of-type(1) {
+        font-weight: bold;
+      }
+
+      span:nth-of-type(2) {
+        opacity: 0.25;
+      }
+    }
+  }
+}

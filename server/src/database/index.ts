@@ -14,5 +14,9 @@ db.pragma("journal_mode=WAL");
 
 console.log("Connected to the SQLite database");
 
-export { statistics } from "./statistics";
+export * from "./statistics";
+export * from "./genres";
+export * from "./albums";
+export * from "./artists";
+export * from "./songs";
 export default db;

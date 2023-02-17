@@ -18,7 +18,7 @@ const listeningTimes = (milliSeconds: number) => {
   return { years, months, days, hours, minutes, seconds };
 };
 
-export const statistics = (): {
+export type Statistics = {
   genres: number;
   albums: number;
   artists: number;
@@ -26,7 +26,7 @@ export const statistics = (): {
   songs: number;
   latest: {
     id: string;
-    title: string;
+    song: string;
     artist: string;
     added: number;
   }[];
@@ -39,7 +39,9 @@ export const statistics = (): {
     minutes: number;
     seconds: number;
   };
-} => {
+};
+
+export const statistics = (): Statistics => {
   const genres = db
     .prepare(`SELECT COUNT(DISTINCT(genre)) as c FROM items`)
     .get()["c"];
@@ -64,7 +66,7 @@ export const statistics = (): {
     .prepare(
       `SELECT
         id,
-        title,
+        title as song,
         artist,
         added
       FROM items

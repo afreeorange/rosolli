@@ -1,0 +1,6 @@
+@use "../base";
+
+.albums {
+  @include base.panel;
+  width: calc(var(--panel-size-min) * 1.5);
+}

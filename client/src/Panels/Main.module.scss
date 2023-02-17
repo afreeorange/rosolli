@@ -1,0 +1,6 @@
+@use "../base";
+
+.main {
+  @include base.panel;
+  padding-top: calc(var(--padding-panel) / 2);
+}

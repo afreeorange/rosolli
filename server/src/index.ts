@@ -6,7 +6,7 @@ import {
 import express, { Request, Response } from "express";
 import cors from "cors";
 
-import db, { statistics } from "./database";
+import db, { statistics, genres, albums, songs, artists } from "./database";
 
 // ---------- tRPC Stuff ----------
 
@@ -24,6 +24,12 @@ const router = t.router;
 
 const appRouter = router({
   statistics: publicProcedure.query(() => statistics()),
+
+  // TODO: Can these be in one giant endpoint?
+  genres: publicProcedure.query(() => genres()),
+  albums: publicProcedure.query(() => albums()),
+  artists: publicProcedure.query(() => artists()),
+  songs: publicProcedure.query(() => songs()),
 });
 
 // ---------- Express Stuff ----------
@@ -42,3 +48,7 @@ console.log("Database is", db.name);
 app.listen(port, () => {
   console.log(`⚡️ Rosolli server is running at http://localhost:${port}`);
 });
+
+// ---------- Types ----------
+
+export * from "./database";
