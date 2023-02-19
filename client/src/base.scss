@@ -18,7 +18,7 @@
 
 /* Scrollbar - Track */
 ::-webkit-scrollbar-track {
-  background: #fff;
+  background: #f1f1f1;
 }
 
 /* Scrollbar - Handle */
@@ -154,12 +154,12 @@ ol {
         td:not(:last-of-type) {
           border-right: 1px dotted #ddd;
         }
-      }
 
-      tr:hover {
-        background: red;
-        color: white;
-        cursor: pointer;
+        &:hover {
+          background: red;
+          color: white;
+          cursor: pointer;
+        }
       }
     }
 

@@ -43,16 +43,18 @@ const Component = () => {
       {
         accessorKey: "readableLength",
         header: "Length",
-        size: 225,
+        size: 80,
       },
       {
         accessorKey: "track",
         header: "Track",
+        size: 80,
         accessorFn: (row) => `${row.track}/${row.tracktotal}`,
       },
       {
         accessorKey: "year",
         header: "Year",
+        size: 80,
       },
       {
         accessorKey: "genre",
