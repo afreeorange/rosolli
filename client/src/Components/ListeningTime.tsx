@@ -27,7 +27,7 @@ const Component = () => {
     );
   }
 
-  return <p>Lol</p>;
+  return null;
 };
 
 export default Component;
