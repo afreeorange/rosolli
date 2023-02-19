@@ -6,7 +6,7 @@ import {
 import express, { Request, Response } from "express";
 import cors from "cors";
 
-import db, { statistics, genres, albums, songs, artists } from "./database";
+import db, { statistics, genres, albums, tracks, artists } from "./database";
 
 // ---------- tRPC Stuff ----------
 
@@ -29,7 +29,7 @@ const appRouter = router({
   genres: publicProcedure.query(() => genres()),
   albums: publicProcedure.query(() => albums()),
   artists: publicProcedure.query(() => artists()),
-  songs: publicProcedure.query(() => songs()),
+  tracks: publicProcedure.query(() => tracks()),
 });
 
 // ---------- Express Stuff ----------

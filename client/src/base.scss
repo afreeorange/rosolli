@@ -80,10 +80,13 @@ ol {
   list-style-type: none;
 }
 
-#root,
-#__next {
+#root {
   isolation: isolate;
 }
+
+// main::-webkit-scrollbar{
+//   display: none;
+// }
 
 .panel {
   flex-grow: 0;

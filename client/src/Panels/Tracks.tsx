@@ -137,7 +137,10 @@ const Component = () => {
               const realRow = rows[vrow.index] as Row<TrackInList>;
 
               return (
-                <tr key={realRow.id}>
+                <tr
+                  key={realRow.id}
+                  onClick={() => console.log(realRow.getValue("id"))}
+                >
                   {realRow.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}

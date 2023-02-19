@@ -12,27 +12,26 @@ Used `yarn create vite` to bootstrap the Client. Manually created the Server.
 Named to maintain compatilibity with the Beets schema.
 
 ```
-album
-album_id
-albumartist
-artist
-bitrate
-channels
-disc
-disctotal
-encoder
-filesize
-format
-genre
-id
-label
-length
-mtime
-path
-samplerate
-title
-track
-tracktotal
+album,
+album_id,
+albumartist,
+artist,
+bitrate,
+channels,
+disc,
+disctotal,
+encoder,
+format,
+genre,
+id,
+label,
+length,
+mtime,
+path,
+samplerate,
+title,
+track,
+tracktotal,
 year
 ```
 

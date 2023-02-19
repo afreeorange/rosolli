@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.9.0":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.16.7", "@babel/runtime@^7.9.0":
   version "7.20.13"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.20.13.tgz#7055ab8a7cff2b8f6058bf6ae45ff84ad2aded4b"
   integrity sha512-gt3PKXs0DBoL9xCvOIIZ2NEqAGZqHjAnmVbfQtB620V0uReIQutpel14KcneZuer7UioY8ALKZ7iocavvzTNFA==
@@ -274,6 +274,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@reach/observe-rect@^1.1.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@reach/observe-rect/-/observe-rect-1.2.0.tgz#d7a6013b8aafcc64c778a0ccb83355a11204d3b2"
+  integrity sha512-Ba7HmkFgfQxZqqaeIWWkNK0rEhpxVQHIoVyW1YDSkGsGIXzcaW4deC8B0pZrNSSyLTdIk7y+5olKt5+g0GmFIQ==
+
 "@swc/core-darwin-arm64@1.3.35":
   version "1.3.35"
   resolved "https://registry.yarnpkg.com/@swc/core-darwin-arm64/-/core-darwin-arm64-1.3.35.tgz#55ff0cc069769ce8bf6562ca0e724fe9c43deb8c"
@@ -352,6 +357,26 @@
   dependencies:
     "@tanstack/query-core" "4.24.6"
     use-sync-external-store "^1.2.0"
+
+"@tanstack/react-table@^8.7.9":
+  version "8.7.9"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-table/-/react-table-8.7.9.tgz#9efcd168fb0080a7e0bc213b5eac8b55513babf4"
+  integrity sha512-6MbbQn5AupSOkek1+6IYu+1yZNthAKTRZw9tW92Vi6++iRrD1GbI3lKTjJalf8lEEKOqapPzQPE20nywu0PjCA==
+  dependencies:
+    "@tanstack/table-core" "8.7.9"
+
+"@tanstack/react-virtual@^3.0.0-alpha.0":
+  version "3.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-virtual/-/react-virtual-3.0.0-alpha.0.tgz#2ca5a75fa609eca2b2ba622024d3aa3ee097bc30"
+  integrity sha512-WpHU/dt34NwZZ8qtiE05TF+nX/b1W6qrWZarO+s8jJFpPVicrTbJKp5Bjt4eSJuk7aYw272oEfsH3ABBRgj+3A==
+  dependencies:
+    "@babel/runtime" "^7.16.7"
+    "@reach/observe-rect" "^1.1.0"
+
+"@tanstack/table-core@8.7.9":
+  version "8.7.9"
+  resolved "https://registry.yarnpkg.com/@tanstack/table-core/-/table-core-8.7.9.tgz#0e975f8a5079972f1827a569079943d43257c42f"
+  integrity sha512-4RkayPMV1oS2SKDXfQbFoct1w5k+pvGpmX18tCXMofK/VDRdA2hhxfsQlMvsJ4oTX8b0CI4Y3GDKn5T425jBCw==
 
 "@tokenizer/token@^0.3.0":
   version "0.3.0"
