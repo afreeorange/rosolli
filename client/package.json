@@ -10,6 +10,8 @@
   "dependencies": {
     "@rosolli/server": "0.0.0",
     "@tanstack/react-query": "^4.24.6",
+    "@tanstack/react-table": "^8.7.9",
+    "@tanstack/react-virtual": "^3.0.0-alpha.0",
     "@trpc/client": "^10.11.1",
     "@trpc/react": "^9.27.4",
     "@trpc/react-query": "^10.11.1",

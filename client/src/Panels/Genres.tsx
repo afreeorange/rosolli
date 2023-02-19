@@ -1,4 +1,3 @@
-import numeral from "numeral";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
@@ -9,9 +8,7 @@ const Component = () => {
 
   return (
     <div className="panel half-width">
-      <h1>
-        Genres <span>{numeral(genres.length).format("0,0")}</span>
-      </h1>
+      <h1>Genres</h1>
 
       <ul>
         <AutoSizer>
@@ -22,6 +19,9 @@ const Component = () => {
               itemCount={genres.length}
               itemSize={35}
               overscanCount={10}
+              style={{
+                paddingBottom: "5em",
+              }}
             >
               {({ index, style }: { index: number; style: any }) => (
                 <li

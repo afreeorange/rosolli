@@ -9,7 +9,7 @@ import {
   Statistics,
   Genres,
   Albums,
-  Songs,
+  Tracks,
   Artists,
 } from "@rosolli/server";
 
@@ -36,8 +36,8 @@ export const useStore = createStore<{
   artists: Artists;
   setArtists: (artists: Artists) => void;
 
-  songs: Songs;
-  setSongs: (songs: Songs) => void;
+  tracks: Tracks;
+  setTracks: (tracks: Tracks) => void;
 
   search: {
     term: string | null;
@@ -59,8 +59,8 @@ export const useStore = createStore<{
   artists: [],
   setArtists: (artists: Artists) => set((state) => ({ ...state, artists })),
 
-  songs: [],
-  setSongs: (songs: Songs) => set((state) => ({ ...state, songs })),
+  tracks: [],
+  setTracks: (tracks: Tracks) => set((state) => ({ ...state, tracks })),
 
   search: {
     term: null,
@@ -75,7 +75,7 @@ const BootstrapStore: React.FC<{ children: React.ReactNode }> = ({
   const { data: genres } = trpc.genres.useQuery();
   const { data: albums } = trpc.albums.useQuery();
   const { data: artists } = trpc.artists.useQuery();
-  const { data: songs } = trpc.songs.useQuery();
+  const { data: tracks } = trpc.tracks.useQuery();
 
   useEffect(() => {
     (() => {
@@ -91,11 +91,11 @@ const BootstrapStore: React.FC<{ children: React.ReactNode }> = ({
       if (artists) {
         store.setArtists(artists);
       }
-      if (songs) {
-        store.setSongs(songs);
+      if (tracks) {
+        store.setTracks(tracks);
       }
     })();
-  }, [statistics, genres, albums, songs]);
+  }, [statistics, genres, albums, artists, tracks]);
 
   return <>{children}</>;
 };

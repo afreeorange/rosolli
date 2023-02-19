@@ -1,21 +1,31 @@
 .links {
   ul {
-    font-size: calc(var(--font-size-base) * 1.125);
-
     li {
-      padding: calc(var(--padding-panel) / 3) var(--padding-panel);
+      color: red;
       cursor: pointer;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      padding: calc(var(--padding-panel) / 2) var(--padding-panel);
+      font-size: calc(var(--font-size-base) * 1.25);
 
       span:nth-of-type(1) {
         font-weight: bold;
       }
 
+      span:nth-of-type(2) {
+        opacity: 0.5;
+        color: red;
+      }
+
       &:hover {
         background: red;
-        color: white;
+        color: #fff;
+
+        span {
+          opacity: 1;
+          color: #fff;
+        }
       }
     }
 
