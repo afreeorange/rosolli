@@ -120,7 +120,7 @@ const Component: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: "http://localhost:3000/trpc",
+          url: "http://192.168.68.103:3000/trpc",
         }),
       ],
     })

@@ -67,6 +67,21 @@ export type TrackInList = {
  * fields compared to the `Track` type. */
 export type Tracks = TrackInList[];
 
+export const getTrackById = (id: string): Track =>
+  db
+    .prepare(
+      `
+    SELECT
+      i.*,
+      a.artpath
+    FROM items i
+    LEFT JOIN albums a
+    ON i.album_id = a.id
+    WHERE i.id = ?
+    `
+    )
+    .get([id]);
+
 /**
  * Return a giant list of all tracks.
  */

@@ -7,7 +7,6 @@
 
   --padding-panel: 0.4em;
   --panel-size: 20em;
-  --max-height-of-panel: 100vh;
   --row-height: 35px;
 }
 
@@ -45,6 +44,7 @@ body {
   font-size: var(--font-size-base);
   line-height: 1.5;
   background: #fff;
+  zoom: 0.9;
 }
 
 img,
@@ -112,7 +112,7 @@ ol {
   // Reference: https://github.com/bvaughn/react-window/issues/249#issuecomment-739682222
   // TODO:
   ul {
-    height: var(--max-height-of-panel);
+    height: 100%;
 
     li {
       white-space: nowrap;
@@ -194,6 +194,6 @@ ol {
 }
 
 .tracks-container {
-  height: 100vh;
+  height: 100%;
   overflow-y: scroll;
 }

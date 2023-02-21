@@ -1,7 +1,11 @@
 .main {
   flex-grow: 0;
   flex-shrink: 0;
-  height: 100vh;
+  height: 100%;
   width: var(--panel-size);
   border-right: 1px dotted #ccc;
+  position: sticky;
+  left: 0;
+  background: #fff!important;
+  z-index: 999;
 }

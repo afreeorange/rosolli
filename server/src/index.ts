@@ -6,6 +6,7 @@ import {
 import express, { Request, Response } from "express";
 import cors from "cors";
 
+import streamRoutes from "./stream";
 import db, { statistics, genres, albums, tracks, artists } from "./database";
 
 // ---------- tRPC Stuff ----------
@@ -38,8 +39,9 @@ const port = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
 app.use("/trpc", createExpressMiddleware({ router: appRouter, createContext }));
+app.use("/api/stream", streamRoutes);
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/", (_: Request, res: Response) => {
   res.send("Welcome to the Rosolli API! 🍠");
 });
 

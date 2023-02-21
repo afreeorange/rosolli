@@ -8,11 +8,8 @@ import {
 
 import { useVirtual } from "@tanstack/react-virtual";
 
-// import { FixedSizeList as List } from "react-window";
-// import AutoSizer from "react-virtualized-auto-sizer";
-
 import { useStore } from "../State";
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import { TrackInList } from "@rosolli/server";
 
 const Component = () => {
@@ -20,11 +17,24 @@ const Component = () => {
   const { tracks: data } = useStore();
 
   /**
+   * Don't show the ID column. Can use this to set visibility of other columns
+   * as well (based, for example, on user preferences).
+   */
+  const [columnVisibility, setColumnVisibility] = useState({
+    id: false,
+  });
+
+  /**
    * Set up the columns. We use the type definition of the **list of tracks**
    * which is different than the typedef of a single track.
    */
   const columns = useMemo<ColumnDef<TrackInList>[]>(
     () => [
+      {
+        accessorKey: "id",
+        header: "Song ID",
+        size: 80,
+      },
       {
         accessorKey: "title",
         header: "Title",
@@ -74,6 +84,9 @@ const Component = () => {
     columns,
     data,
     getCoreRowModel: getCoreRowModel(),
+    state: {
+      columnVisibility,
+    },
     debugTable: true,
   });
   const { rows } = table.getRowModel();
@@ -139,10 +152,7 @@ const Component = () => {
               const realRow = rows[vrow.index] as Row<TrackInList>;
 
               return (
-                <tr
-                  key={realRow.id}
-                  onClick={() => console.log(realRow.getValue("id"))}
-                >
+                <tr key={realRow.id}>
                   {realRow.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
@@ -150,6 +160,11 @@ const Component = () => {
                         width: cell.column.getSize(),
                         maxWidth: cell.column.getSize(),
                       }}
+                      onClick={() =>
+                        console.log(
+                          `Will play Song ID ${cell.row.getValue("id")}`
+                        )
+                      }
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
