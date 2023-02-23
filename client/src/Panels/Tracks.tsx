@@ -1,3 +1,4 @@
+import { useMemo, useRef, useState } from "react";
 import {
   ColumnDef,
   useReactTable,
@@ -5,16 +6,16 @@ import {
   flexRender,
   Row,
 } from "@tanstack/react-table";
-
 import { useVirtual } from "@tanstack/react-virtual";
 
-import { useStore } from "../State";
-import { useMemo, useRef, useState } from "react";
+import { useStore, trpc } from "../State";
 import { TrackInList } from "@rosolli/server";
+
+import styles from "./Tracks.module.scss";
 
 const Component = () => {
   // Load the data
-  const { tracks: data } = useStore();
+  const { tracks: data, set, current } = useStore();
 
   /**
    * Don't show the ID column. Can use this to set visibility of other columns
@@ -23,6 +24,15 @@ const Component = () => {
   const [columnVisibility, setColumnVisibility] = useState({
     id: false,
   });
+
+  /**
+   * Query the backend when a track is selected.
+   */
+  const handleSelection = (id: number) => {
+    let { data } = trpc.track.useQuery(id);
+    console.log(data);
+  };
+  // set.current.track();
 
   /**
    * Set up the columns. We use the type definition of the **list of tracks**
@@ -104,8 +114,18 @@ const Component = () => {
    * These are super-important and virtualization just won't work without them!
    * We're setting the available area in the topmost and bottom-most rows to a
    * high value via padding so the virtualizer knows that there is something
-   * more to bring into view! If you eliminate these, you'll just be 'stuck'
+   * more to bring into view. If you eliminate these, you'll just be 'stuck'
    * with the first 'page' of virtualized rows.
+   *
+   * Note that you will have to adjust the `overscan` property depending on how
+   * you choose to lay things out. Then you can use something like this to make
+   * sure that you only have 'a few' DOM elements (i.e., virtulalization is
+   * working as intended (in the developer console))
+   *
+   *    $(".tracks-container").children[0].querySelectorAll("tbody")[0].querySelectorAll("td").length
+   *
+   * ☝️ The number you get from that should stabilize and not change after you
+   * play around with the track listing!
    */
   const paddingTop = virtualRows.length > 0 ? virtualRows?.[0]?.start || 0 : 0;
   const paddingBottom =
@@ -115,7 +135,7 @@ const Component = () => {
 
   return (
     <div
-      className="panel quadruple-width"
+      className={`panel quadruple-width ${styles.tracks}`}
       style={{
         marginRight: "2em",
       }}
@@ -128,7 +148,10 @@ const Component = () => {
             {table.getHeaderGroups().map((hg) => (
               <tr key={hg.id}>
                 {hg.headers.map((header) => (
-                  <th key={header.id}>
+                  <th
+                    key={header.id}
+                    data-column-name={header.column.columnDef.header}
+                  >
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -160,11 +183,8 @@ const Component = () => {
                         width: cell.column.getSize(),
                         maxWidth: cell.column.getSize(),
                       }}
-                      onClick={() =>
-                        console.log(
-                          `Will play Song ID ${cell.row.getValue("id")}`
-                        )
-                      }
+                      onClick={() => handleSelection(cell.row.getValue("id"))}
+                      data-column-name={cell.column.columnDef.header}
                     >
                       {flexRender(
                         cell.column.columnDef.cell,

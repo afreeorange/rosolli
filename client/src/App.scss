@@ -1,3 +1,80 @@
+:root {
+  --font-family: "Akkurat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  --font-family-monospace: Menlo, Consolas, Monaco, Liberation Mono,
+    Lucida Console, monospace;
+  --font-size-base: 16px;
+  --font-line-height: 1.25;
+
+  --padding-panel: 0.4em;
+  --panel-size: 20em;
+  --row-height: 35px;
+}
+
+/* Scrollbar - width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Scrollbar - Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Scrollbar - Handle */
+::-webkit-scrollbar-thumb {
+  background: red;
+}
+
+/* Scrollbar - Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: red;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
 html,
 body,
 #root,
@@ -7,11 +84,130 @@ main {
   padding: 0;
   overflow-y: hidden;
 
+  line-height: 1.5;
+  background: #fff;
+  // zoom: 0.95;
+
+  font-size: var(--font-size-base);
   font-family: var(--font-family);
   line-height: var(--font-line-height);
+}
+
+#root {
+  isolation: isolate;
 }
 
 main {
   display: flex;
   flex-direction: row;
+}
+
+.panel {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: var(--panel-size);
+
+  h1 {
+    color: #101010;
+    padding: calc(var(--padding-panel) / 2);
+    padding-bottom: 0;
+    margin-bottom: var(--padding-panel);
+    font-size: calc(var(--font-size-base) * 1.5);
+
+    span {
+      opacity: 0.25;
+      display: inline-block;
+      margin-left: 1em;
+    }
+  }
+
+  // NOTE: This is the outer container for virtualization. It needs the
+  // height prop set to work!
+  // Reference: https://github.com/bvaughn/react-window/issues/249#issuecomment-739682222
+  // TODO:
+  ul {
+    height: 100%;
+
+    li {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      height: var(--row-height);
+      line-height: 30px;
+      padding: calc(var(--padding-panel) / 2) var(--padding-panel);
+      cursor: pointer;
+    }
+
+    li:not(:last-child) {
+      border-bottom: 1px dotted #ddd;
+    }
+
+    li:hover {
+      background: red;
+      color: white;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    tbody {
+      tr {
+        td {
+          height: 30px;
+          padding: calc(var(--padding-panel) / 2) var(--padding-panel);
+          border-bottom: 1px dotted #ddd;
+
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+
+        td:not(:last-of-type) {
+          border-right: 1px dotted #ddd;
+        }
+
+        &:hover {
+          background: red;
+          color: white;
+          cursor: pointer;
+        }
+      }
+    }
+
+    thead {
+      position: sticky;
+      top: 0;
+      background: #fff;
+
+      tr {
+        th {
+          padding: var(--padding-panel);
+          color: red;
+          text-align: left;
+          border-bottom: 1px dotted #ddd;
+          border-right: 1px dotted #ddd;
+        }
+      }
+    }
+  }
+}
+
+.panel.half-width {
+  width: calc(var(--panel-size) / 1.5);
+}
+
+.panel.quadruple-width {
+  width: auto;
+}
+
+.panel:not(:last-of-type) {
+  border-right: 1px dotted #ccc;
+}
+
+.tracks-container {
+  height: 100%;
+  overflow-y: scroll;
 }

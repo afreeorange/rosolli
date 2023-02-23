@@ -19,4 +19,5 @@ export * from "./genres";
 export * from "./albums";
 export * from "./artists";
 export * from "./tracks";
+export * from "./search";
 export default db;

@@ -1,11 +1,11 @@
 .main {
+  background: #fff;
+  border-right: 3px double #ddd;
   flex-grow: 0;
   flex-shrink: 0;
   height: 100%;
-  width: var(--panel-size);
-  border-right: 1px dotted #ccc;
-  position: sticky;
   left: 0;
-  background: #fff!important;
+  position: sticky;
+  width: var(--panel-size);
   z-index: 999;
 }

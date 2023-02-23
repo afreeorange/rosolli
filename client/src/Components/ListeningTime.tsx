@@ -21,7 +21,7 @@ const Component = () => {
           {" and "}
           {l.seconds > 0 &&
             `${l.seconds} second${l.seconds !== 1 ? "s" : ""}`}{" "}
-          of music.
+          of media.
         </p>
       </div>
     );

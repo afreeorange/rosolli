@@ -6,7 +6,7 @@ import { getTrackById } from "./database";
 
 const router = express.Router();
 
-router.get("/stream/:trackId", function (req, res) {
+router.get("/:trackId", function (req, res) {
   const { trackId } = req.params;
   const { range } = req.headers;
 

@@ -1,21 +1,34 @@
 import numeral from "numeral";
-import React from "react";
+import React, { useState } from "react";
 
 import { useStore } from "../State";
+import { trpc } from "../State";
+
 import styles from "./Search.module.scss";
 
 const Component = () => {
   const { statistics } = useStore();
+  const [term, setTerm] = useState("");
 
-  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) =>
-    console.log(e);
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let term = (e.target as HTMLInputElement).value;
+    console.log(">>>", term);
+    setTerm(term);
+
+    // if (term.length >= 3) {
+    //   console.log(term);
+    // }
+  };
+
+  // console.log(trpc.search.useQuery("air").data);
 
   return (
     <div className={styles.search}>
       <input
         type="text"
         placeholder="search"
-        onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => handleSearch(e)}
+        value={term}
+        onChange={(e) => handleSearch(e)}
       />
     </div>
   );

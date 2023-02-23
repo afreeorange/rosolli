@@ -67,7 +67,7 @@ export type TrackInList = {
  * fields compared to the `Track` type. */
 export type Tracks = TrackInList[];
 
-export const getTrackById = (id: string): Track =>
+export const trackById = (id: number): Track =>
   db
     .prepare(
       `

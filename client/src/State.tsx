@@ -11,6 +11,7 @@ import {
   Albums,
   Tracks,
   Artists,
+  Track,
 } from "@rosolli/server";
 
 /**
@@ -39,8 +40,14 @@ export const useStore = createStore<{
   tracks: Tracks;
   setTracks: (tracks: Tracks) => void;
 
-  search: {
-    term: string | null;
+  current: {
+    track: Track | null;
+  };
+
+  set: {
+    current: {
+      track: (track: Track) => void;
+    };
   };
 }>((set) => ({
   statistics: {},
@@ -62,8 +69,14 @@ export const useStore = createStore<{
   tracks: [],
   setTracks: (tracks: Tracks) => set((state) => ({ ...state, tracks })),
 
-  search: {
-    term: null,
+  current: {
+    track: null,
+  },
+
+  set: {
+    current: {
+      track: (track) => set({ current: { track } }),
+    },
   },
 }));
 

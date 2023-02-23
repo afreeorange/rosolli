@@ -5,9 +5,18 @@ import {
 } from "@trpc/server/adapters/express";
 import express, { Request, Response } from "express";
 import cors from "cors";
+import { z } from "zod";
 
 import streamRoutes from "./stream";
-import db, { statistics, genres, albums, tracks, artists } from "./database";
+import db, {
+  statistics,
+  genres,
+  albums,
+  tracks,
+  artists,
+  trackById,
+  search,
+} from "./database";
 
 // ---------- tRPC Stuff ----------
 
@@ -24,13 +33,30 @@ const publicProcedure = t.procedure;
 const router = t.router;
 
 const appRouter = router({
-  statistics: publicProcedure.query(() => statistics()),
-
   // TODO: Can these be in one giant endpoint?
   genres: publicProcedure.query(() => genres()),
   albums: publicProcedure.query(() => albums()),
   artists: publicProcedure.query(() => artists()),
   tracks: publicProcedure.query(() => tracks()),
+  track: publicProcedure
+    .input(
+      z.number({
+        description: "The Song ID",
+        required_error: "You must specify the Song ID",
+      })
+    )
+    .query((req) => trackById(req.input)),
+
+  search: publicProcedure
+    .input(
+      z.string({
+        description: "The search term",
+        required_error: "You must specify the search term",
+      })
+    )
+    .query((req) => search(req.input)),
+
+  statistics: publicProcedure.query(() => statistics()),
 });
 
 // ---------- Express Stuff ----------

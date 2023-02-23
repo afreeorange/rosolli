@@ -1,9 +1,9 @@
 .player {
-  width: calc(var(--panel-size) * 1.6);
-  height: calc(var(--panel-size) * 1.6);
+  width: var(--panel-size);
+  height: var(--panel-size);
   z-index: 999;
   position: absolute;
   bottom: 0;
   left: 0;
-  background: #000;
+  background: #ccc;
 }
