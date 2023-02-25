@@ -1,13 +1,15 @@
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
+import styles from "./Genres.module.scss";
+
 import { useStore } from "../State";
 
 const Component = () => {
   const { genres } = useStore();
 
   return (
-    <div className="panel">
+    <div className={`panel ${styles.genres}`}>
       <h1>Genres</h1>
 
       <ul>
@@ -17,7 +19,7 @@ const Component = () => {
               height={height}
               width={width}
               itemCount={genres.length}
-              itemSize={35}
+              itemSize={55}
               overscanCount={10}
               style={{
                 paddingBottom: "5em",
@@ -29,7 +31,17 @@ const Component = () => {
                   key={`genre-${genres[index]}`}
                   style={style}
                 >
-                  {genres[index]}
+                  {genres[index].name}
+                  <small>
+                    <span>
+                      {genres[index].counts.albums} album
+                      {genres[index].counts.albums > 1 && "s"}
+                    </span>
+                    <span>
+                      {genres[index].counts.artists} artist
+                      {genres[index].counts.artists > 1 && "s"}
+                    </span>
+                  </small>
                 </li>
               )}
             </List>

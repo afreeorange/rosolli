@@ -1,4 +1,5 @@
 import { IoIosCloseCircleOutline } from "react-icons/io";
+import { FaRecordVinyl } from "react-icons/fa";
 import numeral from "numeral";
 import moment from "moment";
 

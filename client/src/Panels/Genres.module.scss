@@ -1,0 +1,12 @@
+.genres {
+  li {
+    line-height: 1.5!important;
+
+    small {
+      color: var(--color-foreground-light);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+}

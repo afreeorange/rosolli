@@ -1,6 +1,12 @@
 import db from ".";
 
-export type Genre = string;
+export type Genre = {
+  name: string;
+  counts: {
+    artists: number;
+    albums: number;
+  };
+};
 export type Genres = Genre[];
 
 export const genres = (): Genres =>
@@ -8,10 +14,19 @@ export const genres = (): Genres =>
     .prepare(
       `
     SELECT
-      DISTINCT(genre)
+      genre as name,
+      count(distinct(artist)) artists,
+      count(distinct(album)) as albums
     FROM items
+    GROUP BY genre
     ORDER BY genre
   `
     )
     .all()
-    .map((_: any) => (_.genre === "" ? "NO_GENRE" : _.genre));
+    .map(({ name, artists, albums }) => ({
+      name: name || "NO_GENRE",
+      counts: {
+        artists,
+        albums,
+      },
+    }));

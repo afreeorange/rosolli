@@ -25,10 +25,10 @@ const Component = () => {
           <span>Songs</span>
           <span>{numeral(statistics.songs).format("0,0")}</span>
         </li>
-        <li>
+        {/* <li>
           <span>Playlists</span>
           <span>{numeral(0).format("0,0")}</span>
-        </li>
+        </li> */}
       </ul>
     </div>
   );
