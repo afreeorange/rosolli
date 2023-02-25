@@ -7,7 +7,7 @@ const Component = () => {
   const { genres } = useStore();
 
   return (
-    <div className="panel half-width">
+    <div className="panel">
       <h1>Genres</h1>
 
       <ul>

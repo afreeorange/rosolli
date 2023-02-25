@@ -1,6 +1,6 @@
 .listening-time {
   padding: calc(var(--padding-panel) * 2);
-  color: #666;
-  border-top: 1px dotted #ddd;
-  border-bottom: 1px dotted #ddd;
+  color: var(--color-foreground-light);
+  border-top: 1px dotted var(--color-foreground-light);
+  border-bottom: 1px dotted var(--color-foreground-light);
 }

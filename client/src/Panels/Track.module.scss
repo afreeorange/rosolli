@@ -2,9 +2,13 @@
   position: sticky;
   right: 0;
   top: 0;
-  backdrop-filter: blur(5px);
-  // background: #fff;
-  border-left: 3px double #ddd;
+  width: var(--panel-size);
+  flex-grow: 0;
+  flex-shrink: 0;
+
+  background: var(--color-background);
+  border-left: 3px double var(--color-foreground-light);
+  box-sizing: border-box;
 
   .top {
     display: flex;
@@ -12,7 +16,7 @@
     justify-content: space-between;
 
     span {
-      color: #ccc;
+      color: var(--color-foreground-light);
       padding: var(--padding-panel);
     }
 
@@ -20,9 +24,10 @@
       background-color: transparent;
       border: 0;
       padding: var(--padding-panel);
+      color: var(--color-highlight);
 
       &:hover {
-        background-color: red;
+        background-color: var(--color-highlight);
         color: white;
         cursor: pointer;
       }
@@ -33,29 +38,6 @@
         position: relative;
         top: 2px;
       }
-    }
-  }
-
-  table {
-    tr {
-      th {
-        border-bottom: 1px dotted #ddd;
-        text-align-last: left;
-      }
-
-      td {
-        border-bottom: 1px dotted #ddd;
-        text-align-last: left;
-      }
-    }
-  }
-
-  img {
-    width: 100%;
-    cursor: pointer;
-
-    &:hover {
-      opacity: 0.75;
     }
   }
 
@@ -72,5 +54,55 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+  }
+
+  h2 {
+    padding: var(--padding-panel);
+    padding-bottom: 0;
+    color: var(--color-highlight);
+
+    span {
+      color: var(--color-foreground);
+    }
+  }
+
+  h3 {
+    padding: var(--padding-panel);
+    color: var(--color-foreground-light);
+    margin-top: 0;
+    padding-top: 0;
+    font-weight: normal;
+  }
+
+  table {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    tr:not(:last-of-type) {
+      th,
+      td {
+        border-bottom: 1px dotted var(--color-foreground-light);
+      }
+    }
+
+    tr {
+      th {
+        text-align: left;
+        vertical-align: top;
+        max-width: calc(var(--panel-size) * 0.4);
+        width: calc(var(--panel-size) * 0.4);
+      }
+
+      td {
+        vertical-align: top;
+        max-width: calc(var(--panel-size) * 0.6);
+        width: calc(var(--panel-size) * 0.6);
+
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
   }
 }

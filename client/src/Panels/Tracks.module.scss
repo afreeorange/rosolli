@@ -1,16 +1,62 @@
 .tracks {
-  td[data-column-name="Year"],
-  td[data-column-name="Track"],
-  td[data-column-name="Length"] {
-    font-family: var(--font-family-monospace);
-    text-align: right;
-  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
 
-  th[data-column-name="Year"],
-  th[data-column-name="Track"],
-  th[data-column-name="Length"],
-  th[data-column-name="Genre"],
-  td[data-column-name="Genre"] {
-    text-align: right;
+    tbody {
+      tr {
+        td {
+          // NOTE: Check with the module for how many rows to overscan
+          height: 30px;
+          padding: calc(var(--padding-panel) / 2) var(--padding-panel);
+          border-bottom: 1px dotted var(--color-foreground-light);
+
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+
+        td:not(:last-of-type) {
+          border-right: 1px dotted var(--color-foreground-light);
+        }
+
+        &:hover {
+          background: var(--color-highlight);
+          color: var(--color-background);
+          cursor: pointer;
+        }
+      }
+    }
+
+    thead {
+      position: sticky;
+      top: 0;
+      background: var(--color-background);
+
+      tr {
+        th {
+          padding: var(--padding-panel);
+          color: var(--color-highlight);
+          text-align: left;
+          border-bottom: 1px dotted var(--color-foreground-light);
+          border-right: 1px dotted var(--color-foreground-light);
+        }
+      }
+    }
+
+    td[data-column-name="Year"],
+    td[data-column-name="Track"],
+    td[data-column-name="Length"] {
+      font-family: var(--font-family-monospace);
+      text-align: right;
+    }
+
+    th[data-column-name="Year"],
+    th[data-column-name="Track"],
+    th[data-column-name="Length"],
+    th[data-column-name="Genre"],
+    td[data-column-name="Genre"] {
+      text-align: right;
+    }
   }
 }

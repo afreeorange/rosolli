@@ -104,6 +104,7 @@ export const trackById = async (id: number): Promise<Track> => {
       ? `data:${cover.format};base64,${cover.data.toString("base64")}`
       : await placeholderAlbumCover(track),
     readableLength: readableLength(track.length),
+    path: track.path.toString(),
   };
 };
 

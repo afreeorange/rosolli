@@ -9,7 +9,19 @@
 
   --padding-panel: 0.4em;
   --panel-size: 20em;
-  --row-height: 35;
+  --row-height: 35px;
+
+  --color-background: #fff;
+  --color-foreground: #101010;
+  --color-foreground-light: #ccc;
+  --color-foreground-lighter: #ddd;
+  --color-highlight: red;
+
+  // --color-background: #111;
+  // --color-foreground: #fff;
+  // --color-foreground-light: #333;
+  // --color-foreground-lighter: #000;
+  // --color-highlight: red;
 }
 
 /* Scrollbar - width */
@@ -19,17 +31,17 @@
 
 /* Scrollbar - Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--color-foreground-lighter);
 }
 
 /* Scrollbar - Handle */
 ::-webkit-scrollbar-thumb {
-  background: red;
+  background: var(--color-highlight);
 }
 
 /* Scrollbar - Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: red;
+  background: var(--color-highlight);
 }
 
 *,
@@ -85,8 +97,8 @@ main {
   overflow-y: hidden;
 
   line-height: 1.5;
-  background: #fff;
-  // zoom: 0.95;
+  background: var(--color-background);
+  color: var(--color-foreground);
 
   font-size: var(--font-size-base);
   font-family: var(--font-family);
@@ -108,11 +120,11 @@ main {
   width: var(--panel-size);
 
   h1 {
-    color: #101010;
+    color: var(--color-foreground);
+    font-size: calc(var(--font-size-base) * 2);
+    margin-bottom: var(--padding-panel);
     padding: calc(var(--padding-panel) / 2);
     padding-bottom: 0;
-    margin-bottom: var(--padding-panel);
-    font-size: calc(var(--font-size-base) * 2);
 
     span {
       opacity: 0.25;
@@ -142,78 +154,20 @@ main {
     }
 
     li:not(:last-child) {
-      border-bottom: 1px dotted #ddd;
+      border-bottom: 1px dotted var(--color-foreground-light);
     }
 
     li:hover {
-      background: red;
-      color: white;
-    }
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-
-    tbody {
-      tr {
-        td {
-          height: 20px;
-          padding: calc(var(--padding-panel) / 2) var(--padding-panel);
-          border-bottom: 1px dotted #ddd;
-
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
-        }
-
-        td:not(:last-of-type) {
-          border-right: 1px dotted #ddd;
-        }
-
-        &:hover {
-          background: red;
-          color: white;
-          cursor: pointer;
-        }
-      }
-    }
-
-    thead {
-      position: sticky;
-      top: 0;
-      background: #fff;
-
-      tr {
-        th {
-          padding: var(--padding-panel);
-          color: red;
-          text-align: left;
-          border-bottom: 1px dotted #ddd;
-          border-right: 1px dotted #ddd;
-        }
-      }
+      background: var(--color-highlight);
+      color: var(--color-background);
     }
   }
 }
 
-.panel.half-width {
-  width: calc(var(--panel-size) / 1.5);
-}
-
-.panel.quadruple-width {
+.panel.auto-width {
   width: auto;
 }
 
 .panel:not(:last-of-type) {
-  border-right: 1px dotted #ccc;
+  border-right: 1px dotted var(--color-foreground-light);
 }
-
-.tracks-container {
-  height: 100%;
-  overflow-y: scroll;
-}
-
-// :export {
-//   rowHeight: var(--row-height);
-// }

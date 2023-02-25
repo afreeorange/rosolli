@@ -147,14 +147,20 @@ const Component = () => {
 
   return (
     <div
-      className={`panel quadruple-width ${styles.tracks}`}
+      className={`panel auto-width ${styles.tracks}`}
       style={{
         marginRight: current.track ? "0" : "5em",
       }}
     >
       <h1>Tracks</h1>
 
-      <div className="tracks-container" ref={containerRef}>
+      <div
+        style={{
+          overflowY: "scroll",
+          height: "100%",
+        }}
+        ref={containerRef}
+      >
         <table>
           <thead>
             {table.getHeaderGroups().map((hg) => (

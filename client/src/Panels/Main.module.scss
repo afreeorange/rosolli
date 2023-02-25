@@ -1,6 +1,6 @@
 .main {
-  background: #fff;
-  border-right: 3px double #ddd;
+  background: var(--color-background);
+  border-right: 2px double var(--color-foreground-light);
   flex-grow: 0;
   flex-shrink: 0;
   height: 100%;

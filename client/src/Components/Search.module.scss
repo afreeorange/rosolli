@@ -5,14 +5,16 @@
     width: 100%;
     border: 0;
     opacity: 0.5;
-    padding: var(--padding-panel);
-    border-bottom: 1px dotted #ddd;
-    font-size: calc(var(--font-size-base) * 1.5);
+    background: var(--color-background);
+    color: var(--color--foreground);
+    padding: calc(var(--padding-panel) / 2) var(--padding-panel);
+    border-bottom: 1px dotted var(--color-foreground-light);
+    font-size: calc(var(--font-size-base) * 2);
   }
 
   input:focus {
     opacity: 1;
     outline: none;
-    color: red;
+    color: var(--color-highlight);
   }
 }

@@ -1,5 +1,6 @@
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import numeral from "numeral";
+import moment from "moment";
 
 import { useStore } from "../State";
 
@@ -12,6 +13,10 @@ const Component = () => {
   } = useStore();
 
   if (track) {
+    let modifiedTime = moment(parseInt(track.mtime) * 1000).format(
+      "MMM DD YYYY h:MM:SSa"
+    );
+
     return (
       <div key={track.id} className={`panel ${styles.track}`}>
         <div className={styles.top}>
@@ -30,11 +35,13 @@ const Component = () => {
           }}
         ></div>
 
-        <h2>{track.title}</h2>
-        <h3>by {track.artist}</h3>
-        <h4>
-          {track.album} <span>({track.year})</span>
-        </h4>
+        <h2>
+          {}
+          {track.title} <span>by {track.artist}</span>
+        </h2>
+        <h3>
+          {track.album} {track.year !== 0 && <span>({track.year})</span>}
+        </h3>
 
         <table>
           <tr>
@@ -73,11 +80,11 @@ const Component = () => {
           </tr>
           <tr>
             <th>Last Modified</th>
-            <td>{track.mtime}</td>
+            <td>{modifiedTime}</td>
           </tr>
           <tr>
-            <th>path</th>
-            <td>{track.path.toString()}</td>
+            <th>Path on disk</th>
+            <td className="click-to-copy">{track.path}</td>
           </tr>
           <tr>
             <th>Sample Rate</th>

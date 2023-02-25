@@ -26,7 +26,7 @@ const Component = () => {
       <input
         type="text"
         placeholder="search"
-        value={"term"}
+        value={""}
         onChange={(e) => handleSearch(e)}
       />
     </div>

@@ -1,13 +1,13 @@
 .links {
   ul {
     li {
-      color: red;
+      color: var(--color-highlight);
       cursor: pointer;
       display: flex;
       flex-direction: row;
+      font-size: calc(var(--font-size-base) * 2);
       justify-content: space-between;
       padding: calc(var(--padding-panel) / 2) var(--padding-panel);
-      font-size: calc(var(--font-size-base) * 1.25);
 
       span:nth-of-type(1) {
         font-weight: bold;
@@ -15,22 +15,22 @@
 
       span:nth-of-type(2) {
         opacity: 0.5;
-        color: red;
+        color: var(--color-highlight);
       }
 
       &:hover {
         background: red;
-        color: #fff;
+        color: var(--color-background);
 
         span {
           opacity: 1;
-          color: #fff;
+          color: var(--color-background);
         }
       }
     }
 
     li:not(:last-child) {
-      border-bottom: 1px dotted #ddd;
+      border-bottom: 1px dotted var(--color-foreground-light);
     }
   }
 }
