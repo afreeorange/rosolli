@@ -38,14 +38,19 @@ const appRouter = router({
   albums: publicProcedure.query(() => albums()),
   artists: publicProcedure.query(() => artists()),
   tracks: publicProcedure.query(() => tracks()),
+
   track: publicProcedure
     .input(
-      z.number({
-        description: "The Song ID",
-        required_error: "You must specify the Song ID",
-      })
+      z
+        .number({
+          description: "The Song ID",
+          required_error: "You must specify the Song ID",
+        })
+        .nullable()
     )
-    .query((req) => trackById(req.input)),
+    .query(async (req) =>
+      req.input ? await trackById(req.input) : Promise.resolve(null)
+    ),
 
   search: publicProcedure
     .input(

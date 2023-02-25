@@ -24,7 +24,7 @@ export const trpc = createTRPCReact<AppRouter>();
  * ---------- Zustand/Local State Stuff ----------
  */
 
-export const useStore = createStore<{
+type State = {
   statistics: Partial<Statistics>;
   setStatistics: (statistics: Statistics) => void;
 
@@ -42,14 +42,18 @@ export const useStore = createStore<{
 
   current: {
     track: Track | null;
+    playingTrack: Track | null;
   };
 
   set: {
     current: {
-      track: (track: Track) => void;
+      track: (track: Track | null) => void;
+      playingTrack: (track: Track | null) => void;
     };
   };
-}>((set) => ({
+};
+
+export const useStore = createStore<State>((set) => ({
   statistics: {},
   setStatistics: (statistics: Statistics) =>
     set((state) => ({
@@ -71,11 +75,28 @@ export const useStore = createStore<{
 
   current: {
     track: null,
+    playingTrack: null,
   },
 
   set: {
     current: {
-      track: (track) => set({ current: { track } }),
+      track: (track) =>
+        set((state) => ({
+          ...state,
+          current: {
+            ...state.current,
+            track,
+          },
+        })),
+
+      playingTrack: (playingTrack) =>
+        set((state) => ({
+          ...state,
+          current: {
+            ...state.current,
+            playingTrack,
+          },
+        })),
     },
   },
 }));
@@ -133,7 +154,7 @@ const Component: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: "http://192.168.68.103:3000/trpc",
+          url: "http://localhost:3000/trpc",
         }),
       ],
     })

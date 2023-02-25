@@ -1,12 +1,16 @@
 .tracks {
-  th[data-column-name="Year"],
-  th[data-column-name="Track"],
-  th[data-column-name="Length"],
-
   td[data-column-name="Year"],
   td[data-column-name="Track"],
   td[data-column-name="Length"] {
     font-family: var(--font-family-monospace);
+    text-align: right;
+  }
+
+  th[data-column-name="Year"],
+  th[data-column-name="Track"],
+  th[data-column-name="Length"],
+  th[data-column-name="Genre"],
+  td[data-column-name="Genre"] {
     text-align: right;
   }
 }

@@ -1,0 +1,76 @@
+.track {
+  position: sticky;
+  right: 0;
+  top: 0;
+  backdrop-filter: blur(5px);
+  // background: #fff;
+  border-left: 3px double #ddd;
+
+  .top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    span {
+      color: #ccc;
+      padding: var(--padding-panel);
+    }
+
+    button {
+      background-color: transparent;
+      border: 0;
+      padding: var(--padding-panel);
+
+      &:hover {
+        background-color: red;
+        color: white;
+        cursor: pointer;
+      }
+
+      svg {
+        display: inline-block;
+        margin-right: 0.25em;
+        position: relative;
+        top: 2px;
+      }
+    }
+  }
+
+  table {
+    tr {
+      th {
+        border-bottom: 1px dotted #ddd;
+        text-align-last: left;
+      }
+
+      td {
+        border-bottom: 1px dotted #ddd;
+        text-align-last: left;
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  .album-art {
+    width: var(--panel-size);
+    height: var(--panel-size);
+
+    min-width: var(--panel-size);
+    min-height: var(--panel-size);
+
+    max-width: var(--panel-size);
+    max-height: var(--panel-size);
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

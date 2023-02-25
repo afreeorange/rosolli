@@ -2,17 +2,17 @@ import express from "express";
 import fs from "fs";
 import mime from "mime-types";
 
-import { getTrackById } from "./database";
+import { trackById } from "./database";
 
 const router = express.Router();
 
-router.get("/:trackId", function (req, res) {
+router.get("/:trackId", async function (req, res) {
   const { trackId } = req.params;
   const { range } = req.headers;
 
-  const songData = getTrackById(trackId);
-  const stat = fs.statSync(songData.path);
-  const mimeType = mime.lookup(songData.path);
+  const trackData = await trackById(parseInt(trackId));
+  const stat = fs.statSync(trackData.path);
+  const mimeType = mime.lookup(trackData.path);
 
   let readStream;
 
@@ -38,13 +38,16 @@ router.get("/:trackId", function (req, res) {
       "Content-Range": "bytes " + start + "-" + end + "/" + stat.size,
     });
 
-    readStream = fs.createReadStream(songData.path, { start: start, end: end });
+    readStream = fs.createReadStream(trackData.path, {
+      start: start,
+      end: end,
+    });
   } else {
     res.header({
       "Content-Type": mimeType,
       "Content-Length": stat.size,
     });
-    readStream = fs.createReadStream(songData.path);
+    readStream = fs.createReadStream(trackData.path);
   }
 
   readStream.pipe(res);

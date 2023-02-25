@@ -8,12 +8,11 @@ import styles from "./Search.module.scss";
 
 const Component = () => {
   const { statistics } = useStore();
-  const [term, setTerm] = useState("");
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     let term = (e.target as HTMLInputElement).value;
     console.log(">>>", term);
-    setTerm(term);
+    // setTerm(term);
 
     // if (term.length >= 3) {
     //   console.log(term);
@@ -27,7 +26,7 @@ const Component = () => {
       <input
         type="text"
         placeholder="search"
-        value={term}
+        value={"term"}
         onChange={(e) => handleSearch(e)}
       />
     </div>

@@ -4,14 +4,22 @@ import { useStore } from "../State";
 import styles from "./Player.module.scss";
 
 const Component = () => {
-  const { current } = useStore();
+  const {
+    current: { playingTrack },
+  } = useStore();
 
-  if (current.track) {
+  if (playingTrack) {
     return (
       <div className={styles.player}>
-        <h3>{current.track}</h3>
-        <audio controls>
-          <source src={`http://localhost:3000/api/stream/${current.track}`} />
+        {playingTrack.cover && (
+          <img src={playingTrack.cover} alt={"TODO: Fill me later"} />
+        )}
+
+        <h3>{playingTrack.title}</h3>
+        <h4>by {playingTrack.artist}</h4>
+
+        <audio key={playingTrack.id} controls>
+          <source src={`http://localhost:3000/api/stream/${playingTrack.id}`} />
         </audio>
       </div>
     );

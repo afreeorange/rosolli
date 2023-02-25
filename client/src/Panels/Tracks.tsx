@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ColumnDef,
   useReactTable,
@@ -18,21 +18,33 @@ const Component = () => {
   const { tracks: data, set, current } = useStore();
 
   /**
+   * This is how one sets up event handling with tRPC. A bit odd but not too
+   * bad. We don't care about the result of the query (yet!) and hence don't
+   * assign it to anything.
+   *
+   * Reference:
+   * https://github.com/trpc/trpc/discussions/2067#discussioncomment-3211885
+   */
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [playingId, setPlayingId] = useState<number | null>(null);
+
+  trpc.track.useQuery(selectedId, {
+    enabled: Boolean(selectedId),
+    onSuccess: (data) => (data ? set.current.track(data) : null),
+  });
+
+  trpc.track.useQuery(playingId, {
+    enabled: Boolean(playingId),
+    onSuccess: (data) => (data ? set.current.playingTrack(data) : null),
+  });
+
+  /**
    * Don't show the ID column. Can use this to set visibility of other columns
    * as well (based, for example, on user preferences).
    */
   const [columnVisibility, setColumnVisibility] = useState({
     id: false,
   });
-
-  /**
-   * Query the backend when a track is selected.
-   */
-  const handleSelection = (id: number) => {
-    let { data } = trpc.track.useQuery(id);
-    console.log(data);
-  };
-  // set.current.track();
 
   /**
    * Set up the columns. We use the type definition of the **list of tracks**
@@ -137,7 +149,7 @@ const Component = () => {
     <div
       className={`panel quadruple-width ${styles.tracks}`}
       style={{
-        marginRight: "2em",
+        marginRight: current.track ? "0" : "5em",
       }}
     >
       <h1>Tracks</h1>
@@ -183,7 +195,10 @@ const Component = () => {
                         width: cell.column.getSize(),
                         maxWidth: cell.column.getSize(),
                       }}
-                      onClick={() => handleSelection(cell.row.getValue("id"))}
+                      onDoubleClick={() =>
+                        setPlayingId(cell.row.getValue("id"))
+                      }
+                      onClick={() => setSelectedId(cell.row.getValue("id"))}
                       data-column-name={cell.column.columnDef.header}
                     >
                       {flexRender(

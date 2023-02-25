@@ -1,4 +1,7 @@
 import db from ".";
+import { parseFile, selectCover } from "music-metadata";
+import { createAvatar } from "@dicebear/core";
+import { placeholderAlbumCover } from "../helpers";
 
 const readableLength = (s: number) => {
   const hours = Math.floor(s / 3600);
@@ -38,7 +41,6 @@ export type Track = {
   id: number;
   label: string;
   length: number;
-  readableLength: string;
   mtime: string;
   path: string;
   samplerate: number;
@@ -46,6 +48,10 @@ export type Track = {
   track: number;
   tracktotal: number;
   year: number;
+
+  // These fields are not part of the Beets schema; we add them.
+  cover: string;
+  readableLength: string;
 };
 
 export type TrackInList = {
@@ -56,31 +62,50 @@ export type TrackInList = {
   genre: string;
   id: number;
   length: number;
-  readableLength: string;
   title: string;
   track: number;
   tracktotal: number;
   year: number;
+
+  // These fields are not part of the Beets schema; we add them.
+  readableLength: string;
 };
 
 /** A list of tracks. Note that each track in the list has a reduced subset of
  * fields compared to the `Track` type. */
 export type Tracks = TrackInList[];
 
-export const trackById = (id: number): Track =>
-  db
+export const trackById = async (id: number): Promise<Track> => {
+  const track = db
     .prepare(
       `
-    SELECT
-      i.*,
-      a.artpath
-    FROM items i
-    LEFT JOIN albums a
-    ON i.album_id = a.id
-    WHERE i.id = ?
-    `
+  SELECT
+    i.*,
+    a.artpath
+  FROM items i
+  LEFT JOIN albums a
+  ON i.album_id = a.id
+  WHERE i.id = ?
+  `
     )
     .get([id]);
+
+  /**
+   * Try to read the album art associated with the track
+   *
+   * TODO: Add a way to return ALL the album art associated with the track...
+   */
+  const { common } = await parseFile(track.path.toString());
+  const cover = selectCover(common.picture);
+
+  return {
+    ...track,
+    cover: cover
+      ? `data:${cover.format};base64,${cover.data.toString("base64")}`
+      : await placeholderAlbumCover(track),
+    readableLength: readableLength(track.length),
+  };
+};
 
 /**
  * Return a giant list of all tracks.
@@ -110,29 +135,3 @@ export const tracks = (): Tracks =>
       ..._,
       readableLength: readableLength(_.length),
     }));
-
-//     SELECT
-//     album,
-//     album_id,
-//     albumartist,
-//     artist,
-//     bitrate,
-//     channels,
-//     disc,
-//     disctotal,
-//     encoder,
-//     format,
-//     genre,
-//     id,
-//     label,
-//     length,
-//     mtime,
-//     path,
-//     samplerate,
-//     title,
-//     track,
-//     tracktotal,
-//     year
-//   FROM items
-//   ORDER BY album, track, title ASC
-// `
