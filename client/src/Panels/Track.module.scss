@@ -87,6 +87,9 @@
     }
 
     tr {
+      * {
+        padding: calc(var(--padding-panel) / 4) calc(var(--padding-panel) / 2);
+      }
       th {
         text-align: left;
         vertical-align: top;

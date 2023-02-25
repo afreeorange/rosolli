@@ -1,5 +1,6 @@
 .search {
   width: 100%;
+  font-size: calc(var(--font-size-base) * 1.5);
 
   input {
     width: 100%;
@@ -9,7 +10,6 @@
     color: var(--color--foreground);
     padding: calc(var(--padding-panel) / 2) var(--padding-panel);
     border-bottom: 1px dotted var(--color-foreground-light);
-    font-size: calc(var(--font-size-base) * 2);
   }
 
   input:focus {

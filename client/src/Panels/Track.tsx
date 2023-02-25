@@ -50,7 +50,7 @@ const Component = () => {
           </tr>
           <tr>
             <th>Bitrate</th>
-            <td>{numeral(track.bitrate).format("0,0")}</td>
+            <td>{numeral(track.bitrate).format("0a")}</td>
           </tr>
           <tr>
             <th>Channels</th>
@@ -83,12 +83,12 @@ const Component = () => {
             <td>{modifiedTime}</td>
           </tr>
           <tr>
-            <th>Path on disk</th>
+            <th>Path on Disk</th>
             <td className="click-to-copy">{track.path}</td>
           </tr>
           <tr>
             <th>Sample Rate</th>
-            <td>{numeral(track.samplerate).format("0,0")}</td>
+            <td>{numeral(track.samplerate).format("0,0")} Hz</td>
           </tr>
           <tr>
             <th>Track #</th>

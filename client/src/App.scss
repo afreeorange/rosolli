@@ -4,7 +4,7 @@
     "Droid Sans", "Helvetica Neue", sans-serif;
   --font-family-monospace: Menlo, Consolas, Monaco, Liberation Mono,
     Lucida Console, monospace;
-  --font-size-base: 14px;
+  --font-size-base: 16px;
   --font-line-height: 1.25;
 
   --padding-panel: 0.4em;
@@ -121,7 +121,7 @@ main {
 
   h1 {
     color: var(--color-foreground);
-    font-size: calc(var(--font-size-base) * 2);
+    font-size: calc(var(--font-size-base) * 1.5);
     margin-bottom: var(--padding-panel);
     padding: calc(var(--padding-panel) / 2);
     padding-bottom: 0;

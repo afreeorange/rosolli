@@ -1,11 +1,12 @@
 .links {
+  font-size: calc(var(--font-size-base) * 1.5);
+
   ul {
     li {
       color: var(--color-highlight);
       cursor: pointer;
       display: flex;
       flex-direction: row;
-      font-size: calc(var(--font-size-base) * 2);
       justify-content: space-between;
       padding: calc(var(--padding-panel) / 2) var(--padding-panel);
 
