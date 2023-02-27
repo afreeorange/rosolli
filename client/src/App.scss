@@ -10,6 +10,7 @@
   --padding-panel: 0.4em;
   --panel-size: 20em;
   --row-height: 35px;
+  --transition-duration: 0.125s;
 
   --color-background: #fff;
   --color-foreground: #101010;
@@ -147,6 +148,7 @@ main {
       white-space: nowrap;
       text-overflow: ellipsis;
       overflow: hidden;
+      transition: all var(--transition-duration);
 
       padding: calc(var(--padding-panel) / 2) var(--padding-panel);
       cursor: pointer;

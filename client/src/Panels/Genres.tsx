@@ -1,4 +1,5 @@
 import { FixedSizeList as List } from "react-window";
+import numeral from "numeral";
 import AutoSizer from "react-virtualized-auto-sizer";
 
 import styles from "./Genres.module.scss";
@@ -34,12 +35,17 @@ const Component = () => {
                   {genres[index].name}
                   <small>
                     <span>
-                      {genres[index].counts.albums} album
+                      {numeral(genres[index].counts.artists).format("0,0")}{" "}
+                      artist
+                      {genres[index].counts.artists > 1 && "s"}
+                    </span>
+                    <span>
+                      {numeral(genres[index].counts.albums).format("0,0")} album
                       {genres[index].counts.albums > 1 && "s"}
                     </span>
                     <span>
-                      {genres[index].counts.artists} artist
-                      {genres[index].counts.artists > 1 && "s"}
+                      {numeral(genres[index].counts.tracks).format("0,0")} track
+                      {genres[index].counts.tracks > 1 && "s"}
                     </span>
                   </small>
                 </li>

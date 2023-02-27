@@ -24,6 +24,7 @@
           background: var(--color-highlight);
           color: var(--color-background);
           cursor: pointer;
+          transition: all var(--transition-duration);
         }
       }
     }

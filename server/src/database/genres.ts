@@ -5,6 +5,7 @@ export type Genre = {
   counts: {
     artists: number;
     albums: number;
+    tracks: number;
   };
 };
 export type Genres = Genre[];
@@ -16,17 +17,19 @@ export const genres = (): Genres =>
     SELECT
       genre as name,
       count(distinct(artist)) artists,
-      count(distinct(album)) as albums
+      count(distinct(album)) as albums,
+      count(distinct(title)) as tracks
     FROM items
     GROUP BY genre
     ORDER BY genre
   `
     )
     .all()
-    .map(({ name, artists, albums }) => ({
+    .map(({ name, artists, albums, tracks }) => ({
       name: name || "NO_GENRE",
       counts: {
         artists,
         albums,
+        tracks,
       },
     }));
