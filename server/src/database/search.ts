@@ -1,12 +1,9 @@
-import db, { Track } from ".";
+import db, { Album, Artist, Genre, Track } from ".";
 
 export type SearchResults = {
-  genres: string[];
-  artists: string[];
-  albums: {
-    id: string;
-    album: string;
-  }[];
+  genres: Genre[];
+  artists: Artist[];
+  albums: Album[];
   songs: Track[];
 };
 

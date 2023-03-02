@@ -25,20 +25,13 @@ export const trpc = createTRPCReact<AppRouter>();
  */
 
 type State = {
-  statistics: Partial<Statistics>;
-  setStatistics: (statistics: Statistics) => void;
-
   genres: Genres;
-  setGenres: (genres: Genres) => void;
-
   albums: Albums;
-  setAlbums: (albums: Albums) => void;
-
   artists: Artists;
-  setArtists: (artists: Artists) => void;
-
   tracks: Tracks;
-  setTracks: (tracks: Tracks) => void;
+
+  statistics: Partial<Statistics>;
+  searchTerm: string | null;
 
   current: {
     track: Track | null;
@@ -46,6 +39,14 @@ type State = {
   };
 
   set: {
+    genres: (genres: Genres) => void;
+    albums: (albums: Albums) => void;
+    artists: (artists: Artists) => void;
+    tracks: (tracks: Tracks) => void;
+
+    statistics: (statistics: Statistics) => void;
+    searchterm: (term: string | null) => void;
+
     current: {
       track: (track: Track | null) => void;
       playingTrack: (track: Track | null) => void;
@@ -54,24 +55,13 @@ type State = {
 };
 
 export const useStore = createStore<State>((set) => ({
-  statistics: {},
-  setStatistics: (statistics: Statistics) =>
-    set((state) => ({
-      ...state,
-      statistics,
-    })),
-
   genres: [],
-  setGenres: (genres: Genres) => set((state) => ({ ...state, genres })),
-
   albums: [],
-  setAlbums: (albums: Albums) => set((state) => ({ ...state, albums })),
-
   artists: [],
-  setArtists: (artists: Artists) => set((state) => ({ ...state, artists })),
-
   tracks: [],
-  setTracks: (tracks: Tracks) => set((state) => ({ ...state, tracks })),
+
+  statistics: {},
+  searchTerm: null,
 
   current: {
     track: null,
@@ -79,6 +69,22 @@ export const useStore = createStore<State>((set) => ({
   },
 
   set: {
+    albums: (albums: Albums) => set((state) => ({ ...state, albums })),
+    artists: (artists: Artists) => set((state) => ({ ...state, artists })),
+    tracks: (tracks: Tracks) => set((state) => ({ ...state, tracks })),
+    genres: (genres: Genres) => set((state) => ({ ...state, genres })),
+
+    statistics: (statistics: Statistics) =>
+      set((state) => ({
+        ...state,
+        statistics,
+      })),
+    searchterm: (term) =>
+      set((state) => ({
+        ...state,
+        searchTerm: term,
+      })),
+
     current: {
       track: (track) =>
         set((state) => ({
@@ -105,6 +111,7 @@ const BootstrapStore: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const store = useStore();
+
   const { data: statistics } = trpc.statistics.useQuery();
   const { data: genres } = trpc.genres.useQuery();
   const { data: albums } = trpc.albums.useQuery();
@@ -114,19 +121,19 @@ const BootstrapStore: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     (() => {
       if (statistics) {
-        store.setStatistics(statistics);
+        store.set.statistics(statistics);
       }
       if (genres) {
-        store.setGenres(genres);
+        store.set.genres(genres);
       }
       if (albums) {
-        store.setAlbums(albums);
+        store.set.albums(albums);
       }
       if (artists) {
-        store.setArtists(artists);
+        store.set.artists(artists);
       }
       if (tracks) {
-        store.setTracks(tracks);
+        store.set.tracks(tracks);
       }
     })();
   }, [statistics, genres, albums, artists, tracks]);

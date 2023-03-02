@@ -5,12 +5,13 @@
   width: var(--panel-size);
   flex-grow: 0;
   flex-shrink: 0;
+  box-sizing: border-box;
+
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
 
   box-shadow: 0px 0px 100px -10px rgba(0, 0, 0, 1);
-
-  background: var(--color-background);
-  // border-left: 3px double var(--color-foreground-light);
-  box-sizing: border-box;
 
   .top {
     display: flex;
