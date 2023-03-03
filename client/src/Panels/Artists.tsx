@@ -7,7 +7,9 @@ import { useStore } from "../State";
 import styles from "./Genres.module.scss";
 
 const Component = () => {
-  const { artists } = useStore();
+  const {
+    current: { artists },
+  } = useStore();
 
   return (
     <div className={`panel ${styles.genres}`}>

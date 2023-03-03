@@ -1,26 +1,8 @@
-import db from ".";
 import { parseFile, selectCover } from "music-metadata";
-import { createAvatar } from "@dicebear/core";
+
+import db from ".";
 import { placeholderAlbumCover } from "../helpers";
-
-const readableLength = (s: number) => {
-  const hours = Math.floor(s / 3600);
-  const minutes = Math.floor((s - hours * 3600) / 60);
-  const seconds = Math.floor(s - hours * 3600 - minutes * 60);
-
-  if (hours === 0) {
-    return [
-      `${minutes < 10 ? "0" : ""}${minutes}`,
-      `${seconds < 10 ? "0" : ""}${seconds}`,
-    ].join(":");
-  }
-
-  return [
-    `${hours < 10 ? "0" : ""}${hours}`,
-    `${minutes < 10 ? "0" : ""}${minutes}`,
-    `${seconds < 10 ? "0" : ""}${seconds}`,
-  ].join(":");
-};
+import { readableLength } from "./helpers";
 
 /**
  * An individual track with all the available/possible data about a
@@ -75,20 +57,39 @@ export type TrackInList = {
  * fields compared to the `Track` type. */
 export type Tracks = TrackInList[];
 
+/** ------------------ */
+
+const sql = {
+  all: `
+SELECT
+  album,
+  album_id,
+  albumartist,
+  artist,
+  genre,
+  id,
+  length,
+  title,
+  track,
+  tracktotal,
+  year
+FROM items
+ORDER BY album, track, title ASC
+  `,
+
+  one: `
+SELECT
+  i.*,
+  a.artpath
+FROM items i
+LEFT JOIN albums a
+ON i.album_id = a.id
+WHERE i.id = ?
+`,
+};
+
 export const trackById = async (id: number): Promise<Track> => {
-  const track = db
-    .prepare(
-      `
-  SELECT
-    i.*,
-    a.artpath
-  FROM items i
-  LEFT JOIN albums a
-  ON i.album_id = a.id
-  WHERE i.id = ?
-  `
-    )
-    .get([id]);
+  const track = db.prepare(sql.one).get([id]);
 
   /**
    * Try to read the album art associated with the track
@@ -111,28 +112,9 @@ export const trackById = async (id: number): Promise<Track> => {
 /**
  * Return a giant list of all tracks.
  */
-export const tracks = (): Tracks =>
-  db
-    .prepare(
-      `
-    SELECT
-      album,
-      album_id,
-      albumartist,
-      artist,
-      genre,
-      id,
-      length,
-      title,
-      track,
-      tracktotal,
-      year
-    FROM items
-    ORDER BY album, track, title ASC
-  `
-    )
-    .all()
-    .map((_) => ({
-      ..._,
-      readableLength: readableLength(_.length),
-    }));
+export const transformer = (_: any): Track => ({
+  ..._,
+  readableLength: readableLength(_.length),
+});
+
+export const tracks = (): Tracks => db.prepare(sql.all).all().map(transformer);

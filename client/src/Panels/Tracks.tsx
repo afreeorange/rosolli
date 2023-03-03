@@ -15,7 +15,10 @@ import styles from "./Tracks.module.scss";
 
 const Component = () => {
   // Load the data
-  const { tracks: data, set, current } = useStore();
+  const {
+    set,
+    current: { track: currentTrack, tracks: data },
+  } = useStore();
 
   /**
    * This is how one sets up event handling with tRPC. A bit odd but not too
@@ -149,7 +152,7 @@ const Component = () => {
     <div
       className={`panel auto-width ${styles.tracks}`}
       style={{
-        marginRight: current.track ? "0" : "5em",
+        marginRight: currentTrack ? "0" : "5em",
       }}
     >
       <h1>Tracks</h1>

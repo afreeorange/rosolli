@@ -6,31 +6,20 @@ import { trpc } from "../State";
 
 import styles from "./Search.module.scss";
 
-const Component = () => {
-  const { statistics } = useStore();
+export default () => {
+  const { searchTerm, set } = useStore();
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let term = (e.target as HTMLInputElement).value;
-    console.log(">>>", term);
-    // setTerm(term);
-
-    // if (term.length >= 3) {
-    //   console.log(term);
-    // }
-  };
-
-  // console.log(trpc.search.useQuery("air").data);
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) =>
+    set.searchTerm((e.target as HTMLInputElement).value);
 
   return (
     <div className={styles.search}>
       <input
         type="text"
         placeholder="search"
-        value={""}
+        value={searchTerm || ""}
         onChange={(e) => handleSearch(e)}
       />
     </div>
   );
 };
-
-export default Component;

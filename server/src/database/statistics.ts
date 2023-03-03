@@ -42,6 +42,9 @@ export type Statistics = {
 };
 
 export const statistics = (): Statistics => {
+  /**
+   * TODO: 'as c' is not necessary... copypasta artifact. Remove later!
+   */
   const genres = db
     .prepare(`SELECT COUNT(DISTINCT(genre)) as c FROM items`)
     .get()["c"];
