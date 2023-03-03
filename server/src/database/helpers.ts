@@ -1,5 +1,4 @@
 export const readableLength = (s: number) => {
-  console.log('s :>> ', s);
   const hours = Math.floor(s / 3600);
   const minutes = Math.floor((s - hours * 3600) / 60);
   const seconds = Math.floor(s - hours * 3600 - minutes * 60);

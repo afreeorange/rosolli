@@ -7,6 +7,7 @@ A frontend to [Beets](https://github.com/beetbox/beets). Can be used without Bee
 - [ ] Search!
 - [ ] Global play/pause with keystrokes
 - [ ] Marquee of titles
+- [ ] Check for Database and connectivity
 - [ ] Scrubber
 - [ ] ±10s
 - [ ] User preferences

@@ -172,6 +172,10 @@ const Component = () => {
                   <th
                     key={header.id}
                     data-column-name={header.column.columnDef.header}
+                    style={{
+                      width: header.column.getSize(),
+                      maxWidth: header.column.getSize(),
+                    }}
                   >
                     {header.isPlaceholder
                       ? null
@@ -200,10 +204,6 @@ const Component = () => {
                   {realRow.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
-                      style={{
-                        width: cell.column.getSize(),
-                        maxWidth: cell.column.getSize(),
-                      }}
                       onDoubleClick={() =>
                         setPlayingId(cell.row.getValue("id"))
                       }
