@@ -1,4 +1,7 @@
 .listening-time {
   padding: calc(var(--padding-panel) * 1.5);
   color: var(--color-foreground-light);
+  position: absolute;
+  bottom: 0;
+  width: var(--panel-size);
 }

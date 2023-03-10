@@ -4,7 +4,7 @@ A frontend to [Beets](https://github.com/beetbox/beets). Can be used without Bee
 
 ## TODO
 
-- [ ] Search!
+- [x] Search!
 - [ ] Global play/pause with keystrokes
 - [ ] Marquee of titles
 - [ ] Check for Database and connectivity
@@ -13,7 +13,7 @@ A frontend to [Beets](https://github.com/beetbox/beets). Can be used without Bee
 - [ ] User preferences
   - [ ] ±10s - Adjustable
   - [ ] Dark mode
-- [ ] Missing album art
+- [x] Missing album art
 - [ ] Albums and Artists by Genre (group by)
 - [ ] Albums by Artist (group by)
 - [ ] Mobile/responsive view
@@ -24,6 +24,8 @@ A frontend to [Beets](https://github.com/beetbox/beets). Can be used without Bee
 - [ ] Loading states
 - [ ] Error states :/
 - [ ] Sort table
+- [ ] Click to Copy
+- [ ] Drag and Drop Albums, Tracks, Artists
 - [ ] Router
   - [ ] Links to Songs
   - [ ] Links to Albums

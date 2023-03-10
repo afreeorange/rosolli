@@ -4,8 +4,8 @@ import styles from "./History.module.scss";
 
 export default () => {
   return (
-    <div className={styles.history}>
-      <h2>History</h2>
+    <div className="waiting-text">
+      <p>A history of your song selections will show up here.</p>
     </div>
   );
 };

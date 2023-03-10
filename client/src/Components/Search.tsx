@@ -7,9 +7,8 @@ import styles from "./Search.module.scss";
 export default () => {
   const { searchTerm, set } = useStore();
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) =>
     set.searchTerm((e.target as HTMLInputElement).value);
-  };
 
   return (
     <div className={styles.search}>

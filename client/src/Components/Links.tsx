@@ -1,4 +1,6 @@
 import numeral from "numeral";
+import { NavLink } from "react-router-dom";
+import { CgBoard } from "react-icons/cg";
 
 import { useStore } from "../State";
 import styles from "./Links.module.scss";
@@ -10,25 +12,37 @@ const Component = () => {
     <div className={styles.links}>
       <ul>
         <li>
-          <span>Genres</span>
-          <span>{numeral(statistics.genres).format("0,0")}</span>
+          <NavLink to={"/genres"}>
+            <span>Genres</span>
+            <span>{numeral(statistics.genres).format("0,0")}</span>
+          </NavLink>
         </li>
         <li>
-          <span>Artists</span>
-          <span>{numeral(statistics.artists).format("0,0")}</span>
+          <NavLink to={"/artists"}>
+            <span>Artists</span>
+            <span>{numeral(statistics.artists).format("0,0")}</span>
+          </NavLink>
         </li>
         <li>
-          <span>Albums</span>
-          <span>{numeral(statistics.albums).format("0,0")}</span>
+          <NavLink to={"/albums"}>
+            <span>Albums</span>
+            <span>{numeral(statistics.albums).format("0,0")}</span>
+          </NavLink>
         </li>
         <li>
-          <span>Songs</span>
-          <span>{numeral(statistics.songs).format("0,0")}</span>
+          <NavLink to={"/tracks"}>
+            <span>Tracks</span>
+            <span>{numeral(statistics.tracks).format("0,0")}</span>
+          </NavLink>
         </li>
-        {/* <li>
-          <span>Playlists</span>
-          <span>{numeral(0).format("0,0")}</span>
-        </li> */}
+        <li>
+          <NavLink to={"/"}>
+            <span>Browse</span>
+            <span>
+              <CgBoard />
+            </span>
+          </NavLink>
+        </li>
       </ul>
     </div>
   );

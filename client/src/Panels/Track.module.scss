@@ -6,7 +6,7 @@
 
   table {
     border-collapse: collapse;
-    bottom: var(--padding-panel);
+    bottom: 0;
     color: var(--color-foreground-light);
     cursor: pointer;
     position: absolute;
@@ -51,11 +51,3 @@
   }
 }
 
-.no-track {
-  padding: calc(var(--padding-panel) * 10);
-  color: var(--color-foreground-light);
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}

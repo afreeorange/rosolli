@@ -1,14 +1,13 @@
 .main {
   background: var(--color-background);
   border-right: 1px dotted var(--color-foreground-light);
-
   height: 100%;
 
   ul[role="tablist"] {
     display: flex;
     font-display: row;
     justify-content: space-between;
-    margin: 1em calc(var(--padding-panel) * 2);
+    padding: 1em calc(var(--padding-panel) * 2);
 
     li[role="tab"] {
       font-size: 2em;
@@ -32,11 +31,11 @@
     height: 100%;
   }
 
-  .panel {
+  div[role="panel"] {
     display: none;
   }
 
-  .panel-selected {
+  div[role="selected-panel"] {
     height: 100%;
     display: block;
   }

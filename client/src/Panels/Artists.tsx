@@ -4,7 +4,7 @@ import AutoSizer from "react-virtualized-auto-sizer";
 
 import { useStore } from "../State";
 
-import styles from "./PanelsGeneral.module.scss";
+import styles from "./Common.module.scss";
 
 const Component = () => {
   const {

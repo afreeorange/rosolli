@@ -23,7 +23,7 @@ export type Statistics = {
   albums: number;
   artists: number;
   albumArtists: number;
-  songs: number;
+  tracks: number;
   latest: {
     id: string;
     song: string;
@@ -61,7 +61,7 @@ export const statistics = (): Statistics => {
     .prepare(`SELECT COUNT(DISTINCT(albumartist)) as c FROM items`)
     .get()["c"];
 
-  const songs = db.prepare(`SELECT COUNT(*) as c FROM items`).get()["c"];
+  const tracks = db.prepare(`SELECT COUNT(*) as c FROM items`).get()["c"];
 
   const time = db.prepare(`SELECT sum(length) as c FROM items`).get()["c"];
 
@@ -83,7 +83,7 @@ export const statistics = (): Statistics => {
     albums,
     artists,
     albumArtists,
-    songs,
+    tracks,
     latest,
     listeningTime: {
       total: Math.ceil(time),

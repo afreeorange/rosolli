@@ -8,22 +8,32 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      padding: calc(var(--padding-panel) / 2) var(--padding-panel);
 
-      span:nth-of-type(1) {
-        font-weight: bold;
-      }
-
-      span:nth-of-type(2) {
-        opacity: 0.5;
+      a {
+        padding: calc(var(--padding-panel) / 2) var(--padding-panel);
+        text-decoration: none;
         color: var(--color-highlight);
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        span:nth-of-type(1) {
+          font-weight: bold;
+        }
+
+        span:nth-of-type(2) {
+          opacity: 0.5;
+          color: var(--color-highlight);
+        }
       }
 
+      a[aria-current="page"],
       &:hover {
-        background: red;
+        background: var(--color-highlight);
         color: var(--color-background);
 
-        span {
+        span:nth-of-type(1),
+        span:nth-of-type(2) {
           opacity: 1;
           color: var(--color-background);
         }

@@ -21,7 +21,11 @@ const Component = () => {
     );
   }
 
-  return null;
+  return (
+    <div className="waiting-text">
+      <p>Nothing's playing.</p>
+    </div>
+  );
 };
 
 export default Component;

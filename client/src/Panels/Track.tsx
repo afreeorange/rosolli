@@ -61,6 +61,10 @@ const Component = () => {
             <td>{modifiedTime}</td>
           </tr>
           <tr>
+            <th>Length</th>
+            <td>{track.readableLength}</td>
+          </tr>
+          <tr>
             <th>Path on Disk</th>
             <td className="click-to-copy">{track.path}</td>
           </tr>
@@ -78,17 +82,13 @@ const Component = () => {
             <th>Track ID</th>
             <td>{track.id}</td>
           </tr>
-          <tr>
-            <th>Length</th>
-            <td>{track.readableLength}</td>
-          </tr>
         </table>
       </div>
     );
   }
 
   return (
-    <div className={styles["no-track"]}>
+    <div className="waiting-text">
       <p>Pick a track to view its information here</p>
     </div>
   );
