@@ -44,6 +44,10 @@ type State = {
     tabNumber: number;
   };
 
+  preferences: {
+    trackInfoOpen: boolean;
+  };
+
   set: {
     genres: (genres: Genres) => void;
     albums: (albums: Albums) => void;
@@ -62,6 +66,10 @@ type State = {
       track: (track: Track | null) => void;
       playingTrack: (track: Track | null) => void;
       tabNumber: (tabNumber: number) => void;
+    };
+
+    preferences: {
+      trackInfoOpen: (open: boolean) => void;
     };
   };
 };
@@ -84,6 +92,10 @@ export const useStore = createStore<State>((set) => ({
     track: null,
     playingTrack: null,
     tabNumber: 0,
+  },
+
+  preferences: {
+    trackInfoOpen: false,
   },
 
   set: {
@@ -161,6 +173,17 @@ export const useStore = createStore<State>((set) => ({
           current: {
             ...state.current,
             tabNumber,
+          },
+        })),
+    },
+
+    preferences: {
+      trackInfoOpen: (trackInfoOpen) =>
+        set((state) => ({
+          ...state,
+          preferences: {
+            ...state.preferences,
+            trackInfoOpen,
           },
         })),
     },

@@ -7,11 +7,13 @@
     bottom: 0;
     background: var(--color-background);
     border-right: 1px dotted var(--color-foreground-light);
+    width: var(--panel-size);
   }
 
   .buttons {
-    display: grid;
-    grid-template-columns: 33% 33% 33%;
+    display: flex;
+    justify-content: space-around;
+    grid-template-columns: repeat(4, 25%);
     width: 100%;
     padding: calc(var(--padding-panel) * 2) 0;
     border-top: 1px dotted var(--color-foreground-light);
