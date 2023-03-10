@@ -1,13 +1,12 @@
 import { DiGithubAlt } from "react-icons/di";
 
 import packageJson from "../../../package.json";
-import Logo from "../../public/logo.svg";
 
 import styles from "./Version.module.scss";
 
 export default () => (
   <div className={styles.component}>
-    <img src={Logo} alt="Rosolli" />
+    <img src="/logo.svg" alt="Rosolli" />
     <div>
       <p>Rosolli v{packageJson.version}</p>
       <p>
