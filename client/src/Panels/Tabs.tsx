@@ -14,6 +14,7 @@ import { useStore } from "../State";
 
 import styles from "./Tabs.module.scss";
 import { useEffect, useState } from "react";
+import Version from "../Components/Version";
 
 const Component = () => {
   const {
@@ -89,6 +90,7 @@ const Component = () => {
       </div>
       <div role={tabNumber === 1 ? "selected-panel" : "panel"}>
         <ListeningTime />
+        <Version />
       </div>
       <div role={tabNumber === 2 ? "selected-panel" : "panel"}>
         <History />

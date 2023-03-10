@@ -1,0 +1,21 @@
+.component {
+  padding: calc(var(--padding-panel) * 1.5);
+  color: var(--color-foreground-light);
+  width: var(--panel-size);
+  display: grid;
+  grid-template-columns: 2.5em auto;
+  gap: 0.5em;
+
+  svg {
+    display: inline-block;
+    font-size: 1.5em;
+    vertical-align: bottom;
+  }
+
+  a {
+    text-decoration-color: var(--color-foreground-light);
+    color: var(--color-foreground-light);
+    text-decoration-style: dotted;
+    text-underline-offset: 4px;
+  }
+}
