@@ -3,9 +3,11 @@
     padding: var(--padding-panel);
     padding-bottom: 0;
     color: var(--color-highlight);
+    font-weight: 800;
 
     span {
       color: var(--color-foreground);
+      font-weight: 600;
     }
   }
 
@@ -14,7 +16,7 @@
     color: var(--color-foreground);
     margin-top: 0;
     padding-top: 0;
-    font-weight: normal;
+    font-weight: 300;
   }
 
   .album-art {

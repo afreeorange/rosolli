@@ -36,6 +36,7 @@
         vertical-align: top;
         max-width: calc(var(--panel-size) * 0.4);
         width: calc(var(--panel-size) * 0.4);
+        font-weight: 600;
       }
 
       td {
@@ -46,8 +47,8 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+        font-weight: 300;
       }
     }
   }
 }
-

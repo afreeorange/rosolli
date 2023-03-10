@@ -226,7 +226,7 @@ const ManageStore: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           genres: data.genres.length,
           artists: data.artists.length,
           albums: data.albums.length,
-          songs: data.tracks.length,
+          tracks: data.tracks.length,
         } as Statistics);
       }
     },
@@ -241,7 +241,7 @@ const ManageStore: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         genres: store.genres.length,
         artists: store.artists.length,
         albums: store.albums.length,
-        songs: store.tracks.length,
+        tracks: store.tracks.length,
       } as Statistics);
     },
   });

@@ -10,7 +10,7 @@ export type SearchResults = {
   genres: Genre[];
   artists: Artist[];
   albums: Album[];
-  songs: Track[];
+  tracks: Track[];
 };
 
 const sql = {
