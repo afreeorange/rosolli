@@ -1,0 +1,34 @@
+.track-display {
+  h2 {
+    padding: var(--padding-panel);
+    padding-bottom: 0;
+    color: var(--color-highlight);
+
+    span {
+      color: var(--color-foreground);
+    }
+  }
+
+  h3 {
+    padding: var(--padding-panel);
+    color: var(--color-foreground);
+    margin-top: 0;
+    padding-top: 0;
+    font-weight: normal;
+  }
+
+  .album-art {
+    width: var(--panel-size);
+    height: var(--panel-size);
+
+    min-width: var(--panel-size);
+    min-height: var(--panel-size);
+
+    max-width: var(--panel-size);
+    max-height: var(--panel-size);
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}

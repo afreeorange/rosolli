@@ -1,50 +1,17 @@
 .track {
-  width: 100%;
   display: flex;
-  flex: 1;
   flex-direction: column;
-
-  .album-art {
-    width: var(--panel-size);
-    height: var(--panel-size);
-
-    min-width: var(--panel-size);
-    min-height: var(--panel-size);
-
-    max-width: var(--panel-size);
-    max-height: var(--panel-size);
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  h2 {
-    padding: var(--padding-panel);
-    padding-bottom: 0;
-    color: var(--color-highlight);
-
-    span {
-      color: var(--color-foreground);
-    }
-  }
-
-  h3 {
-    padding: var(--padding-panel);
-    color: var(--color-foreground);
-    margin-top: 0;
-    padding-top: 0;
-    font-weight: normal;
-  }
+  flex: 1;
+  width: 100%;
 
   table {
-    color: var(--color-foreground-light);
-    position: absolute;
-    width: var(--panel-size);
-    bottom: 0;
-    transition: all var(--transition-duration);
-    cursor: pointer;
     border-collapse: collapse;
+    bottom: var(--padding-panel);
+    color: var(--color-foreground-light);
+    cursor: pointer;
+    position: absolute;
+    transition: all var(--transition-duration);
+    width: var(--panel-size);
 
     &:hover {
       color: var(--color-foreground);

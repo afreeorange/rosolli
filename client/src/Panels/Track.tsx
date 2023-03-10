@@ -1,9 +1,8 @@
-import { IoIosCloseCircleOutline } from "react-icons/io";
-import { FaRecordVinyl } from "react-icons/fa";
 import numeral from "numeral";
 import moment from "moment";
 
 import { useStore } from "../State";
+import TrackDisplay from "../Components/TrackDisplay";
 
 import styles from "./Track.module.scss";
 
@@ -20,21 +19,7 @@ const Component = () => {
 
     return (
       <div key={track.id} className={`panel ${styles.track}`}>
-        <div
-          className={styles["album-art"]}
-          style={{
-            backgroundColor: "red",
-            backgroundImage: `url('${track.cover}')`,
-          }}
-        ></div>
-
-        <h2>
-          {}
-          {track.title} <span>by {track.artist}</span>
-        </h2>
-        <h3>
-          {track.album} {track.year !== 0 && <span>({track.year})</span>}
-        </h3>
+        <TrackDisplay track={track} />
 
         <table>
           <tr>
@@ -91,7 +76,7 @@ const Component = () => {
           </tr>
           <tr>
             <th>Track ID</th>
-            <td>#{track.id}</td>
+            <td>{track.id}</td>
           </tr>
           <tr>
             <th>Length</th>

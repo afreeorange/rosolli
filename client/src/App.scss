@@ -136,7 +136,8 @@ main > div:nth-of-type(2) {
 
     span {
       background-color: var(--color-background);
-      border: 1px dotted var(--color-foreground);
+      border: 1px dotted var(--color-foreground-light);
+      color: var(--color-foreground-light);
       padding: calc(var(--padding-panel) / 2) calc(var(--padding-panel) / 1);
       border-radius: 5px;
       font-size: medium;
@@ -173,6 +174,10 @@ main > div:nth-of-type(2) {
     li:hover {
       background: var(--color-highlight);
       color: var(--color-background);
+
+      * {
+        color: var(--color-background);
+      }
     }
   }
 }

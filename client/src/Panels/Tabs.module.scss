@@ -1,6 +1,7 @@
 .main {
   background: var(--color-background);
   border-right: 1px dotted var(--color-foreground-light);
+
   height: 100%;
 
   ul[role="tablist"] {
@@ -19,7 +20,7 @@
     }
 
     li[role="tab"]:hover {
-      opacity: 1;
+      opacity: 0.75;
     }
 
     li[aria-selected="true"] {

@@ -8,16 +8,18 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import Links from "../Components/Links";
 import Search from "../Components/Search";
 import ListeningTime from "../Components/ListeningTime";
-import Player from "../Components/Player";
+import History from "../Components/History";
+import Player from "./Player";
 import Track from "./Track";
 import { useStore } from "../State";
 
-import styles from "./Main.module.scss";
+import styles from "./Tabs.module.scss";
 
 const Component = () => {
   const {
     current: { tabNumber },
     set,
+    searchTerm,
   } = useStore();
 
   return (
@@ -63,7 +65,7 @@ const Component = () => {
           className={styles.panel}
           selectedClassName={styles["panel-selected"]}
         >
-          <h2>History</h2>
+          <History />
         </TabPanel>
         <TabPanel
           className={styles.panel}
@@ -76,7 +78,6 @@ const Component = () => {
           selectedClassName={styles["panel-selected"]}
           forceRender
         >
-          <h2>Now Playing</h2>
           <Player />
         </TabPanel>
       </Tabs>

@@ -4,9 +4,13 @@
 
     small {
       color: var(--color-foreground-light);
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      display: table;
+      width: 100%;
+
+      span {
+        display: table-cell;
+        width: 33%;
+      }
     }
   }
 }

@@ -2,7 +2,7 @@ import { FixedSizeList as List } from "react-window";
 import numeral from "numeral";
 import AutoSizer from "react-virtualized-auto-sizer";
 
-import styles from "./Genres.module.scss";
+import styles from "./PanelsGeneral.module.scss";
 
 import { useStore } from "../State";
 

@@ -3,7 +3,7 @@ import AutoSizer from "react-virtualized-auto-sizer";
 
 import { useStore } from "../State";
 
-import styles from "./Genres.module.scss";
+import styles from "./PanelsGeneral.module.scss";
 import numeral from "numeral";
 
 const Component = () => {
@@ -35,13 +35,11 @@ const Component = () => {
                   {albums[index].name}
                   <small>
                     <span>{albums[index].counts.tracks} tracks</span>
-                    <span>{albums[index].counts.readableTotalLength}</span>
+                    <span>{albums[index].genre}</span>
                   </small>
                   <small>
-                    <span>{albums[index].genre}</span>
-                    <span>
-                      {albums[index].label} ({albums[index].year})
-                    </span>
+                    <span>{albums[index].counts.readableTotalLength}</span>
+                    <span>{albums[index].year}</span>
                   </small>
                 </li>
               )}
