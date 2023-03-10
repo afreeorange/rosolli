@@ -182,8 +182,6 @@ const ManageStore: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { data: artists } = trpc.artists.useQuery();
   const { data: tracks } = trpc.tracks.useQuery();
 
-  const restore = () => {};
-
   useEffect(() => {
     (() => {
       if (statistics) {
@@ -241,7 +239,7 @@ const ManageStore: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         genres: store.genres.length,
         artists: store.artists.length,
         albums: store.albums.length,
-        tracks: store.tracks.length,
+        songs: store.tracks.length,
       } as Statistics);
     },
   });

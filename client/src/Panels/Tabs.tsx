@@ -1,20 +1,23 @@
+import { useEffect, useState } from "react";
 import { RiGitBranchLine, RiGitBranchFill } from "react-icons/ri";
-import { AiOutlineHistory } from "react-icons/ai";
-import { AiOutlineSetting, AiTwotoneSetting } from "react-icons/ai";
+import {
+  AiOutlineHistory,
+  AiOutlineSetting,
+  AiTwotoneSetting,
+} from "react-icons/ai";
 import { IoPlay, IoPlayOutline } from "react-icons/io5";
 import { BsCassette, BsCassetteFill } from "react-icons/bs";
 
-import Links from "../Components/Links";
-import Search from "../Components/Search";
-import ListeningTime from "../Components/ListeningTime";
-import History from "../Components/History";
-import Player from "./Player";
-import Track from "./Track";
 import { useStore } from "../State";
+import History from "../Components/History";
+import Links from "../Components/Links";
+import ListeningTime from "../Components/ListeningTime";
+import Player from "./Player";
+import Search from "../Components/Search";
+import Track from "./Track";
+import Version from "../Components/Version";
 
 import styles from "./Tabs.module.scss";
-import { useEffect, useState } from "react";
-import Version from "../Components/Version";
 
 const Component = () => {
   const {

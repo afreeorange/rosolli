@@ -1,15 +1,45 @@
 .track {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
   width: 100%;
+  height: auto;
+
+  section {
+    position: absolute;
+    bottom: 0;
+    background: var(--color-background);
+    border-right: 1px dotted var(--color-foreground-light);
+  }
+
+  .buttons {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    width: 100%;
+    padding: calc(var(--padding-panel) * 2) 0;
+    border-top: 1px dotted var(--color-foreground-light);
+    border-bottom: 1px dotted var(--color-foreground-light);
+
+    button {
+      background: var(--color-background);
+      border: 0;
+      color: var(--color-highlight);
+      opacity: 0.5;
+
+      &:hover {
+        opacity: 1;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      svg {
+        margin: 0 auto;
+        font-size: 2em;
+      }
+    }
+  }
 
   table {
     border-collapse: collapse;
-    bottom: 0;
     color: var(--color-foreground);
     cursor: pointer;
-    position: absolute;
     transition: all var(--transition-duration);
     width: var(--panel-size);
 
@@ -25,29 +55,32 @@
     }
 
     tr {
+      font-size: small;
+
       * {
         padding: calc(var(--padding-panel) / 4) calc(var(--padding-panel) / 2);
       }
+
       &:hover {
         background-color: var(--color-foreground-lighter);
       }
+
       th {
-        text-align: left;
-        vertical-align: top;
+        font-weight: 600;
         max-width: calc(var(--panel-size) * 0.4);
         width: calc(var(--panel-size) * 0.4);
-        font-weight: 600;
+        text-align: left;
+        vertical-align: top;
       }
 
       td {
-        vertical-align: top;
+        font-weight: 300;
         max-width: calc(var(--panel-size) * 0.6);
         width: calc(var(--panel-size) * 0.6);
-
-        white-space: nowrap;
-        text-overflow: ellipsis;
         overflow: hidden;
-        font-weight: 300;
+        text-overflow: ellipsis;
+        vertical-align: top;
+        white-space: nowrap;
       }
     }
   }

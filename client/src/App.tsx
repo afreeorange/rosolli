@@ -10,6 +10,7 @@ import Tracks from "./Panels/Tracks";
 
 import "./App.scss";
 import NotFound from "./Pages/NotFound";
+import WindowSizeWarning from "./Components/WindowSizeWarning";
 
 const Browse = () => (
   <>
@@ -22,11 +23,12 @@ const Browse = () => (
 
 export default () => (
   <State>
+    <WindowSizeWarning />
     <main>
-      <div>
+      <section>
         <Tabs />
-      </div>
-      <div>
+      </section>
+      <section>
         <Routes>
           <Route path="/genres" element={<Genres />} />
           <Route path="/artists" element={<Artists />} />
@@ -35,7 +37,7 @@ export default () => (
           <Route path="/" element={<Browse />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </div>
+      </section>
     </main>
   </State>
 );
