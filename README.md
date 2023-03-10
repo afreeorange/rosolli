@@ -9,6 +9,9 @@ A frontend to [Beets](https://github.com/beetbox/beets). Can be used without Bee
 - [ ] Marquee of titles
 - [ ] Check for Database and connectivity
 - [ ] Scrubber
+- [ ] Squeeze Warning
+- [ ] Dark Mode
+- [ ] Electron?
 - [ ] ±10s
 - [ ] User preferences
   - [ ] ±10s - Adjustable

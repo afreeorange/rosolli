@@ -47,13 +47,13 @@
   --color-highlight: #ff0000;
 }
 
-// .dark {
-//   --color-background: #111;
-//   --color-foreground: #fff;
-//   --color-foreground-light: #333;
-//   --color-foreground-lighter: #000;
-//   --color-highlight: red;
-// }
+.dark {
+  --color-background: #111;
+  --color-foreground: #fff;
+  --color-foreground-light: #333;
+  --color-foreground-lighter: #000;
+  --color-highlight: red;
+}
 
 /* Scrollbar - width */
 ::-webkit-scrollbar {

@@ -18,4 +18,9 @@
     text-decoration-style: dotted;
     text-underline-offset: 4px;
   }
+
+  a:hover {
+    color: var(--color-highlight);
+    text-decoration-color: var(--color-highlight);
+  }
 }

@@ -122,7 +122,7 @@ const Component = () => {
   const { virtualItems: virtualRows, totalSize } = useVirtual({
     parentRef: containerRef,
     size: data.length,
-    overscan: 100,
+    overscan: 50,
   });
 
   /**

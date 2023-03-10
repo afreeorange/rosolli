@@ -70,7 +70,7 @@ const Component = () => {
           </tr>
           <tr>
             <th>Sample Rate</th>
-            <td>{numeral(track.samplerate).format("0,0")} Hz</td>
+            <td>{numeral(track.samplerate).format("0,0")}Hz</td>
           </tr>
           <tr>
             <th>Track #</th>

@@ -1,8 +1,8 @@
-import { BiGitBranch } from "react-icons/bi";
+import { RiGitBranchLine, RiGitBranchFill } from "react-icons/ri";
 import { AiOutlineHistory } from "react-icons/ai";
-import { FiSettings } from "react-icons/fi";
-import { IoPlay } from "react-icons/io5";
-import { BsCassette } from "react-icons/bs";
+import { AiOutlineSetting, AiTwotoneSetting } from "react-icons/ai";
+import { IoPlay, IoPlayOutline } from "react-icons/io5";
+import { BsCassette, BsCassetteFill } from "react-icons/bs";
 
 import Links from "../Components/Links";
 import Search from "../Components/Search";
@@ -53,14 +53,14 @@ const Component = () => {
           aria-selected={tabNumber === 0}
           onClick={() => set.current.tabNumber(0)}
         >
-          <BiGitBranch />
+          {tabNumber === 0 ? <RiGitBranchFill /> : <RiGitBranchLine />}
         </li>
         <li
           role="tab"
           aria-selected={tabNumber === 1}
           onClick={() => set.current.tabNumber(1)}
         >
-          <FiSettings />
+          {tabNumber === 1 ? <AiTwotoneSetting /> : <AiOutlineSetting />}
         </li>
         <li
           role="tab"
@@ -74,14 +74,14 @@ const Component = () => {
           aria-selected={tabNumber === 3}
           onClick={() => set.current.tabNumber(3)}
         >
-          <BsCassette />
+          {tabNumber === 3 ? <BsCassetteFill /> : <BsCassette />}
         </li>
         <li
           role="tab"
           aria-selected={tabNumber === 4}
           onClick={() => set.current.tabNumber(4)}
         >
-          <IoPlay />
+          {tabNumber === 4 ? <IoPlay /> : <IoPlayOutline />}
         </li>
       </ul>
 
