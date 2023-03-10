@@ -1,8 +1,8 @@
 import db, { Album, Artist, Genre, Track } from ".";
-import { transformer as transformerGenres } from "./genres";
-import { transformer as transformerArtists } from "./artists";
-import { transformer as transformerAlbums } from "./albums";
-import { transformer as transformerTracks } from "./tracks";
+import { genresTransformer } from "./genres";
+import { artistsTransformer } from "./artists";
+import { albumsTransformer } from "./albums";
+import { tracksTransformer } from "./tracks";
 
 const SEARCH_RESULT_LIMIT = 100;
 
@@ -87,22 +87,22 @@ export const search = (term: string) => {
   const genres = db
     .prepare(sql.genres)
     .all([`%${term}%`])
-    .map(transformerGenres);
+    .map(genresTransformer);
 
   const artists = db
     .prepare(sql.artists)
     .all([`%${term}%`])
-    .map(transformerArtists);
+    .map(artistsTransformer);
 
   const albums = db
     .prepare(sql.albums)
     .all([`%${term}%`])
-    .map(transformerAlbums);
+    .map(albumsTransformer);
 
   const tracks = db
     .prepare(sql.tracks)
     .all([`%${term}%`])
-    .map(transformerTracks);
+    .map(tracksTransformer);
 
   return {
     genres,

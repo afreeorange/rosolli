@@ -112,9 +112,10 @@ export const trackById = async (id: number): Promise<Track> => {
 /**
  * Return a giant list of all tracks.
  */
-export const transformer = (_: any): Track => ({
+export const tracksTransformer = (_: any): Track => ({
   ..._,
   readableLength: readableLength(_.length),
 });
 
-export const tracks = (): Tracks => db.prepare(sql.all).all().map(transformer);
+export const tracks = (): Tracks =>
+  db.prepare(sql.all).all().map(tracksTransformer);

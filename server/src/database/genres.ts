@@ -21,7 +21,7 @@ GROUP BY genre
 ORDER BY genre
 `;
 
-export const transformer = ({
+export const genresTransformer = ({
   name,
   artists,
   albums,
@@ -40,4 +40,4 @@ export const transformer = ({
   },
 });
 
-export const genres = (): Genres => db.prepare(sql).all().map(transformer);
+export const genres = (): Genres => db.prepare(sql).all().map(genresTransformer);

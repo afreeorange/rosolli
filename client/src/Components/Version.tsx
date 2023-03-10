@@ -1,7 +1,7 @@
 import { DiGithubAlt } from "react-icons/di";
 
 import packageJson from "../../../package.json";
-import Logo from "./logo.svg";
+import Logo from "../../public/logo.svg";
 
 import styles from "./Version.module.scss";
 

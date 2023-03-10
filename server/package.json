@@ -2,6 +2,7 @@
   "name": "@rosolli/server",
   "version": "0.0.0",
   "main": "src/index.ts",
+  "license": "MIT",
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.3",
     "@types/cli-progress": "^3.11.0",
