@@ -13,7 +13,9 @@ const Component = () => {
 
   return (
     <div className={`panel ${styles.genres}`}>
-      <h1>Genres</h1>
+      <h1>
+        Genres <span>{numeral(genres.length).format("0,0")}</span>
+      </h1>
 
       <ul>
         <AutoSizer>

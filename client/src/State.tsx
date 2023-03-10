@@ -41,6 +41,7 @@ type State = {
 
     track: Track | null;
     playingTrack: Track | null;
+    tabNumber: number;
   };
 
   set: {
@@ -60,6 +61,7 @@ type State = {
 
       track: (track: Track | null) => void;
       playingTrack: (track: Track | null) => void;
+      tabNumber: (tabNumber: number) => void;
     };
   };
 };
@@ -81,6 +83,7 @@ export const useStore = createStore<State>((set) => ({
 
     track: null,
     playingTrack: null,
+    tabNumber: 0,
   },
 
   set: {
@@ -151,6 +154,15 @@ export const useStore = createStore<State>((set) => ({
             playingTrack,
           },
         })),
+
+      tabNumber: (tabNumber) =>
+        set((state) => ({
+          ...state,
+          current: {
+            ...state.current,
+            tabNumber,
+          },
+        })),
     },
   },
 }));
@@ -170,29 +182,7 @@ const ManageStore: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { data: artists } = trpc.artists.useQuery();
   const { data: tracks } = trpc.tracks.useQuery();
 
-  useEffect(() => {
-    (() => {
-      if (statistics) {
-        store.set.statistics(statistics);
-      }
-      if (genres) {
-        store.set.genres(genres);
-        store.set.current.genres(genres);
-      }
-      if (albums) {
-        store.set.albums(albums);
-        store.set.current.albums(albums);
-      }
-      if (artists) {
-        store.set.artists(artists);
-        store.set.current.artists(artists);
-      }
-      if (tracks) {
-        store.set.tracks(tracks);
-        store.set.current.tracks(tracks);
-      }
-    })();
-  }, [statistics, genres, albums, artists, tracks]);
+  const restore = () => {};
 
   useEffect(() => {
     (() => {
@@ -218,9 +208,12 @@ const ManageStore: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     })();
   }, [statistics, genres, albums, artists, tracks]);
 
-  // TODO: What the fuck? Rewrite...
+  // TODO: What the fuck? Rewrite. There appears to be a `previousdata` part to
+  // React Query as well...
   trpc.search.useQuery(store.searchTerm || "", {
-    // enabled: Boolean(store.searchTerm && store.searchTerm.length > 3),
+    enabled:
+      store.searchTerm === "" ||
+      Boolean(store.searchTerm && store.searchTerm.length >= 3),
     onSuccess: (data) => {
       if (data) {
         store.set.current.genres(data.genres);
@@ -237,7 +230,7 @@ const ManageStore: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         } as Statistics);
       }
     },
-    onError: (err) => {
+    onError: () => {
       store.set.current.genres(store.genres);
       store.set.current.artists(store.artists);
       store.set.current.albums(store.albums);

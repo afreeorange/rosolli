@@ -12,12 +12,15 @@ import "./App.scss";
 const App = () => (
   <State>
     <main>
-      <Main />
-      <Genres />
-      <Artists />
-      <Albums />
-      <Tracks />
-      <Track />
+      <div>
+        <Main />
+      </div>
+      <div>
+        <Genres />
+        <Artists />
+        <Albums />
+        <Tracks />
+      </div>
     </main>
   </State>
 );

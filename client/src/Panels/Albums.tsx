@@ -4,6 +4,7 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import { useStore } from "../State";
 
 import styles from "./Genres.module.scss";
+import numeral from "numeral";
 
 const Component = () => {
   const {
@@ -12,7 +13,9 @@ const Component = () => {
 
   return (
     <div className={`panel ${styles.genres}`}>
-      <h1>Albums</h1>
+      <h1>
+        Albums <span>{numeral(albums.length).format("0,0")}</span>
+      </h1>
 
       <ul>
         <AutoSizer>

@@ -1,8 +1,42 @@
 .main {
   background: var(--color-background);
-  border-right: 2px double var(--color-foreground-light);
-  flex-grow: 0;
-  flex-shrink: 0;
+  border-right: 1px dotted var(--color-foreground-light);
   height: 100%;
-  width: var(--panel-size);
+
+  ul[role="tablist"] {
+    display: flex;
+    font-display: row;
+    justify-content: space-between;
+    margin: 1em calc(var(--padding-panel) * 2);
+
+    li[role="tab"] {
+      font-size: 2em;
+      cursor: pointer;
+      color: var(--color-highlight);
+      opacity: 0.25;
+      transition: all 0.25s;
+      outline: none;
+    }
+
+    li[role="tab"]:hover {
+      opacity: 1;
+    }
+
+    li[aria-selected="true"] {
+      opacity: 1;
+    }
+  }
+
+  .tabs {
+    height: 100%;
+  }
+
+  .panel {
+    display: none;
+  }
+
+  .panel-selected {
+    height: 100%;
+    display: block;
+  }
 }

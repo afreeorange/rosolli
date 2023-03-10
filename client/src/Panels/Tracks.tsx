@@ -9,9 +9,10 @@ import {
 import { useVirtual } from "@tanstack/react-virtual";
 
 import { useStore, trpc } from "../State";
-import { TrackInList } from "@rosolli/server";
+import { TrackInList, tracks } from "@rosolli/server";
 
 import styles from "./Tracks.module.scss";
+import numeral from "numeral";
 
 const Component = () => {
   // Load the data
@@ -58,7 +59,6 @@ const Component = () => {
       {
         accessorKey: "id",
         header: "Song ID",
-        size: 80,
       },
       {
         accessorKey: "title",
@@ -155,7 +155,9 @@ const Component = () => {
         marginRight: currentTrack ? "0" : "5em",
       }}
     >
-      <h1>Tracks</h1>
+      <h1>
+        Tracks <span>{numeral(data.length).format("0,0")}</span>
+      </h1>
 
       <div
         style={{
@@ -207,7 +209,10 @@ const Component = () => {
                       onDoubleClick={() =>
                         setPlayingId(cell.row.getValue("id"))
                       }
-                      onClick={() => setSelectedId(cell.row.getValue("id"))}
+                      onClick={() => {
+                        set.current.tabNumber(3);
+                        setSelectedId(cell.row.getValue("id"));
+                      }}
                       data-column-name={cell.column.columnDef.header}
                     >
                       {flexRender(

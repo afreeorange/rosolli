@@ -20,14 +20,6 @@ const Component = () => {
 
     return (
       <div key={track.id} className={`panel ${styles.track}`}>
-        <div className={styles.top}>
-          <span>Track #{track.id}</span>
-          <button onClick={() => set.current.track(null)}>
-            <IoIosCloseCircleOutline />
-            Close
-          </button>
-        </div>
-
         <div
           className={styles["album-art"]}
           style={{
@@ -51,7 +43,7 @@ const Component = () => {
           </tr>
           <tr>
             <th>Bitrate</th>
-            <td>{numeral(track.bitrate).format("0a")}</td>
+            <td>{`${numeral(track.bitrate).format("0a")}bps`}</td>
           </tr>
           <tr>
             <th>Channels</th>
@@ -98,6 +90,10 @@ const Component = () => {
             </td>
           </tr>
           <tr>
+            <th>Track ID</th>
+            <td>#{track.id}</td>
+          </tr>
+          <tr>
             <th>Length</th>
             <td>{track.readableLength}</td>
           </tr>
@@ -106,7 +102,11 @@ const Component = () => {
     );
   }
 
-  return null;
+  return (
+    <div className={styles["no-track"]}>
+      <p>Pick a track to view its information here</p>
+    </div>
+  );
 };
 
 export default Component;
