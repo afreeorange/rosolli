@@ -53,6 +53,8 @@
   --color-foreground-light: #333;
   --color-foreground-lighter: #000;
   --color-highlight: red;
+
+  transition: background 0.125s;
 }
 
 /* Scrollbar - width */
@@ -143,6 +145,7 @@ main {
 main {
   display: grid;
   grid-template-columns: var(--panel-size) auto;
+  transition: background 0.125s;
 }
 
 main > section:nth-of-type(2) {

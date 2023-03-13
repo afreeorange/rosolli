@@ -294,7 +294,7 @@ const ManageStore: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         genres: store.genres.length,
         artists: store.artists.length,
         albums: store.albums.length,
-        songs: store.tracks.length,
+        tracks: store.tracks.length,
       } as Statistics);
     },
   });
