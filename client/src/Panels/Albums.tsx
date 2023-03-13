@@ -1,10 +1,10 @@
+import numeral from "numeral";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
 import { useStore } from "../State";
 
 import styles from "./Common.module.scss";
-import numeral from "numeral";
 
 const Component = () => {
   const {
@@ -18,6 +18,7 @@ const Component = () => {
       </h1>
 
       <ul>
+        <li>All Albums</li>
         <AutoSizer>
           {({ height, width }) => (
             <List

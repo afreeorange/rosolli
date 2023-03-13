@@ -18,6 +18,7 @@ const Component = () => {
       </h1>
 
       <ul>
+        <li>All Artists</li>
         <AutoSizer>
           {({ height, width }) => (
             <List
