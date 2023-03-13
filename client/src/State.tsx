@@ -98,7 +98,12 @@ export const useStore = createStore<State>((set) => ({
 
   preferences: {
     trackInfoOpen: true,
-    darkMode: false,
+
+    /**
+     * TODO: Use system prefs... create a hierarchy of preferences. See
+     * index.html.
+     */
+    darkMode: Boolean(localStorage.getItem("darkMode")),
   },
 
   set: {
@@ -189,14 +194,21 @@ export const useStore = createStore<State>((set) => ({
             trackInfoOpen,
           },
         })),
-      darkMode: (darkMode) =>
+      darkMode: (darkMode) => {
         set((state) => ({
           ...state,
           preferences: {
             ...state.preferences,
             darkMode,
           },
-        })),
+        }));
+
+        if (darkMode) {
+          localStorage.setItem("darkMode", darkMode.toString());
+        } else {
+          localStorage.removeItem("darkMode");
+        }
+      },
     },
   },
 }));
