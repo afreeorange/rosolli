@@ -5,6 +5,7 @@
 
   ul[role="tablist"] {
     border-bottom: 1px dotted var(--color-foreground-light);
+
     display: grid;
     grid-template-columns: repeat(5, 20%);
 
@@ -21,6 +22,10 @@
       svg {
         margin: 0 auto;
       }
+    }
+
+    li[role="tab"]:not(:last-of-type) {
+      border-right: 1px dotted var(--color-foreground-light);
     }
 
     li[role="tab"]:hover {

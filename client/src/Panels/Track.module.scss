@@ -39,6 +39,10 @@
         font-size: 2em;
       }
     }
+
+    button:not(:last-of-type) {
+      border-right: 1px dotted var(--color-foreground-light);
+    }
   }
 
   table {

@@ -17,9 +17,9 @@ import Search from "../Components/Search";
 import Track from "./Track";
 import Version from "../Components/Version";
 import { useStore } from "../State";
+import { ShortcutList } from "../Components/Shortcuts";
 
 import styles from "./Tabs.module.scss";
-import { ShortcutList } from "../Components/Shortcuts";
 
 const Component = () => {
   const {
