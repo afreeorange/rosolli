@@ -11,6 +11,7 @@ import Tracks from "./Panels/Tracks";
 import "./App.scss";
 import NotFound from "./Pages/NotFound";
 import WindowSizeWarning from "./Components/WindowSizeWarning";
+import Shortcuts from "./Components/Shortcuts";
 
 const Browse = () => (
   <>
@@ -28,6 +29,7 @@ export default () => {
 
   return (
     <State>
+      <Shortcuts />
       <WindowSizeWarning />
       <main className={darkMode ? "dark" : undefined}>
         <section>

@@ -9,13 +9,13 @@ A frontend to [Beets](https://github.com/beetbox/beets). Can be used without Bee
 - [ ] Marquee of titles
 - [ ] Check for Database and connectivity
 - [ ] Scrubber
-- [ ] Squeeze Warning
-- [ ] Dark Mode
+- [x] Squeeze Warning
+- [ ] Persistence
 - [ ] Electron?
 - [ ] ±10s
 - [ ] User preferences
   - [ ] ±10s - Adjustable
-  - [ ] Dark mode
+  - [x] Dark mode
 - [x] Missing album art
 - [ ] Albums and Artists by Genre (group by)
 - [ ] Albums by Artist (group by)

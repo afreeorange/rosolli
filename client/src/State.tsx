@@ -24,6 +24,14 @@ export const trpc = createTRPCReact<AppRouter>();
  * ---------- Zustand/Local State Stuff ----------
  */
 
+export const TABS = {
+  browse: 10,
+  settings: 20,
+  history: 30,
+  trackInfo: 40,
+  playing: 50,
+};
+
 type State = {
   genres: Genres;
   albums: Albums;
@@ -41,6 +49,7 @@ type State = {
 
     track: Track | null;
     playingTrack: Track | null;
+    // tabNumber: keyof typeof TABS;
     tabNumber: number;
   };
 
@@ -93,7 +102,7 @@ export const useStore = createStore<State>((set) => ({
 
     track: null,
     playingTrack: null,
-    tabNumber: 0,
+    tabNumber: 1,
   },
 
   preferences: {

@@ -210,7 +210,7 @@ const Component = () => {
                         setPlayingId(cell.row.getValue("id"))
                       }
                       onClick={() => {
-                        set.current.tabNumber(3);
+                        set.current.tabNumber(4);
                         setSelectedId(cell.row.getValue("id"));
                       }}
                       data-column-name={cell.column.columnDef.header}
