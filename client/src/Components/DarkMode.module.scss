@@ -1,18 +1,23 @@
 .component {
-  padding: calc(var(--padding-panel) * 2);
-
   button {
-    background: none;
+    padding: calc(var(--padding-panel) * 1);
+    color: var(--color-highlight);
+    background: var(--color-background);
     cursor: pointer;
     border: 0;
     width: 100%;
     display: flex;
-    color: var(--color-highlight);
     padding-left: 0;
+
+    &:hover {
+      background: var(--color-highlight);
+      color: var(--color-background);
+    }
 
     svg {
       font-size: 2em;
       margin-right: 0.25em;
+      margin-left: var(--padding-panel);
     }
 
     span {

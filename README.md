@@ -86,3 +86,6 @@ readableLength
 ## License
 
 MIT
+
+Icons [via](https://www.flaticon.com/packs/healthy-food-2) and [React Icons](https://react-icons.github.io/react-icons/).
+

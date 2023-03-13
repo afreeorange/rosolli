@@ -33,12 +33,19 @@ export default () => {
         <div>
           <SlSizeFullscreen />
           <p>
-            I need a minimum viewport size of 1000x900 pixels. Please stretch me
-            until I go away.
+            I need a minimum viewport size of 1000 by 900 pixels. Please stretch
+            me until I go away.
           </p>
           <p>
             <small>
-              (You're at {w.width} x {w.height})
+              You're at{" "}
+              <span data-color={w.width < 1000 ? "red" : undefined}>
+                {w.width}
+              </span>
+              {" "}by{" "}
+              <span data-color={w.height < 900 ? "red" : undefined}>
+                {w.height}
+              </span>
             </small>
           </p>
         </div>
