@@ -18,6 +18,7 @@ import Track from "./Track";
 import Version from "../Components/Version";
 
 import styles from "./Tabs.module.scss";
+import DarkMode from "../Components/DarkMode";
 
 const Component = () => {
   const {
@@ -92,7 +93,10 @@ const Component = () => {
         <Links />
       </div>
       <div role={tabNumber === 1 ? "selected-panel" : "panel"}>
+        <DarkMode />
+        <hr />
         <ListeningTime />
+        <hr />
         <Version />
       </div>
       <div role={tabNumber === 2 ? "selected-panel" : "panel"}>

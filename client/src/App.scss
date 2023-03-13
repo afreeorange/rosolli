@@ -156,6 +156,11 @@ code {
   font-size: small;
 }
 
+hr {
+  border: 0;
+  border-bottom: 1px dotted var(--color-foreground-light);
+}
+
 .panel {
   flex-grow: 0;
   flex-shrink: 0;

@@ -1,0 +1,22 @@
+.component {
+  padding: calc(var(--padding-panel) * 2);
+
+  button {
+    background: none;
+    cursor: pointer;
+    border: 0;
+    width: 100%;
+    display: flex;
+    color: var(--color-highlight);
+    padding-left: 0;
+
+    svg {
+      font-size: 2em;
+      margin-right: 0.25em;
+    }
+
+    span {
+      font-size: 1.5em;
+    }
+  }
+}

@@ -46,6 +46,7 @@ type State = {
 
   preferences: {
     trackInfoOpen: boolean;
+    darkMode: boolean;
   };
 
   set: {
@@ -70,6 +71,7 @@ type State = {
 
     preferences: {
       trackInfoOpen: (open: boolean) => void;
+      darkMode: (darkMode: boolean) => void;
     };
   };
 };
@@ -95,7 +97,8 @@ export const useStore = createStore<State>((set) => ({
   },
 
   preferences: {
-    trackInfoOpen: false,
+    trackInfoOpen: true,
+    darkMode: false,
   },
 
   set: {
@@ -184,6 +187,14 @@ export const useStore = createStore<State>((set) => ({
           preferences: {
             ...state.preferences,
             trackInfoOpen,
+          },
+        })),
+      darkMode: (darkMode) =>
+        set((state) => ({
+          ...state,
+          preferences: {
+            ...state.preferences,
+            darkMode,
           },
         })),
     },

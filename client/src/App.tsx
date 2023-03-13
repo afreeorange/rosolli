@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import State from "./State";
+import State, { useStore } from "./State";
 
 import Tabs from "./Panels/Tabs";
 import Genres from "./Panels/Genres";
@@ -21,23 +21,29 @@ const Browse = () => (
   </>
 );
 
-export default () => (
-  <State>
-    <WindowSizeWarning />
-    <main>
-      <section>
-        <Tabs />
-      </section>
-      <section>
-        <Routes>
-          <Route path="/genres" element={<Genres />} />
-          <Route path="/artists" element={<Artists />} />
-          <Route path="/albums" element={<Albums />} />
-          <Route path="/tracks" element={<Tracks />} />
-          <Route path="/" element={<Browse />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </section>
-    </main>
-  </State>
-);
+export default () => {
+  const {
+    preferences: { darkMode },
+  } = useStore();
+
+  return (
+    <State>
+      <WindowSizeWarning />
+      <main className={darkMode ? "dark" : undefined}>
+        <section>
+          <Tabs />
+        </section>
+        <section>
+          <Routes>
+            <Route path="/genres" element={<Genres />} />
+            <Route path="/artists" element={<Artists />} />
+            <Route path="/albums" element={<Albums />} />
+            <Route path="/tracks" element={<Tracks />} />
+            <Route path="/" element={<Browse />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </section>
+      </main>
+    </State>
+  );
+};

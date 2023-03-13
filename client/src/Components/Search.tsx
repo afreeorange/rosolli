@@ -12,13 +12,15 @@ export default () => {
 
   return (
     <div className={styles.search}>
-      <input
-        type="text"
-        placeholder="search"
-        id="search"
-        value={searchTerm || ""}
-        onChange={handleSearch}
-      />
+      <form>
+        <input
+          type="text"
+          placeholder="search"
+          id="search"
+          value={searchTerm || ""}
+          onChange={handleSearch}
+        />
+      </form>
     </div>
   );
 };
