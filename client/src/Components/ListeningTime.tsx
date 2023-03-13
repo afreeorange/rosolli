@@ -9,7 +9,7 @@ const Component = () => {
 
   if (l) {
     return (
-      <div className={styles["listening-time"]}>
+      <div className={styles.component}>
         <p>
           You have{" "}
           {l.years > 0 && `${l.years} year${l.years !== 1 ? "s" : ""}, `}{" "}

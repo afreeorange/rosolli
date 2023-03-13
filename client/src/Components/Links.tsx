@@ -9,7 +9,7 @@ const Component = () => {
   const { statistics } = useStore();
 
   return (
-    <div className={styles.links}>
+    <div className={styles.component}>
       <ul>
         <li>
           <NavLink to={"/genres"}>

@@ -13,22 +13,25 @@
   .buttons {
     display: flex;
     justify-content: space-around;
-    grid-template-columns: repeat(4, 25%);
+    grid-template-columns: repeat(2, 50%);
     width: 100%;
-    padding: calc(var(--padding-panel) * 2) 0;
+
     border-top: 1px dotted var(--color-foreground-light);
     border-bottom: 1px dotted var(--color-foreground-light);
 
     button {
       background: var(--color-background);
       border: 0;
+      width: 100%;
+      padding: calc(var(--padding-panel) * 2) 0;
       color: var(--color-highlight);
       opacity: 0.5;
 
       &:hover {
         opacity: 1;
         cursor: pointer;
-        font-weight: bold;
+        background: var(--color-highlight);
+        color: var(--color-background);
       }
 
       svg {

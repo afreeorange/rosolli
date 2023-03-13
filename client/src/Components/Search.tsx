@@ -11,7 +11,7 @@ export default () => {
     set.searchTerm((e.target as HTMLInputElement).value);
 
   return (
-    <div className={styles.search}>
+    <div className={styles.component}>
       <form>
         <input
           type="text"
