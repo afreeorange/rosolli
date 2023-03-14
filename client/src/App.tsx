@@ -13,6 +13,7 @@ import NotFound from "./Pages/NotFound";
 import WindowSizeWarning from "./Components/WindowSizeWarning";
 import Shortcuts from "./Components/Shortcuts";
 import Loading from "./Components/Loading";
+import React, { useEffect, useRef } from "react";
 
 const Browse = () => (
   <>
@@ -28,6 +29,32 @@ export default () => {
     preferences: { darkMode },
   } = useStore();
 
+  const leftRef = useRef<HTMLElement>(null);
+  const rightRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const leftSection = leftRef.current;
+    const rightSection = rightRef.current;
+
+    rightSection?.addEventListener("scroll", () => {
+      console.log(":LOL");
+      scrollListener(leftSection, rightSection);
+    });
+  }, []);
+
+  const scrollListener = (
+    left: HTMLElement | null,
+    right: HTMLElement | null
+  ) => {
+    if (left && right) {
+      if (right.scrollLeft > 10) {
+        left.classList.add("scroll-shadow");
+      } else {
+        left.classList.remove("scroll-shadow");
+      }
+    }
+  };
+
   return (
     <State>
       <main className={darkMode ? "dark" : undefined}>
@@ -35,10 +62,10 @@ export default () => {
         <Loading />
         <WindowSizeWarning />
 
-        <section>
+        <section ref={leftRef}>
           <Tabs />
         </section>
-        <section>
+        <section ref={rightRef}>
           <Routes>
             <Route path="/genres" element={<Genres />} />
             <Route path="/artists" element={<Artists />} />

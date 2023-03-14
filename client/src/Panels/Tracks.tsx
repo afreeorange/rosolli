@@ -122,7 +122,7 @@ const Component = () => {
   const { virtualItems: virtualRows, totalSize } = useVirtual({
     parentRef: containerRef,
     size: data.length,
-    overscan: 75,
+    overscan: 50,
   });
 
   /**
@@ -149,12 +149,7 @@ const Component = () => {
       : 0;
 
   return (
-    <div
-      className={`panel auto-width ${styles.tracks}`}
-      style={{
-        marginRight: currentTrack ? "0" : "5em",
-      }}
-    >
+    <div className={`panel auto-width ${styles.tracks}`}>
       <h1>
         Tracks <span>{numeral(data.length).format("0,0")}</span>
       </h1>

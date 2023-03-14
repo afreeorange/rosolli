@@ -93,6 +93,8 @@ readableLength
 - [Workspace script runner](https://www.npmjs.com/package/wsrun)
 - `create-mf-app`
 - [Tanstack Table Example](https://codesandbox.io/p/sandbox/friendly-matsumoto-nbvtwb)
+- https://github.com/donavon/use-persisted-state
+- https://github.com/donavon/use-dark-mode
 
 ## License
 
