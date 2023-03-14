@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { RiGitBranchLine, RiGitBranchFill } from "react-icons/ri";
-import {
-  AiOutlineHistory,
-  AiOutlineSetting,
-  AiTwotoneSetting,
-} from "react-icons/ai";
+import { AiOutlineSetting, AiTwotoneSetting } from "react-icons/ai";
+import { HiQueueList, HiOutlineQueueList } from "react-icons/hi2";
 import { IoPlay, IoPlayOutline } from "react-icons/io5";
 import { BsCassette, BsCassetteFill } from "react-icons/bs";
 
@@ -72,7 +69,7 @@ const Component = () => {
           aria-selected={tabNumber === 3}
           onClick={() => set.current.tabNumber(3)}
         >
-          <AiOutlineHistory />
+          {tabNumber === 3 ? <HiQueueList /> : <HiOutlineQueueList />}
         </li>
         <li
           role="tab"

@@ -12,6 +12,7 @@ import "./App.scss";
 import NotFound from "./Pages/NotFound";
 import WindowSizeWarning from "./Components/WindowSizeWarning";
 import Shortcuts from "./Components/Shortcuts";
+import Loading from "./Components/Loading";
 
 const Browse = () => (
   <>
@@ -29,9 +30,11 @@ export default () => {
 
   return (
     <State>
-      <Shortcuts />
-      <WindowSizeWarning />
       <main className={darkMode ? "dark" : undefined}>
+        <Shortcuts />
+        <Loading />
+        <WindowSizeWarning />
+
         <section>
           <Tabs />
         </section>

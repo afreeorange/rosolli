@@ -38,6 +38,8 @@ type State = {
   artists: Artists;
   tracks: Tracks;
 
+  loading: boolean;
+
   statistics: Partial<Statistics>;
   searchTerm: string | null;
 
@@ -66,6 +68,7 @@ type State = {
 
     statistics: (statistics: Statistics) => void;
     searchTerm: (term: string | null) => void;
+    loading: (loading: boolean) => void;
 
     current: {
       genres: (genres: Genres) => void;
@@ -90,6 +93,8 @@ export const useStore = createStore<State>((set) => ({
   albums: [],
   artists: [],
   tracks: [],
+
+  loading: true,
 
   statistics: {},
   searchTerm: null,
@@ -120,6 +125,12 @@ export const useStore = createStore<State>((set) => ({
     artists: (artists: Artists) => set((state) => ({ ...state, artists })),
     albums: (albums: Albums) => set((state) => ({ ...state, albums })),
     tracks: (tracks: Tracks) => set((state) => ({ ...state, tracks })),
+
+    loading: (loading) =>
+      set((state) => ({
+        ...state,
+        loading,
+      })),
 
     statistics: (statistics: Statistics) =>
       set((state) => ({
@@ -231,14 +242,18 @@ export const useStore = createStore<State>((set) => ({
 const ManageStore: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const store = useStore();
 
-  const { data: statistics } = trpc.statistics.useQuery();
-  const { data: genres } = trpc.genres.useQuery();
-  const { data: albums } = trpc.albums.useQuery();
-  const { data: artists } = trpc.artists.useQuery();
-  const { data: tracks } = trpc.tracks.useQuery();
+  const { isFetching: isFet_S, data: statistics } = trpc.statistics.useQuery();
+  const { isFetching: isFet_G, data: genres } = trpc.genres.useQuery();
+  const { isFetching: isFet_A, data: albums } = trpc.albums.useQuery();
+  const { isFetching: isFet_L, data: artists } = trpc.artists.useQuery();
+  const { isFetching: isFet_T, data: tracks } = trpc.tracks.useQuery();
 
   useEffect(() => {
     (() => {
+      if (!(isFet_S || isFet_G || isFet_A || isFet_L || isFet_T)) {
+        store.set.loading(false);
+      }
+
       if (statistics) {
         store.set.statistics(statistics);
       }

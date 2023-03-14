@@ -35,6 +35,8 @@
     }
 
     li[aria-selected="true"] {
+      color: var(--color-background);
+      background: var(--color-highlight);
       opacity: 1;
     }
   }

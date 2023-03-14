@@ -1,6 +1,8 @@
 # Rosolli-ɑ
 
-A frontend to [Beets](https://github.com/beetbox/beets). Can be used without Beets as well. Just an overcomplicated way of teaching myself tRPC, Prisma, Vite, Tanstack Query, and other new things (this entire project can be done with Express and Mithril).
+A frontend to [Beets](https://github.com/beetbox/beets). Can be used without Beets as well. A giant work-in-progress.
+
+Just an overcomplicated way of teaching myself tRPC, Prisma, Vite, Tanstack Query, and other new things. This entire project can be done with REST, Express, and something lightweight like Mithril or Vue with little fuss...
 
 ## TODO
 
@@ -12,34 +14,42 @@ A frontend to [Beets](https://github.com/beetbox/beets). Can be used without Bee
 - [x] Squeeze Warning
 - [ ] Persistence
 - [ ] Electron?
+- [ ] Toasts
 - [ ] ±10s
 - [ ] User preferences
   - [ ] ±10s - Adjustable
   - [x] Dark mode
+  - [ ] Toasts/notifications
+  - [ ] Layout of Tracks
 - [x] Missing album art
 - [ ] Albums and Artists by Genre (group by)
 - [ ] Albums by Artist (group by)
 - [ ] Mobile/responsive view
 - [ ] Check for database or croak
-- [ ] Scan Mode
+- [ ] Server - Scan Mode
+- [x] Server - Compression (6.5MiB -> 855Kib!)
 - [ ] Playlists
 - [ ] Packaging
 - [ ] Loading states
 - [ ] Error states :/
 - [ ] Sort table
 - [ ] Click to Copy
+- [ ] Error Boundary
+- [ ] Adjustable table cols with truncation
+- [ ] Debounce Search
+- [ ] Search Loading state
+- [ ] [Panels](https://react-resizable-panels.vercel.app/examples/horizontal)
+- [x] Data Loading State
 - [ ] Drag and Drop Albums, Tracks, Artists
-- [ ] Router
+- [x] Router
   - [ ] Links to Songs
   - [ ] Links to Albums
   - [ ] Links to Genres
+  - [ ] Links to Tracks (activate tab)
 
 ## Development Notes
 
 Used `yarn create vite` to bootstrap the Client. Manually created the Server.
-
-- [Workspace script runner](https://www.npmjs.com/package/wsrun)
-- `create-mf-app`
 
 ### Fields
 
@@ -78,14 +88,14 @@ readableLength
 
 ### References
 
-- [tRPC - Usage with React](https://trpc.io/docs/react)
 - [tRPC - Usage with Express](https://trpc.io/docs/express) - Uses contexts which I don't think I need
-- https://codesandbox.io/p/sandbox/friendly-matsumoto-nbvtwb
-- https://www.iconhunt.site
+- [tRPC - Usage with React](https://trpc.io/docs/react)
+- [Workspace script runner](https://www.npmjs.com/package/wsrun)
+- `create-mf-app`
+- [Tanstack Table Example](https://codesandbox.io/p/sandbox/friendly-matsumoto-nbvtwb)
 
 ## License
 
 MIT
 
 Icons [via](https://www.flaticon.com/packs/healthy-food-2) and [React Icons](https://react-icons.github.io/react-icons/).
-

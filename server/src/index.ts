@@ -5,7 +5,9 @@ import {
 } from "@trpc/server/adapters/express";
 import express, { Request, Response } from "express";
 import cors from "cors";
+import compression from "compression";
 import { z } from "zod";
+import zlip from "zlib";
 
 import streamRoutes from "./stream";
 import db, {
@@ -69,6 +71,11 @@ const appRouter = router({
 const port = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
+app.use(
+  compression({
+    level: 9,
+  })
+);
 app.use("/trpc", createExpressMiddleware({ router: appRouter, createContext }));
 app.use("/api/stream", streamRoutes);
 

@@ -1,29 +1,31 @@
 .component {
   table {
     width: 100%;
-    color: var(--color-foreground-light);
     padding: calc(var(--padding-panel) * 2) 0;
 
     caption {
-      margin-top: calc(var(--padding-panel) * 2);
-      margin-left: calc(var(--padding-panel) * 3);
+      color: var(--color-foreground-light);
       font-weight: bold;
+      margin-left: calc(var(--padding-panel) * 3);
+      margin-top: calc(var(--padding-panel) * 2);
       text-align: left;
     }
 
-    tr:not(:last-child) {
-      * {
-        // border-bottom: 1px dotted var(--color-foreground-lighter);
+    tr {
+      color: var(--color-foreground-light);
+
+      &:hover {
+        color: var(--color-foreground);
       }
     }
   }
 
   kbd {
     border-radius: 5px;
-    width: 1.5em;
-    display: inline-block;
     border: 1px dotted var(--color-foreground-light);
+    display: inline-block;
     font-family: var(--font-family);
+    width: 1.5em;
   }
 
   // kbd {
