@@ -33,19 +33,16 @@ export default () => {
   const rightRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const leftSection = leftRef.current;
-    const rightSection = rightRef.current;
+    rightRef.current?.addEventListener("scroll", scrollListener);
 
-    rightSection?.addEventListener("scroll", () => {
-      console.log(":LOL");
-      scrollListener(leftSection, rightSection);
-    });
+    return () =>
+      rightRef.current?.removeEventListener("scroll", scrollListener);
   }, []);
 
-  const scrollListener = (
-    left: HTMLElement | null,
-    right: HTMLElement | null
-  ) => {
+  const scrollListener: EventListener = () => {
+    const left = leftRef.current;
+    const right = rightRef.current;
+
     if (left && right) {
       if (right.scrollLeft > 10) {
         left.classList.add("scroll-shadow");
