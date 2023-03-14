@@ -48,66 +48,68 @@ const Component = () => {
 
           {preferences.trackInfoOpen && (
             <table>
-              <tr>
-                <th>Album Artist</th>
-                <td>{track.albumartist}</td>
-              </tr>
-              <tr>
-                <th>Bitrate</th>
-                <td>{`${numeral(track.bitrate).format("0a")}bps`}</td>
-              </tr>
-              <tr>
-                <th>Channels</th>
-                <td>{track.channels}</td>
-              </tr>
-              <tr>
-                <th>Disc</th>
-                <td>
-                  {track.disc} of {track.disctotal}
-                </td>
-              </tr>
-              <tr>
-                <th>Encoder</th>
-                <td>{track.encoder}</td>
-              </tr>
-              <tr>
-                <th>Format</th>
-                <td>{track.format}</td>
-              </tr>
-              <tr>
-                <th>Genre</th>
-                <td>{track.genre}</td>
-              </tr>
-              <tr>
-                <th>Label</th>
-                <td>{track.label}</td>
-              </tr>
-              <tr>
-                <th>Last Modified</th>
-                <td>{modifiedTime}</td>
-              </tr>
-              <tr>
-                <th>Length</th>
-                <td>{track.readableLength}</td>
-              </tr>
-              <tr>
-                <th>Path on Disk</th>
-                <td className="click-to-copy">{track.path}</td>
-              </tr>
-              <tr>
-                <th>Sample Rate</th>
-                <td>{numeral(track.samplerate).format("0,0")}Hz</td>
-              </tr>
-              <tr>
-                <th>Track #</th>
-                <td>
-                  {track.track} of {track.tracktotal}
-                </td>
-              </tr>
-              <tr>
-                <th>Track ID</th>
-                <td>{track.id}</td>
-              </tr>
+              <tbody>
+                <tr>
+                  <th>Album Artist</th>
+                  <td>{track.albumartist}</td>
+                </tr>
+                <tr>
+                  <th>Bitrate</th>
+                  <td>{`${numeral(track.bitrate).format("0a")}bps`}</td>
+                </tr>
+                <tr>
+                  <th>Channels</th>
+                  <td>{track.channels}</td>
+                </tr>
+                <tr>
+                  <th>Disc</th>
+                  <td>
+                    {track.disc} of {track.disctotal}
+                  </td>
+                </tr>
+                <tr>
+                  <th>Encoder</th>
+                  <td>{track.encoder}</td>
+                </tr>
+                <tr>
+                  <th>Format</th>
+                  <td>{track.format}</td>
+                </tr>
+                <tr>
+                  <th>Genre</th>
+                  <td>{track.genre}</td>
+                </tr>
+                <tr>
+                  <th>Label</th>
+                  <td>{track.label}</td>
+                </tr>
+                <tr>
+                  <th>Last Modified</th>
+                  <td>{modifiedTime}</td>
+                </tr>
+                <tr>
+                  <th>Length</th>
+                  <td>{track.readableLength}</td>
+                </tr>
+                <tr>
+                  <th>Path on Disk</th>
+                  <td className="click-to-copy">{track.path}</td>
+                </tr>
+                <tr>
+                  <th>Sample Rate</th>
+                  <td>{numeral(track.samplerate).format("0,0")}Hz</td>
+                </tr>
+                <tr>
+                  <th>Track #</th>
+                  <td>
+                    {track.track} of {track.tracktotal}
+                  </td>
+                </tr>
+                <tr>
+                  <th>Track ID</th>
+                  <td>{track.id}</td>
+                </tr>
+              </tbody>
             </table>
           )}
         </section>

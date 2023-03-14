@@ -174,10 +174,16 @@ const Component = () => {
                   <th
                     key={header.id}
                     data-column-name={header.column.columnDef.header}
-                    style={{
-                      width: header.column.getSize(),
-                      maxWidth: header.column.getSize(),
-                    }}
+                    /**
+                     * NOTE: This does nothing which is a bit surprising to me.
+                     * Or maybe I've been laboring under a misapprehension
+                     * about how table columns work for the past decade and a
+                     * half...
+                     */
+                    // style={{
+                    //   width: header.column.getSize(),
+                    //   maxWidth: header.column.getSize(),
+                    // }}
                   >
                     {header.isPlaceholder
                       ? null
@@ -214,6 +220,10 @@ const Component = () => {
                         setSelectedId(cell.row.getValue("id"));
                       }}
                       data-column-name={cell.column.columnDef.header}
+                      style={{
+                        width: cell.column.getSize(),
+                        maxWidth: cell.column.getSize(),
+                      }}
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
