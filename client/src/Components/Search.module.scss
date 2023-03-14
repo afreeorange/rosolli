@@ -5,7 +5,6 @@
   input {
     width: 100%;
     border: 0;
-    opacity: 0.5;
     background: var(--color-background);
     color: var(--color--foreground);
     padding: calc(var(--padding-panel) / 2) var(--padding-panel);
@@ -13,7 +12,6 @@
   }
 
   input:focus {
-    opacity: 1;
     outline: none;
     color: var(--color-highlight);
   }

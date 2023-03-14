@@ -22,7 +22,6 @@
         }
 
         span:nth-of-type(2) {
-          opacity: 0.5;
           color: var(--color-highlight);
           font-weight: 300;
         }
@@ -35,7 +34,6 @@
 
         span:nth-of-type(1),
         span:nth-of-type(2) {
-          opacity: 1;
           color: var(--color-background);
         }
       }
