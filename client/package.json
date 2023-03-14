@@ -16,6 +16,7 @@
     "@trpc/client": "^10.11.1",
     "@trpc/react": "^9.27.4",
     "@trpc/react-query": "^10.11.1",
+    "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "numeral": "^2.0.6",
     "react": "^18.2.0",
@@ -28,6 +29,7 @@
     "zustand": "^4.3.3"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.191",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@types/react-icons": "^3.0.0",

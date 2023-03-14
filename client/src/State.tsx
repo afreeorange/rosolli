@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { httpBatchLink } from "@trpc/client";
+import { httpBatchLink, loggerLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
 import { create as createStore } from "zustand";
 
@@ -336,6 +336,12 @@ export default ({ children }: { children: React.ReactNode }) => {
   const [trpcClient] = useState(() =>
     trpc.createClient({
       links: [
+        loggerLink({
+          enabled: (opts) =>
+            (process.env.NODE_ENV === "development" &&
+              typeof window !== "undefined") ||
+            (opts.direction === "down" && opts.result instanceof Error),
+        }),
         httpBatchLink({
           url: "http://localhost:3000/trpc",
         }),
