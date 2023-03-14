@@ -11,6 +11,7 @@ Just an overcomplicated way of teaching myself tRPC, Prisma, Vite, Tanstack Quer
 - [ ] Marquee of titles
 - [ ] Check for Database and connectivity
 - [ ] Scrubber
+- [ ] Pagination of Tracks
 - [ ] Themes
   - [ ] Solarized Light
   - [ ] [Disco Theme](https://marketplace.visualstudio.com/items?itemName=RobbOwen.synthwave-vscode)
