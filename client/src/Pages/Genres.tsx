@@ -3,32 +3,31 @@ import numeral from "numeral";
 import AutoSizer from "react-virtualized-auto-sizer";
 
 import { useStore } from "../State";
+import { reactTableSettings } from "./Tracks/constants";
 
-import styles from "./Common.module.scss";
+import styles from "./Genres.module.scss";
 
-const Component = () => {
+const Genres = () => {
   const {
     current: { genres },
   } = useStore();
 
   return (
-    <div className={`panel ${styles.genres}`}>
-      <h1>
-        Genres <span>{numeral(genres.length).format("0,0")}</span>
-      </h1>
+    <div className={styles.component}>
+      <h1>Genres</h1>
 
       <ul>
-        <li>All Genres</li>
         <AutoSizer>
           {({ height, width }) => (
             <List
               height={height}
               width={width}
               itemCount={genres.length}
-              itemSize={55}
-              overscanCount={10}
+              itemSize={90}
+              overscanCount={reactTableSettings.overScanCount}
               style={{
-                paddingBottom: "5em",
+                paddingBottom: reactTableSettings.bottomPadding,
+                lineHeight: 1.5,
               }}
             >
               {({ index, style }: { index: number; style: any }) => (
@@ -62,5 +61,11 @@ const Component = () => {
     </div>
   );
 };
+
+const Component = () => (
+  <>
+    <Genres />
+  </>
+);
 
 export default Component;

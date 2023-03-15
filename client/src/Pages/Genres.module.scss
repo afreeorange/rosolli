@@ -1,0 +1,37 @@
+.component {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 100%;
+  width: calc(var(--panel-size) * 2);
+
+  h1 {
+    font-size: calc(var(--font-size-base) * 3);
+    padding: calc(var(--padding-panel) / 2);
+  }
+
+  ul {
+    height: 100%;
+    font-size: calc(var(--font-size-base) * 1.5);
+
+    li {
+      border-bottom: 1px dotted var(--color-foreground-light);
+      font-weight: 600;
+
+      small {
+        margin-top: var(--padding-panel);
+        display: table;
+        width: 100%;
+        font-size: calc(var(--font-size-base) * 1.5);
+        font-weight: 300;
+
+        span {
+          border-top: 1px dashed var(--color-foreground-lighter);
+          display: table-cell;
+          width: 33%;
+          // background: #ddd;
+          padding: calc(var(--padding-panel) / 2) var(--padding-panel);
+        }
+      }
+    }
+  }
+}

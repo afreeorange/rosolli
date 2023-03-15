@@ -35,14 +35,14 @@ const Component = () => {
             <span>{numeral(statistics.tracks).format("0,0")}</span>
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to={"/"}>
             <span>Browse</span>
             <span>
               <CgBoard />
             </span>
           </NavLink>
-        </li>
+        </li> */}
       </ul>
     </div>
   );

@@ -127,32 +127,21 @@ main {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-y: hidden;
+}
 
-  line-height: 1.5;
+main {
+  overflow-y: hidden;
   background: var(--color-background);
   color: var(--color-foreground);
 
   font-size: var(--font-size-base);
   font-family: var(--font-family);
   line-height: var(--font-line-height);
-}
 
-#root {
-  isolation: isolate;
-}
-
-main {
   display: grid;
   grid-template-columns: var(--panel-size) auto;
-  transition: background 0.125s;
-}
 
-main > section:nth-of-type(2) {
-  display: flex;
-  flex-direction: row;
-  overflow-x: scroll;
-  overflow-y: hidden;
+  transition: background 0.125s;
 }
 
 code {
@@ -162,74 +151,6 @@ code {
 hr {
   border: 0;
   border-bottom: 1px dotted var(--color-foreground-light);
-}
-
-.panel {
-  flex-grow: 0;
-  flex-shrink: 0;
-  width: var(--panel-size);
-
-  h1 {
-    color: var(--color-foreground);
-    font-size: calc(var(--font-size-base) * 1.5);
-    margin-bottom: var(--padding-panel);
-    padding: calc(var(--padding-panel) / 2);
-    padding-bottom: 0;
-
-    span {
-      background-color: var(--color-background);
-      border: 1px dotted var(--color-foreground-light);
-      color: var(--color-foreground-light);
-      padding: calc(var(--padding-panel) / 2) calc(var(--padding-panel) / 1);
-      border-radius: 5px;
-      font-size: medium;
-      position: relative;
-      bottom: 0.125em;
-      font-weight: normal;
-    }
-  }
-
-  /**
-  * NOTE: This is the outer container for virtualization. It needs the height
-  * prop set to work! This is controlled by the component and not CSS.
-  *
-  * Reference:
-  * https://github.com/bvaughn/react-window/issues/249#issuecomment-739682222
-  */
-  ul {
-    height: 100%;
-
-    li {
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      transition: all var(--transition-duration);
-
-      padding: calc(var(--padding-panel) / 2) var(--padding-panel);
-      cursor: pointer;
-    }
-
-    li:not(:last-child) {
-      border-bottom: 1px dotted var(--color-foreground-light);
-    }
-
-    li:hover {
-      background: var(--color-highlight);
-      color: var(--color-background);
-
-      * {
-        color: var(--color-background);
-      }
-    }
-  }
-}
-
-.panel.auto-width {
-  width: auto;
-}
-
-.panel:not(:last-of-type) {
-  border-right: 1px dotted var(--color-foreground-light);
 }
 
 .waiting-text {

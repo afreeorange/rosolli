@@ -2,9 +2,10 @@ import numeral from "numeral";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
-import { useStore } from "../State";
+import { useStore } from "../../State";
+import { reactTableSettings } from "./constants";
 
-import styles from "./Common.module.scss";
+import styles from "./index.module.scss";
 
 const Component = () => {
   const {
@@ -12,36 +13,41 @@ const Component = () => {
   } = useStore();
 
   return (
-    <div className={`panel ${styles.genres}`}>
-      <h1>
-        Albums <span>{numeral(albums.length).format("0,0")}</span>
-      </h1>
-
+    <div className={styles.panel}>
       <ul>
-        <li>All Albums</li>
+        <li
+          style={{
+            height: reactTableSettings.cellHeight,
+            lineHeight: 1.5,
+          }}
+        >
+          <span>All Albums</span>{" "}
+          <span>{numeral(albums.length).format("0,0")}</span>
+        </li>
         <AutoSizer>
           {({ height, width }) => (
             <List
               height={height}
               width={width}
               itemCount={albums.length}
-              itemSize={70}
-              overscanCount={10}
+              itemSize={reactTableSettings.cellHeight}
+              overscanCount={reactTableSettings.overScanCount}
               style={{
-                paddingBottom: "5em",
+                paddingBottom: reactTableSettings.bottomPadding,
+                lineHeight: 1.5,
               }}
             >
               {({ index, style }: { index: number; style: any }) => (
                 <li key={`album-${albums[index].name}`} style={style}>
                   {albums[index].name}
-                  <small>
+                  {/* <small>
                     <span>{albums[index].counts.tracks} tracks</span>
                     <span>{albums[index].genre}</span>
                   </small>
                   <small>
                     <span>{albums[index].counts.readableTotalLength}</span>
                     <span>{albums[index].year}</span>
-                  </small>
+                  </small> */}
                 </li>
               )}
             </List>

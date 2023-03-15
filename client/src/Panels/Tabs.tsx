@@ -5,16 +5,16 @@ import { HiQueueList, HiOutlineQueueList } from "react-icons/hi2";
 import { IoPlay, IoPlayOutline } from "react-icons/io5";
 import { BsCassette, BsCassetteFill } from "react-icons/bs";
 
+import { ShortcutList } from "../Components/Shortcuts";
 import DarkMode from "../Components/DarkMode";
 import History from "../Components/History";
 import Links from "../Components/Links";
 import ListeningTime from "../Components/ListeningTime";
-import Player from "./Player";
 import Search from "../Components/Search";
-import Track from "./Track";
 import Version from "../Components/Version";
 import { useStore } from "../State";
-import { ShortcutList } from "../Components/Shortcuts";
+import Player from "./Player";
+import Track from "./Track";
 
 import styles from "./Tabs.module.scss";
 
@@ -23,6 +23,7 @@ const Component = () => {
     current: { tabNumber },
     set,
     searchTerm,
+    showingSearchResults,
   } = useStore();
 
   /**
@@ -47,7 +48,7 @@ const Component = () => {
   }, [tabNumber]);
 
   return (
-    <div className={styles.main}>
+    <div className={styles.component}>
       <Search />
       <ul role="tablist">
         <li

@@ -2,7 +2,7 @@
 
 A frontend to [Beets](https://github.com/beetbox/beets). Can be used without Beets as well. A giant work-in-progress.
 
-Just an overcomplicated way of teaching myself tRPC, Prisma, Vite, Tanstack Query, and other new things. This entire project can be done with REST, Express, and something lightweight like Mithril or Vue with little fuss...
+Just an overcomplicated way of teaching myself [tRPC](https://trpc.io/), [Prisma](https://www.prisma.io/) (maybe), [Vite](https://vitejs.dev/), [Tanstack stuff](https://tanstack.com/), and other newish things. This entire project can be done with REST, Express, and something lightweight like Mithril or Svelte with little fuss...
 
 ## TODO
 
@@ -12,6 +12,7 @@ Just an overcomplicated way of teaching myself tRPC, Prisma, Vite, Tanstack Quer
 - [ ] Check for Database and connectivity
 - [ ] Scrubber
 - [ ] Pagination of Tracks
+- [ ] Page Titles
 - [ ] Themes
   - [ ] Solarized Light
   - [ ] [Disco Theme](https://marketplace.visualstudio.com/items?itemName=RobbOwen.synthwave-vscode)

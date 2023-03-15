@@ -8,11 +8,12 @@ import {
 } from "@tanstack/react-table";
 import { useVirtual } from "@tanstack/react-virtual";
 
-import { useStore, trpc } from "../State";
+import { useStore, trpc } from "../../State";
 import { TrackInList, tracks } from "@rosolli/server";
 
 import styles from "./Tracks.module.scss";
 import numeral from "numeral";
+import { useWindowSize } from "../../Components/WindowSizeWarning";
 
 const Component = () => {
   // Load the data
@@ -20,6 +21,8 @@ const Component = () => {
     set,
     current: { track: currentTrack, tracks: data },
   } = useStore();
+
+  const { height: windowHeight } = useWindowSize();
 
   /**
    * This is how one sets up event handling with tRPC. A bit odd but not too
@@ -91,10 +94,10 @@ const Component = () => {
         header: "Year",
         size: 80,
       },
-      {
-        accessorKey: "genre",
-        header: "Genre",
-      },
+      // {
+      //   accessorKey: "genre",
+      //   header: "Genre",
+      // },
     ],
     []
   );
@@ -122,7 +125,7 @@ const Component = () => {
   const { virtualItems: virtualRows, totalSize } = useVirtual({
     parentRef: containerRef,
     size: data.length,
-    overscan: 50,
+    overscan: 100,
   });
 
   /**
@@ -149,15 +152,16 @@ const Component = () => {
       : 0;
 
   return (
-    <div className={`panel auto-width ${styles.tracks}`}>
-      <h1>
-        Tracks <span>{numeral(data.length).format("0,0")}</span>
-      </h1>
+    <div className={`panel ${styles.component}`}>
+      {/* <h1>
+        Tracks {windowHeight} -{" "}
+        <span>{numeral(data.length).format("0,0")}</span>
+      </h1> */}
 
       <div
         style={{
           overflowY: "scroll",
-          height: "100%",
+          height: windowHeight / 2 + "px",
         }}
         ref={containerRef}
       >
@@ -175,10 +179,10 @@ const Component = () => {
                      * about how table columns work for the past decade and a
                      * half...
                      */
-                    // style={{
-                    //   width: header.column.getSize(),
-                    //   maxWidth: header.column.getSize(),
-                    // }}
+                    style={{
+                      width: header.column.getSize(),
+                      maxWidth: header.column.getSize(),
+                    }}
                   >
                     {header.isPlaceholder
                       ? null

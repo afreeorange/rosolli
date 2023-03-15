@@ -3,7 +3,7 @@ import { SlSizeFullscreen } from "react-icons/sl";
 
 import styles from "./WindowSizeWarning.module.scss";
 
-const useWindowSize = () => {
+export const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,

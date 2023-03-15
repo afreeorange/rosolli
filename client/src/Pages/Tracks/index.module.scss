@@ -1,0 +1,83 @@
+/* Any common styling for all components of this page */
+
+.panel {
+  height: 100%;
+  overflow-y: hidden;
+
+  /**
+  * NOTE: This is the outer container for virtualization. It needs the height
+  * prop set to work! This is controlled by the component and not CSS.
+  *
+  * Reference:
+  * https://github.com/bvaughn/react-window/issues/249#issuecomment-739682222
+  */
+  ul {
+    height: 100%;
+
+    li {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      transition: all var(--transition-duration);
+
+      padding: calc(var(--padding-panel) / 2) var(--padding-panel);
+      cursor: pointer;
+    }
+
+    > li {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      span:nth-of-type(1) {
+        font-weight: 600;
+      }
+
+      span:nth-of-type(2) {
+        color: var(--color-foreground-light);
+        font-weight: 300;
+      }
+
+      &:hover {
+        span {
+          color: var(--color-background);
+        }
+      }
+    }
+
+    li:not(:last-child) {
+      border-bottom: 1px dotted var(--color-foreground-light);
+    }
+
+    li:hover {
+      background: var(--color-highlight);
+      color: var(--color-background);
+
+      * {
+        color: var(--color-background);
+      }
+    }
+  }
+}
+
+.wrapper {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-rows: 50% auto;
+
+  .top {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    height: 100%;
+
+    section:not(:last-of-type) {
+      border-right: 1px dotted var(--color-foreground-light);
+    }
+  }
+
+  .bottom {
+    border-top: 1px dotted var(--color-foreground-light);
+    overflow-y: hidden;
+  }
+}

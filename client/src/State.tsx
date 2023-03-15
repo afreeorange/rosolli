@@ -42,6 +42,7 @@ type State = {
 
   statistics: Partial<Statistics>;
   searchTerm: string | null;
+  showingSearchResults: boolean;
 
   current: {
     genres: Genres;
@@ -68,6 +69,7 @@ type State = {
 
     statistics: (statistics: Statistics) => void;
     searchTerm: (term: string | null) => void;
+    showingSearchResults: (showingSearchResults: boolean) => void;
     loading: (loading: boolean) => void;
 
     current: {
@@ -98,6 +100,7 @@ export const useStore = createStore<State>((set) => ({
 
   statistics: {},
   searchTerm: null,
+  showingSearchResults: false,
 
   current: {
     genres: [],
@@ -141,6 +144,11 @@ export const useStore = createStore<State>((set) => ({
       set((state) => ({
         ...state,
         searchTerm,
+      })),
+    showingSearchResults: (showingSearchResults) =>
+      set((state) => ({
+        ...state,
+        showingSearchResults,
       })),
 
     current: {
@@ -289,6 +297,8 @@ const ManageStore: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         store.set.current.albums(data.albums);
         store.set.current.tracks(data.tracks);
 
+        store.set.showingSearchResults(true);
+
         store.set.statistics({
           ...store.statistics,
           genres: data.genres.length,
@@ -303,6 +313,8 @@ const ManageStore: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       store.set.current.artists(store.artists);
       store.set.current.albums(store.albums);
       store.set.current.tracks(store.tracks);
+
+      store.set.showingSearchResults(false);
 
       store.set.statistics({
         ...store.statistics,

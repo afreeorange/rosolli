@@ -2,9 +2,10 @@ import { FixedSizeList as List } from "react-window";
 import numeral from "numeral";
 import AutoSizer from "react-virtualized-auto-sizer";
 
-import { useStore } from "../State";
+import { useStore } from "../../State";
+import { reactTableSettings } from "./constants";
 
-import styles from "./Common.module.scss";
+import styles from "./index.module.scss";
 
 const Component = () => {
   const {
@@ -12,23 +13,28 @@ const Component = () => {
   } = useStore();
 
   return (
-    <div className={`panel ${styles.genres}`}>
-      <h1>
-        Artists <span>{numeral(artists.length).format("0,0")}</span>
-      </h1>
-
+    <div className={styles.panel}>
       <ul>
-        <li>All Artists</li>
+        <li
+          style={{
+            height: reactTableSettings.cellHeight,
+            lineHeight: 1.5,
+          }}
+        >
+          <span>All Artists</span>{" "}
+          <span>{numeral(artists.length).format("0,0")}</span>
+        </li>
         <AutoSizer>
           {({ height, width }) => (
             <List
               height={height}
-              width={width}
               itemCount={artists.length}
-              itemSize={55}
-              overscanCount={10}
+              width={width}
+              itemSize={reactTableSettings.cellHeight}
+              overscanCount={reactTableSettings.overScanCount}
               style={{
-                paddingBottom: "5em",
+                paddingBottom: reactTableSettings.bottomPadding,
+                lineHeight: 1.5,
               }}
             >
               {({ index, style }: { index: number; style: any }) => (
@@ -38,7 +44,7 @@ const Component = () => {
                   style={style}
                 >
                   {artists[index].name}
-                  <small>
+                  {/* <small>
                     <span>
                       {numeral(artists[index].counts.genres).format("0,0")}{" "}
                       genre
@@ -54,7 +60,7 @@ const Component = () => {
                       track
                       {artists[index].counts.tracks > 1 && "s"}
                     </span>
-                  </small>
+                  </small> */}
                 </li>
               )}
             </List>

@@ -1,20 +1,17 @@
-.tracks {
+.component {
   table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 5em;
 
     tbody {
       tr {
         td {
-          // NOTE: Check with the module for how many rows to overscan
-          height: 30px;
+          box-sizing: border-box;
           padding: calc(var(--padding-panel) / 2) var(--padding-panel);
-          border-bottom: 1px dotted var(--color-foreground-light);
-
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
+          border-bottom: 1px dotted var(--color-foreground-light);
         }
 
         td:not(:last-of-type) {
