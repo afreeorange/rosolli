@@ -63,15 +63,26 @@
   }
 
   .buttons {
-    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    height: 30px;
+    width: 100%;
 
     button {
       text-align: center;
       cursor: pointer;
       border: 0;
-      height: 100%;
-      border-radius: 5px;
+      color: var(--color-highlight);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: var(--color-background);
+      color: var(--color-highlight);
+      border-bottom: 1px dotted var(--color-foreground-light);
+
+      &:not(:last-of-type) {
+        border-right: 1px dotted var(--color-foreground-light);
+      }
 
       &:hover {
         background: var(--color-highlight);

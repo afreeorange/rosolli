@@ -222,6 +222,7 @@ const Component = () => {
                     style={{
                       width: COLUMN_WIDTHS["__meta"],
                       maxWidth: COLUMN_WIDTHS["__meta"],
+                      padding: 0,
                     }}
                   >
                     <div className={styles.buttons}>

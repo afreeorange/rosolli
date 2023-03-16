@@ -37,9 +37,9 @@ Just an overcomplicated way of teaching myself [tRPC](https://trpc.io/), [Prisma
 - [ ] Packaging
 - [ ] Loading states
 - [ ] Error states :/
+- [ ] Error Boundary
 - [ ] Sort table
 - [ ] Click to Copy
-- [ ] Error Boundary
 - [ ] Adjustable table cols with truncation
 - [ ] Debounce Search
 - [ ] Search Loading state
@@ -101,6 +101,7 @@ readableLength
 - https://github.com/donavon/use-persisted-state
 - https://github.com/donavon/use-dark-mode
 - https://modernfontstacks.com
+- [Lucide Icons](https://lucide.dev)
 
 ## License
 
