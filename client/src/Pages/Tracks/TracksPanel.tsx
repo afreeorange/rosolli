@@ -91,11 +91,11 @@ const Component = () => {
         accessorKey: "readableLength",
         header: "Length",
       },
-      {
-        accessorKey: "track",
-        header: "Track",
-        accessorFn: (row) => `${row.track}/${row.tracktotal}`,
-      },
+      // {
+      //   accessorKey: "track",
+      //   header: "Track",
+      //   accessorFn: (row) => `${row.track}/${row.tracktotal}`,
+      // },
       {
         accessorKey: "year",
         header: "Year",

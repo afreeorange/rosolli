@@ -40,7 +40,7 @@ const Component = () => {
         <li>
           <NavLink to={"/playlists"}>
             <span>Playlists</span>
-            {/* <span>{numeral(statistics.tracks).format("0,0")}</span> */}
+            <span>{numeral(12).format("0,0")}</span>
           </NavLink>
         </li>
         {/* <li>

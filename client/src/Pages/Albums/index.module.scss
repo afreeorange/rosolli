@@ -1,0 +1,59 @@
+@import "../../App.scss";
+
+.component {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  width: calc(var(--panel-size) * 1.5);
+
+  ul {
+    height: 100%;
+
+    li {
+      border-bottom: var(--line-style);
+      display: grid;
+      grid-template-columns: 4em auto;
+      padding: var(--padding-panel);
+      cursor: pointer;
+
+      // Icon
+      > span:nth-of-type(1) {
+        font-size: 3em;
+        color: var(--color-foreground-lighter);
+      }
+
+      // Album info
+      > span:nth-of-type(2) {
+        strong {
+          display: block;
+          width: calc(var(--panel-size) * 1);
+          font-weight: 800;
+          @include dots-text;
+        }
+
+        em {
+          display: block;
+          font-style: normal;
+        }
+
+        // Tracks and length
+        > span {
+          display: grid;
+          grid-template-columns: repeat(3, 33%);
+          color: var(--color-foreground-light);
+        }
+      }
+
+      // Hover
+      &:hover {
+        background: var(--color-highlight);
+        transition: all var(--transition-duration);
+
+        * {
+          color: var(--color-background);
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,4 @@
+@import "../../App.scss";
 .component {
   table {
     width: 100%;
@@ -9,10 +10,9 @@
         td:not(:first-of-type) {
           box-sizing: border-box;
           padding: calc(var(--padding-panel) / 2) var(--padding-panel);
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
           border-bottom: var(--line-style);
+
+          @include dots-text;
         }
 
         td:not(:last-of-type) {

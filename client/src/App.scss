@@ -172,3 +172,9 @@ hr {
   transition: box-shadow var(--transition-duration);
   z-index: 99;
 }
+
+@mixin dots-text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

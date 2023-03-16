@@ -3,6 +3,7 @@ import { readableLength } from "./helpers";
 
 export type Album = {
   name: string;
+  artist: string;
   year: number | null;
   genre: string | null;
   label: string | null;
@@ -23,7 +24,8 @@ export type Albums = Album[];
  */
 const sql = `
 SELECT
-  DISTINCT(album) as name,
+  DISTINCT album as name,
+  albumartist as artist,
   year,
   genre,
   label,
@@ -36,6 +38,7 @@ ORDER BY name;
 
 export const albumsTransformer = ({
   name,
+  artist,
   year,
   genre,
   label,
@@ -43,6 +46,7 @@ export const albumsTransformer = ({
   tracks,
 }: {
   name: string;
+  artist: string;
   year: number;
   genre: string;
   label: string;
@@ -50,6 +54,7 @@ export const albumsTransformer = ({
   tracks: number;
 }): Album => ({
   name: name || "NO_ALBUM",
+  artist,
   year,
   genre,
   label,
@@ -60,4 +65,5 @@ export const albumsTransformer = ({
   },
 });
 
-export const albums = (): Albums => db.prepare(sql).all().map(albumsTransformer);
+export const albums = (): Albums =>
+  db.prepare(sql).all().map(albumsTransformer);

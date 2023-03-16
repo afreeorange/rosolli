@@ -11,7 +11,6 @@ import Shortcuts from "./Components/Shortcuts";
 import Loading from "./Components/Loading";
 
 import "./App.scss";
-import Genres from "./Pages/Genres";
 import Albums from "./Pages/Albums";
 
 export default () => {
