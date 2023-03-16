@@ -37,7 +37,6 @@
 
   --padding-panel: 0.4em;
   --panel-size: 20em;
-  --row-height: 35px;
   --transition-duration: 0.125s;
 
   --color-background: #fff;
@@ -54,7 +53,7 @@
   --color-foreground-lighter: #333;
   --color-highlight: red;
 
-  transition: background 0.125s;
+  transition: background var(--transition-duration);
 }
 
 /* Scrollbar - width */
@@ -142,7 +141,7 @@ main {
   display: grid;
   grid-template-columns: var(--panel-size) auto;
 
-  transition: background 0.125s;
+  transition: background var(--transition-duration);
 }
 
 code {
@@ -165,6 +164,6 @@ hr {
 
 .scroll-shadow {
   box-shadow: 15px 0px 40px -15px rgba(0, 0, 0, 0.75);
-  transition: box-shadow 0.25s;
+  transition: box-shadow var(--transition-duration);
   z-index: 99;
 }

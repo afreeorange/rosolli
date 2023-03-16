@@ -2,9 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import State, { useStore } from "./State";
-
 import Tabs from "./Panels/Tabs";
-
 import Tracks from "./Pages/Tracks";
 import NotFound from "./Pages/NotFound";
 
@@ -13,6 +11,7 @@ import Shortcuts from "./Components/Shortcuts";
 import Loading from "./Components/Loading";
 
 import "./App.scss";
+import Genres from "./Pages/Genres";
 
 export default () => {
   const {
@@ -54,7 +53,8 @@ export default () => {
         </section>
         <section ref={rightRef}>
           <Routes>
-            {/* <Route path="/genres" element={<Genres />} />
+            <Route path="/genres" element={<Genres />} />
+            {/*
             <Route path="/artists" element={<Artists />} />
             <Route path="/albums" element={<Albums />} />
              */}

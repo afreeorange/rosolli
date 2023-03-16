@@ -78,6 +78,7 @@
   .bottom {
     border-top: 1px dotted var(--color-foreground-light);
     overflow-y: hidden;
+    z-index: 1;
   }
 }
 

@@ -3,7 +3,7 @@ import numeral from "numeral";
 import AutoSizer from "react-virtualized-auto-sizer";
 
 import { useStore } from "../State";
-import { reactTableSettings } from "./Tracks/constants";
+import { reactTableSettings } from "../Pages/Tracks";
 
 import styles from "./Genres.module.scss";
 
@@ -14,8 +14,6 @@ const Genres = () => {
 
   return (
     <div className={styles.component}>
-      <h1>Genres</h1>
-
       <ul>
         <AutoSizer>
           {({ height, width }) => (

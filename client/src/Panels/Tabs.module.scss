@@ -16,7 +16,7 @@
       font-size: 2em;
       outline: none;
       padding: calc(var(--padding-panel) * 1) 0;
-      transition: all 0.25s;
+      transition: all var(--transition-duration);
 
       svg {
         margin: 0 auto;
