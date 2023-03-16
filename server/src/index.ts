@@ -7,7 +7,6 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import compression from "compression";
 import { z } from "zod";
-import zlip from "zlib";
 
 import streamRoutes from "./stream";
 import db, {
@@ -18,6 +17,7 @@ import db, {
   artists,
   trackById,
   search,
+  tracksByGenre,
 } from "./database";
 
 // ---------- tRPC Stuff ----------
@@ -39,7 +39,19 @@ const appRouter = router({
   genres: publicProcedure.query(() => genres()),
   albums: publicProcedure.query(() => albums()),
   artists: publicProcedure.query(() => artists()),
+
+  /**
+   * TRACKS
+   */
   tracks: publicProcedure.query(() => tracks()),
+  tracksByGenre: publicProcedure
+    .input(
+      z.string({
+        description: "Genre",
+        required_error: "You must specify a genre",
+      })
+    )
+    .query((req) => tracksByGenre(req.input)),
 
   track: publicProcedure
     .input(

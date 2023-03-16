@@ -11,7 +11,7 @@ import { useVirtual } from "@tanstack/react-virtual";
 import { useStore, trpc } from "../../State";
 import { TrackInList } from "@rosolli/server";
 
-import styles from "./Tracks.module.scss";
+import styles from "./TracksPanel.module.scss";
 import { useWindowSize } from "../../Components/WindowSizeWarning";
 import { MdPlaylistAdd } from "react-icons/md";
 import { IoPlayOutline } from "react-icons/io5";
@@ -31,6 +31,7 @@ const Component = () => {
   const {
     set,
     current: { track: currentTrack, tracks: data },
+    showingSearchResults,
   } = useStore();
 
   const { height: windowHeight } = useWindowSize();
@@ -166,8 +167,9 @@ const Component = () => {
       <div
         style={{
           overflowY: "scroll",
-          height: windowHeight / 2 + "px",
-          // height: "70%",
+          height: showingSearchResults
+            ? windowHeight + "px"
+            : windowHeight / 2 + "px",
         }}
         ref={containerRef}
       >

@@ -4,6 +4,8 @@ import { CgBoard } from "react-icons/cg";
 
 import { useStore } from "../State";
 import styles from "./Links.module.scss";
+import { BiDna } from "react-icons/bi";
+import { SlPeople } from "react-icons/sl";
 
 const Component = () => {
   const { statistics } = useStore();
@@ -33,6 +35,12 @@ const Component = () => {
           <NavLink to={"/tracks"}>
             <span>Tracks</span>
             <span>{numeral(statistics.tracks).format("0,0")}</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to={"/playlists"}>
+            <span>Playlists</span>
+            {/* <span>{numeral(statistics.tracks).format("0,0")}</span> */}
           </NavLink>
         </li>
         {/* <li>

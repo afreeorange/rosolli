@@ -9,7 +9,7 @@ import styles from "./index.module.scss";
 
 const Component = () => {
   const {
-    current: { artists },
+    current: { genres },
   } = useStore();
 
   return (
@@ -21,15 +21,15 @@ const Component = () => {
             lineHeight: 1.5,
           }}
         >
-          <span>All Artists</span>{" "}
-          <span>{numeral(artists.length).format("0,0")}</span>
+          <span>All Genres</span>{" "}
+          <span>{numeral(genres.length).format("0,0")}</span>
         </li>
         <AutoSizer>
           {({ height, width }) => (
             <List
               height={height}
-              itemCount={artists.length}
               width={width}
+              itemCount={genres.length}
               itemSize={reactTableSettings.cellHeight}
               overscanCount={reactTableSettings.overScanCount}
               style={{
@@ -39,28 +39,11 @@ const Component = () => {
             >
               {({ index, style }: { index: number; style: any }) => (
                 <li
-                  onClick={() => console.log(artists[index])}
-                  key={`artist-${artists[index]}`}
+                  onClick={() => console.log(genres[index])}
+                  key={`genre-${genres[index]}`}
                   style={style}
                 >
-                  {artists[index].name}
-                  {/* <small>
-                    <span>
-                      {numeral(artists[index].counts.genres).format("0,0")}{" "}
-                      genre
-                      {artists[index].counts.genres > 1 && "s"}
-                    </span>
-                    <span>
-                      {numeral(artists[index].counts.albums).format("0,0")}{" "}
-                      album
-                      {artists[index].counts.albums > 1 && "s"}
-                    </span>
-                    <span>
-                      {numeral(artists[index].counts.tracks).format("0,0")}{" "}
-                      track
-                      {artists[index].counts.tracks > 1 && "s"}
-                    </span>
-                  </small> */}
+                  {genres[index].name}
                 </li>
               )}
             </List>

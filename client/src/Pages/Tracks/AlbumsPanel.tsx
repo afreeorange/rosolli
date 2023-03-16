@@ -40,14 +40,6 @@ const Component = () => {
               {({ index, style }: { index: number; style: any }) => (
                 <li key={`album-${albums[index].name}`} style={style}>
                   {albums[index].name}
-                  {/* <small>
-                    <span>{albums[index].counts.tracks} tracks</span>
-                    <span>{albums[index].genre}</span>
-                  </small>
-                  <small>
-                    <span>{albums[index].counts.readableTotalLength}</span>
-                    <span>{albums[index].year}</span>
-                  </small> */}
                 </li>
               )}
             </List>

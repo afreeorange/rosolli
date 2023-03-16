@@ -1,9 +1,10 @@
-import Albums from "./Albums";
-import Artists from "./Artists";
-import Genres from "./Genres";
-import Tracks from "./Tracks";
+import Albums from "./AlbumsPanel";
+import Artists from "./ArtistsPanel";
+import Genres from "./GenresPanel";
+import Tracks from "./TracksPanel";
 
 import styles from "./index.module.scss";
+import { useStore } from "../../State";
 
 export const reactTableSettings = {
   cellHeight: 30,
@@ -11,27 +12,35 @@ export const reactTableSettings = {
   paddingBottom: "4em",
 };
 
-const Component = () => (
-  <div className={`${styles.wrapper}`}>
-    {/* <div> */}
-    <div className={`${styles.top}`}>
-      <section>
-        <Genres />
-      </section>
-      <section>
-        <Artists />
-      </section>
-      <section>
-        <Albums />
-      </section>
+const Component = () => {
+  const { showingSearchResults } = useStore();
+
+  return (
+    <div className={styles.wrapper}>
+      <div
+        className={`${styles.top}`}
+        style={{
+          /** Don't unmount this entirely when searching! */
+          display: showingSearchResults ? "none" : "grid",
+        }}
+      >
+        <section>
+          <Genres />
+        </section>
+        <section>
+          <Artists />
+        </section>
+        <section>
+          <Albums />
+        </section>
+      </div>
+      <div className={`${styles.bottom}`}>
+        <section>
+          <Tracks />
+        </section>
+      </div>
     </div>
-    {/* <div> */}
-    <div className={`${styles.bottom}`}>
-      <section>
-        <Tracks />
-      </section>
-    </div>
-  </div>
-);
+  );
+};
 
 export default Component;

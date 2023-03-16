@@ -86,6 +86,16 @@ LEFT JOIN albums a
 ON i.album_id = a.id
 WHERE i.id = ?
 `,
+
+  byGenre: `
+SELECT
+  i.*,
+  a.artpath
+FROM items i
+LEFT JOIN albums a
+ON i.album_id = a.id
+WHERE i.genre = ?
+`,
 };
 
 export const trackById = async (id: number): Promise<Track> => {
@@ -119,3 +129,6 @@ export const tracksTransformer = (_: any): Track => ({
 
 export const tracks = (): Tracks =>
   db.prepare(sql.all).all().map(tracksTransformer);
+
+export const tracksByGenre = (genre: string): Tracks =>
+  db.prepare(sql.byGenre).all([genre]).map(tracksTransformer);

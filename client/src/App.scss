@@ -27,6 +27,7 @@
 }
 
 :root {
+  // TODO: Inter?
   --font-family: "84204FFF-79F6-4EF4-94F5-6CD6CA6CA761", -apple-system,
     BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -42,10 +43,10 @@
   --color-background: #fff;
   --color-foreground: #101010;
   --color-foreground-light: #ccc;
-  --color-foreground-lighter: #ddd;
+  --color-foreground-lighter: #eee;
   --color-highlight: #fb4934;
 
-  --line-style: 1px dotted var(--color-foreground-light);
+  --line-style: 1px solid var(--color-foreground-lighter);
 }
 
 .dark {
@@ -54,6 +55,8 @@
   --color-foreground-light: #666;
   --color-foreground-lighter: #333;
   --color-highlight: red;
+
+  --line-style: 1px solid var(--color-foreground-lighter);
 
   transition: background var(--transition-duration);
 }

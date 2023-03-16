@@ -1,8 +1,8 @@
 .component {
   table {
     width: 100%;
-
     border-collapse: collapse;
+    background: var(--color-background);
 
     tbody {
       tr {

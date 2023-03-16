@@ -9,6 +9,12 @@
       flex-direction: row;
       justify-content: space-between;
 
+      svg {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: var(--padding-panel);
+      }
+
       a {
         padding: calc(var(--padding-panel) / 2) var(--padding-panel);
         text-decoration: none;

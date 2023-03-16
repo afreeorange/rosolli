@@ -12,6 +12,7 @@ import Loading from "./Components/Loading";
 
 import "./App.scss";
 import Genres from "./Pages/Genres";
+import Albums from "./Pages/Albums";
 
 export default () => {
   const {
@@ -53,10 +54,11 @@ export default () => {
         </section>
         <section ref={rightRef}>
           <Routes>
-            <Route path="/genres" element={<Genres />} />
+            {/* <Route path="/genres" element={<Genres />} /> */}
+            <Route path="/albums" element={<Albums />} />
             {/*
             <Route path="/artists" element={<Artists />} />
-            <Route path="/albums" element={<Albums />} />
+
              */}
             <Route path="/tracks" element={<Tracks />} />
             <Route path="/" element={<Navigate to="/tracks" />} />
