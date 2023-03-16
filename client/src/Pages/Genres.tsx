@@ -26,7 +26,7 @@ const Genres = () => {
               itemSize={90}
               overscanCount={reactTableSettings.overScanCount}
               style={{
-                paddingBottom: reactTableSettings.bottomPadding,
+                paddingBottom: reactTableSettings.paddingBottom,
                 lineHeight: 1.5,
               }}
             >

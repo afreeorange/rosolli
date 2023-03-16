@@ -2,7 +2,6 @@
 
 .panel {
   height: 100%;
-  overflow-y: hidden;
 
   /**
   * NOTE: This is the outer container for virtualization. It needs the height
@@ -79,5 +78,26 @@
   .bottom {
     border-top: 1px dotted var(--color-foreground-light);
     overflow-y: hidden;
+  }
+}
+
+.wrapperVertical {
+  width: 100%;
+  height: 100%;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: var(--panel-size);
+    background: #000;
+
+    .panel {
+      // width: 100;
+    }
+  }
+
+  section {
+    height: 100%;
   }
 }

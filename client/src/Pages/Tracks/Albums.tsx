@@ -3,7 +3,7 @@ import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 
 import { useStore } from "../../State";
-import { reactTableSettings } from "./constants";
+import { reactTableSettings } from ".";
 
 import styles from "./index.module.scss";
 
@@ -33,7 +33,7 @@ const Component = () => {
               itemSize={reactTableSettings.cellHeight}
               overscanCount={reactTableSettings.overScanCount}
               style={{
-                paddingBottom: reactTableSettings.bottomPadding,
+                paddingBottom: reactTableSettings.paddingBottom,
                 lineHeight: 1.5,
               }}
             >

@@ -9,11 +9,20 @@ import {
 import { useVirtual } from "@tanstack/react-virtual";
 
 import { useStore, trpc } from "../../State";
-import { TrackInList, tracks } from "@rosolli/server";
+import { TrackInList } from "@rosolli/server";
 
 import styles from "./Tracks.module.scss";
-import numeral from "numeral";
 import { useWindowSize } from "../../Components/WindowSizeWarning";
+
+const COLUMN_WIDTHS: Record<string, string> = {
+  __meta: "80px",
+  title: "350px",
+  album: "250px",
+  artist: "200px",
+  readableLength: "100px",
+  track: "80px",
+  year: "80px",
+};
 
 const Component = () => {
   // Load the data
@@ -66,33 +75,27 @@ const Component = () => {
       {
         accessorKey: "title",
         header: "Title",
-        size: 400,
       },
       {
         accessorKey: "album",
         header: "Album",
-        size: 400,
       },
       {
         accessorKey: "artist",
         header: "Artist",
-        size: 300,
       },
       {
         accessorKey: "readableLength",
         header: "Length",
-        size: 80,
       },
       {
         accessorKey: "track",
         header: "Track",
-        size: 80,
         accessorFn: (row) => `${row.track}/${row.tracktotal}`,
       },
       {
         accessorKey: "year",
         header: "Year",
-        size: 80,
       },
       // {
       //   accessorKey: "genre",
@@ -162,6 +165,7 @@ const Component = () => {
         style={{
           overflowY: "scroll",
           height: windowHeight / 2 + "px",
+          // height: "70%",
         }}
         ref={containerRef}
       >
@@ -180,8 +184,11 @@ const Component = () => {
                      * half...
                      */
                     style={{
-                      width: header.column.getSize(),
-                      maxWidth: header.column.getSize(),
+                      // width: header.column.getSize(),
+                      // maxWidth: header.column.getSize(),
+
+                      width: COLUMN_WIDTHS[header.column.id],
+                      maxWidth: COLUMN_WIDTHS[header.column.id],
                     }}
                   >
                     {header.isPlaceholder
@@ -220,8 +227,8 @@ const Component = () => {
                       }}
                       data-column-name={cell.column.columnDef.header}
                       style={{
-                        width: cell.column.getSize(),
-                        maxWidth: cell.column.getSize(),
+                        width: COLUMN_WIDTHS[cell.column.id],
+                        maxWidth: COLUMN_WIDTHS[cell.column.id],
                       }}
                     >
                       {flexRender(

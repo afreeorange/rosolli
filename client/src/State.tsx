@@ -59,6 +59,7 @@ type State = {
   preferences: {
     trackInfoOpen: boolean;
     darkMode: boolean;
+    verticalTrackBrowse: boolean;
   };
 
   set: {
@@ -86,6 +87,7 @@ type State = {
     preferences: {
       trackInfoOpen: (open: boolean) => void;
       darkMode: (darkMode: boolean) => void;
+      verticalTrackBrowse: (verticalTrackBrowse: boolean) => void;
     };
   };
 };
@@ -121,6 +123,7 @@ export const useStore = createStore<State>((set) => ({
      * index.html.
      */
     darkMode: Boolean(localStorage.getItem("darkMode")),
+    verticalTrackBrowse: false,
   },
 
   set: {
@@ -237,6 +240,14 @@ export const useStore = createStore<State>((set) => ({
           localStorage.removeItem("darkMode");
         }
       },
+      verticalTrackBrowse: (verticalTrackBrowse) =>
+        set((state) => ({
+          ...state,
+          preferences: {
+            ...state.preferences,
+            verticalTrackBrowse,
+          },
+        })),
     },
   },
 }));
