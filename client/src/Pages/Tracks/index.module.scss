@@ -45,7 +45,7 @@
     }
 
     li:not(:last-child) {
-      border-bottom: 1px dotted var(--color-foreground-light);
+      border-bottom: var(--line-style);
     }
 
     li:hover {
@@ -71,12 +71,12 @@
     height: 100%;
 
     section:not(:last-of-type) {
-      border-right: 1px dotted var(--color-foreground-light);
+      border-right: var(--line-style);
     }
   }
 
   .bottom {
-    border-top: 1px dotted var(--color-foreground-light);
+    border-top: var(--line-style);
     overflow-y: hidden;
     z-index: 1;
   }

@@ -1,10 +1,10 @@
 .component {
   background: var(--color-background);
-  border-right: 1px dotted var(--color-foreground-light);
+  border-right: var(--line-style);
   height: 100%;
 
   ul[role="tablist"] {
-    border-bottom: 1px dotted var(--color-foreground-light);
+    border-bottom: var(--line-style);
 
     display: grid;
     grid-template-columns: repeat(5, 20%);
@@ -24,7 +24,7 @@
     }
 
     li[role="tab"]:not(:last-of-type) {
-      border-right: 1px dotted var(--color-foreground-light);
+      border-right: var(--line-style);
     }
 
     li[role="tab"]:hover {

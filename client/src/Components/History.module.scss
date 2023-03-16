@@ -2,6 +2,6 @@
   p {
     text-align: center;
     padding: var(--padding-panel);
-    border-bottom: 1px dotted var(--color-foreground-light);
+    border-bottom: var(--line-style);
   }
 }

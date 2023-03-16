@@ -6,7 +6,7 @@
     position: absolute;
     bottom: 0;
     background: var(--color-background);
-    border-right: 1px dotted var(--color-foreground-light);
+    border-right: var(--line-style);
     width: var(--panel-size);
   }
 
@@ -16,8 +16,8 @@
     grid-template-columns: repeat(2, 50%);
     width: 100%;
 
-    border-top: 1px dotted var(--color-foreground-light);
-    border-bottom: 1px dotted var(--color-foreground-light);
+    border-top: var(--line-style);
+    border-bottom: var(--line-style);
 
     button {
       background: var(--color-background);
@@ -39,7 +39,7 @@
     }
 
     button:not(:last-of-type) {
-      border-right: 1px dotted var(--color-foreground-light);
+      border-right: var(--line-style);
     }
   }
 
@@ -57,7 +57,7 @@
     tr:not(:last-of-type) {
       th,
       td {
-        border-bottom: 1px dotted var(--color-foreground-light);
+        border-bottom: var(--line-style);
       }
     }
 

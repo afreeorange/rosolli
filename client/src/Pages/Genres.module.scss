@@ -10,7 +10,7 @@
     font-size: calc(var(--font-size-base) * 1.5);
 
     li {
-      border-bottom: 1px dotted var(--color-foreground-light);
+      border-bottom: var(--line-style);
       font-weight: 600;
 
       small {
@@ -21,7 +21,7 @@
         font-weight: 300;
 
         span {
-          border-top: 1px dashed var(--color-foreground-lighter);
+          border-top: var(--line-style);
           display: table-cell;
           width: 33%;
           // background: #ddd;

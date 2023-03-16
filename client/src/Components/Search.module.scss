@@ -8,7 +8,7 @@
     background: var(--color-background);
     color: var(--color--foreground);
     padding: calc(var(--padding-panel) / 2) var(--padding-panel);
-    border-bottom: 1px dotted var(--color-foreground-light);
+    border-bottom: var(--line-style);
   }
 
   input:focus {

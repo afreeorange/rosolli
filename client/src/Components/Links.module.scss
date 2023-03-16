@@ -40,7 +40,7 @@
     }
 
     li:not(:last-child) {
-      border-bottom: 1px dotted var(--color-foreground-light);
+      border-bottom: var(--line-style);
     }
   }
 }

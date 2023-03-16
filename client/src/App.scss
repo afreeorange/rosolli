@@ -44,6 +44,8 @@
   --color-foreground-light: #ccc;
   --color-foreground-lighter: #ddd;
   --color-highlight: #fb4934;
+
+  --line-style: 1px dotted var(--color-foreground-light);
 }
 
 .dark {
@@ -150,7 +152,7 @@ code {
 
 hr {
   border: 0;
-  border-bottom: 1px dotted var(--color-foreground-light);
+  border-bottom: var(--line-style);
 }
 
 .waiting-text {

@@ -12,11 +12,11 @@
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
-          border-bottom: 1px dotted var(--color-foreground-light);
+          border-bottom: var(--line-style);
         }
 
         td:not(:last-of-type) {
-          border-right: 1px dotted var(--color-foreground-light);
+          border-right: var(--line-style);
         }
 
         &:hover {
@@ -40,7 +40,7 @@
           padding: var(--padding-panel);
           color: var(--color-highlight);
           text-align: left;
-          border-right: 1px dotted var(--color-foreground-light);
+          border-right: var(--line-style);
         }
       }
     }
@@ -78,10 +78,10 @@
       justify-content: center;
       background: var(--color-background);
       color: var(--color-highlight);
-      border-bottom: 1px dotted var(--color-foreground-light);
+      border-bottom: var(--line-style);
 
       &:not(:last-of-type) {
-        border-right: 1px dotted var(--color-foreground-light);
+        border-right: var(--line-style);
       }
 
       &:hover {
