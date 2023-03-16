@@ -13,9 +13,11 @@ import { TrackInList } from "@rosolli/server";
 
 import styles from "./Tracks.module.scss";
 import { useWindowSize } from "../../Components/WindowSizeWarning";
+import { MdPlaylistAdd } from "react-icons/md";
+import { IoPlayOutline } from "react-icons/io5";
 
 const COLUMN_WIDTHS: Record<string, string> = {
-  __meta: "80px",
+  __meta: "60px",
   title: "350px",
   album: "250px",
   artist: "200px",
@@ -173,6 +175,7 @@ const Component = () => {
           <thead>
             {table.getHeaderGroups().map((hg) => (
               <tr key={hg.id}>
+                <th></th>
                 {hg.headers.map((header) => (
                   <th
                     key={header.id}
@@ -215,6 +218,21 @@ const Component = () => {
 
               return (
                 <tr key={realRow.id}>
+                  <td
+                    style={{
+                      width: COLUMN_WIDTHS["__meta"],
+                      maxWidth: COLUMN_WIDTHS["__meta"],
+                    }}
+                  >
+                    <div className={styles.buttons}>
+                      <button>
+                        <MdPlaylistAdd />
+                      </button>{" "}
+                      <button>
+                        <IoPlayOutline />
+                      </button>
+                    </div>
+                  </td>
                   {realRow.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
