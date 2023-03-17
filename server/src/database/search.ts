@@ -44,7 +44,9 @@ LIMIT ${SEARCH_RESULT_LIMIT};
 
   albums: `
 SELECT
-  DISTINCT(album) as name,
+  DISTINCT album as name,
+  albumartist as artist,
+  album_id as id,
   year,
   genre,
   label,

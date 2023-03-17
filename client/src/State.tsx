@@ -1,8 +1,17 @@
+/**
+ * TODO:
+ *
+ * - ImmerJS
+ * - Split things up
+ * - DevTools
+ */
+
 import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink, loggerLink } from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
 import { create as createStore } from "zustand";
+import { devtools } from "zustand/middleware";
 
 import {
   AppRouter,
@@ -12,6 +21,7 @@ import {
   Tracks,
   Artists,
   Track,
+  Album,
 } from "@rosolli/server";
 
 /**
@@ -46,13 +56,16 @@ type State = {
 
   current: {
     genres: Genres;
-    albums: Albums;
-    artists: Artists;
-    tracks: Tracks;
 
+    albums: Albums;
+    album: Album | null;
+
+    artists: Artists;
+
+    tracks: Tracks;
     track: Track | null;
+
     playingTrack: Track | null;
-    // tabNumber: keyof typeof TABS;
     tabNumber: number;
   };
 
@@ -75,12 +88,16 @@ type State = {
 
     current: {
       genres: (genres: Genres) => void;
-      albums: (albums: Albums) => void;
-      artists: (artists: Artists) => void;
-      tracks: (tracks: Tracks) => void;
 
-      track: (track: Track | null) => void;
+      albums: (albums: Albums) => void;
+      album: (album: Album) => void;
+
+      artists: (artists: Artists) => void;
+
+      tracks: (tracks: Tracks) => void;
+      track: (track: Track) => void;
       playingTrack: (track: Track | null) => void;
+
       tabNumber: (tabNumber: number) => void;
     };
 
@@ -106,11 +123,15 @@ export const useStore = createStore<State>((set) => ({
 
   current: {
     genres: [],
-    albums: [],
-    artists: [],
-    tracks: [],
 
+    albums: [],
+    album: null,
+
+    artists: [],
+
+    tracks: [],
     track: null,
+
     playingTrack: null,
     tabNumber: 1,
   },
@@ -171,6 +192,7 @@ export const useStore = createStore<State>((set) => ({
             artists,
           },
         })),
+
       albums: (albums: Albums) =>
         set((state) => ({
           ...state,
@@ -179,6 +201,15 @@ export const useStore = createStore<State>((set) => ({
             albums,
           },
         })),
+      album: (album: Album) =>
+        set((state) => ({
+          ...state,
+          current: {
+            ...state.current,
+            album,
+          },
+        })),
+
       tracks: (tracks: Tracks) =>
         set((state) => ({
           ...state,
@@ -187,7 +218,6 @@ export const useStore = createStore<State>((set) => ({
             tracks,
           },
         })),
-
       track: (track) =>
         set((state) => ({
           ...state,
@@ -267,6 +297,9 @@ const ManageStore: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isFetching: isFet_L, data: artists } = trpc.artists.useQuery();
   const { isFetching: isFet_T, data: tracks } = trpc.tracks.useQuery();
 
+  /**
+   * BOOTSTRAP! 🥾
+   */
   useEffect(() => {
     (() => {
       if (!(isFet_S || isFet_G || isFet_A || isFet_L || isFet_T)) {

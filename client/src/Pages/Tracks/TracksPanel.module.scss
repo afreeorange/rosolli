@@ -66,19 +66,18 @@
     display: grid;
     grid-template-columns: repeat(2, 50%);
     height: 30px;
-    width: 100%;
 
     button {
-      text-align: center;
-      cursor: pointer;
-      border: 0;
-      color: var(--color-highlight);
-      display: flex;
+      min-width: 30px;
+
       align-items: center;
-      justify-content: center;
       background: var(--color-background);
-      color: var(--color-highlight);
+      border: 0;
       border-bottom: var(--line-style);
+      color: var(--color-highlight);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
 
       &:not(:last-of-type) {
         border-right: var(--line-style);
@@ -90,4 +89,9 @@
       }
     }
   }
+}
+
+.active {
+  background: var(--color-highlight);
+  color: var(--color-background);
 }

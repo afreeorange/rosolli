@@ -34,6 +34,8 @@ Just an overcomplicated way of teaching myself [tRPC](https://trpc.io/), [Prisma
 - [ ] Server - Scan Mode
 - [x] Server - Compression (6.5MiB -> 855Kib!)
 - [ ] Playlists
+  - [ ] Recently Added
+  - [ ] Recently Listened
 - [ ] Packaging
 - [ ] Loading states
 - [ ] Error states :/

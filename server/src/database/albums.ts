@@ -1,9 +1,11 @@
-import db from ".";
+import db, { Track } from ".";
+import { tracksByAlbumId } from "./tracks";
 import { readableLength } from "./helpers";
 
 export type Album = {
   name: string;
   artist: string;
+  id: number;
   year: number | null;
   genre: string | null;
   label: string | null;
@@ -12,6 +14,7 @@ export type Album = {
     totalLength: number;
     readableTotalLength: string;
   };
+  tracks?: Track[];
 };
 export type Albums = Album[];
 
@@ -22,10 +25,12 @@ export type Albums = Album[];
  *
  * Album art is going to be a bit of a mess...
  */
-const sql = `
+const sql = {
+  all: `
 SELECT
   DISTINCT album as name,
   albumartist as artist,
+  album_id as id,
   year,
   genre,
   label,
@@ -34,11 +39,27 @@ SELECT
 FROM items
 GROUP BY name
 ORDER BY name;
-`;
+  `,
+
+  one: `
+SELECT
+  DISTINCT album as name,
+  albumartist as artist,
+  album_id as id,
+  year,
+  genre,
+  label,
+  SUM(length) as totalLength,
+  COUNT(*) as tracks
+FROM items
+WHERE album_id = ?
+  `,
+};
 
 export const albumsTransformer = ({
   name,
   artist,
+  id,
   year,
   genre,
   label,
@@ -47,6 +68,7 @@ export const albumsTransformer = ({
 }: {
   name: string;
   artist: string;
+  id: number;
   year: number;
   genre: string;
   label: string;
@@ -54,7 +76,8 @@ export const albumsTransformer = ({
   tracks: number;
 }): Album => ({
   name: name || "NO_ALBUM",
-  artist,
+  artist: artist || "NO_ARTIST",
+  id,
   year,
   genre,
   label,
@@ -66,4 +89,9 @@ export const albumsTransformer = ({
 });
 
 export const albums = (): Albums =>
-  db.prepare(sql).all().map(albumsTransformer);
+  db.prepare(sql.all).all().map(albumsTransformer);
+
+export const album = async (id: number): Promise<Album> => ({
+  ...albumsTransformer(db.prepare(sql.one).get([id])),
+  tracks: await tracksByAlbumId(id),
+});

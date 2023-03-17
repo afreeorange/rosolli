@@ -18,6 +18,7 @@ import db, {
   trackById,
   search,
   tracksByGenre,
+  album,
 } from "./database";
 
 // ---------- tRPC Stuff ----------
@@ -37,8 +38,17 @@ const router = t.router;
 const appRouter = router({
   // TODO: Can these be in one giant endpoint?
   genres: publicProcedure.query(() => genres()),
-  albums: publicProcedure.query(() => albums()),
   artists: publicProcedure.query(() => artists()),
+
+  /**
+   * ALBUMS
+   */
+  albums: publicProcedure.query(() => albums()),
+  album: publicProcedure
+    .input(z.number().nullable())
+    .query(async (req) =>
+      req.input ? await album(req.input) : Promise.resolve(null)
+    ),
 
   /**
    * TRACKS

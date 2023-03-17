@@ -1,6 +1,6 @@
 import { parseFile, selectCover } from "music-metadata";
 
-import db from ".";
+import db, { Album } from ".";
 import { placeholderAlbumCover } from "../helpers";
 import { readableLength } from "./helpers";
 
@@ -68,6 +68,7 @@ SELECT
   artist,
   genre,
   id,
+  path,
   length,
   title,
   track,
@@ -96,11 +97,16 @@ LEFT JOIN albums a
 ON i.album_id = a.id
 WHERE i.genre = ?
 `,
+
+  byAlbumId: `
+SELECT
+  i.*
+FROM items i
+WHERE album_id = ?
+`,
 };
 
-export const trackById = async (id: number): Promise<Track> => {
-  const track = db.prepare(sql.one).get([id]);
-
+const injectCoverArt = async (track: Track): Promise<Track> => {
   /**
    * Try to read the album art associated with the track
    *
@@ -114,21 +120,28 @@ export const trackById = async (id: number): Promise<Track> => {
     cover: cover
       ? `data:${cover.format};base64,${cover.data.toString("base64")}`
       : await placeholderAlbumCover(track),
-    readableLength: readableLength(track.length),
-    path: track.path.toString(),
   };
 };
 
-/**
- * Return a giant list of all tracks.
- */
-export const tracksTransformer = (_: any): Track => ({
+export const tracksTransformer = (_: Track): Track => ({
   ..._,
+  path: _.path ? _.path.toString() : "",
   readableLength: readableLength(_.length),
 });
+
+export const trackById = async (id: number): Promise<Track> =>
+  await injectCoverArt(tracksTransformer(db.prepare(sql.one).get([id])));
 
 export const tracks = (): Tracks =>
   db.prepare(sql.all).all().map(tracksTransformer);
 
 export const tracksByGenre = (genre: string): Tracks =>
   db.prepare(sql.byGenre).all([genre]).map(tracksTransformer);
+
+export const tracksByAlbumId = async (id: number): Promise<Track[]> =>
+  Promise.all(
+    db
+      .prepare(sql.byAlbumId)
+      .all([id])
+      .map(async (_) => await tracksTransformer(_))
+  );

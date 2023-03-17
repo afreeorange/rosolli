@@ -159,11 +159,6 @@ const Component = () => {
 
   return (
     <div className={`panel ${styles.component}`}>
-      {/* <h1>
-        Tracks {windowHeight} -{" "}
-        <span>{numeral(data.length).format("0,0")}</span>
-      </h1> */}
-
       <div
         style={{
           overflowY: "scroll",
@@ -182,19 +177,6 @@ const Component = () => {
                   <th
                     key={header.id}
                     data-column-name={header.column.columnDef.header}
-                    /**
-                     * NOTE: This does nothing which is a bit surprising to me.
-                     * Or maybe I've been laboring under a misapprehension
-                     * about how table columns work for the past decade and a
-                     * half...
-                     */
-                    style={{
-                      // width: header.column.getSize(),
-                      // maxWidth: header.column.getSize(),
-
-                      width: COLUMN_WIDTHS[header.column.id],
-                      maxWidth: COLUMN_WIDTHS[header.column.id],
-                    }}
                   >
                     {header.isPlaceholder
                       ? null
@@ -219,7 +201,15 @@ const Component = () => {
               const realRow = rows[vrow.index] as Row<TrackInList>;
 
               return (
-                <tr key={realRow.id}>
+                <tr
+                  key={realRow.id}
+                  className={
+                    selectedId &&
+                    parseInt(realRow.getValue("id")) === selectedId
+                      ? styles.active
+                      : undefined
+                  }
+                >
                   <td
                     style={{
                       width: COLUMN_WIDTHS["__meta"],

@@ -2,16 +2,17 @@ import React, { useEffect, useRef } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import State, { useStore } from "./State";
+
+import Albums from "./Pages/Albums";
+import NotFound from "./Pages/NotFound";
 import Tabs from "./Panels/Tabs";
 import Tracks from "./Pages/Tracks";
-import NotFound from "./Pages/NotFound";
 
-import WindowSizeWarning from "./Components/WindowSizeWarning";
-import Shortcuts from "./Components/Shortcuts";
 import Loading from "./Components/Loading";
+import Shortcuts from "./Components/Shortcuts";
+import WindowSizeWarning from "./Components/WindowSizeWarning";
 
 import "./App.scss";
-import Albums from "./Pages/Albums";
 
 export default () => {
   const {
@@ -54,11 +55,8 @@ export default () => {
         <section ref={rightRef}>
           <Routes>
             {/* <Route path="/genres" element={<Genres />} /> */}
+            {/* <Route path="/artists" element={<Artists />} /> */}
             <Route path="/albums" element={<Albums />} />
-            {/*
-            <Route path="/artists" element={<Artists />} />
-
-             */}
             <Route path="/tracks" element={<Tracks />} />
             <Route path="/" element={<Navigate to="/tracks" />} />
             <Route path="*" element={<NotFound />} />

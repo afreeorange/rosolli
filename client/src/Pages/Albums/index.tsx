@@ -1,20 +1,60 @@
 import { FixedSizeList as List } from "react-window";
-import numeral from "numeral";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { BiAlbum } from "react-icons/bi";
 
-import { useStore } from "../../State";
+import { trpc, useStore } from "../../State";
 import { reactTableSettings } from "../Tracks";
 
 import styles from "./index.module.scss";
+import { useState } from "react";
 
-const Albums = () => {
+const Album = () => {
   const {
-    current: { albums },
+    current: { album },
   } = useStore();
 
+  if (!album) {
+    return (
+      <div className={`${styles.one} waiting-text`}>
+        Select an album to view more information about it.
+      </div>
+    );
+  }
+
   return (
-    <div className={styles.component}>
+    <div className={styles.one}>
+      <h1>{album.name}</h1>
+      <h2>{album.artist}</h2>
+      <table>
+        <tbody>
+          {album.tracks?.map((_) => (
+            <tr key={_.id}>
+              <td>{_.title}</td>
+              <td>
+                <code>{_.readableLength}</code>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+const Albums = () => {
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const {
+    current: { albums },
+    set,
+  } = useStore();
+
+  trpc.album.useQuery(selectedId, {
+    enabled: Boolean(selectedId),
+    onSuccess: (data) => (data ? set.current.album(data) : null),
+  });
+
+  return (
+    <div className={styles.all}>
       <ul>
         <AutoSizer>
           {({ height, width }) => (
@@ -29,20 +69,24 @@ const Albums = () => {
               }}
             >
               {({ index, style }: { index: number; style: any }) => {
+                /**
+                 * TODO: Do we need `null` albums?
+                 */
+                let album = albums.filter((_) => _.id !== null)[index];
                 let {
-                  genre,
-                  label,
-                  year,
-                  name,
                   artist,
+                  id,
+                  name,
+                  year,
                   counts: { tracks, readableTotalLength: length },
-                } = albums[index];
+                } = album;
 
                 return (
                   <li
-                    onClick={() => console.log(name)}
+                    onClick={() => setSelectedId(id)}
                     key={`album-${name}`}
                     style={style}
+                    className={id === selectedId ? styles.active : undefined}
                   >
                     <span>
                       <BiAlbum />
@@ -73,9 +117,10 @@ const Albums = () => {
 };
 
 const Component = () => (
-  <>
+  <div className={styles.wrapper}>
     <Albums />
-  </>
+    <Album />
+  </div>
 );
 
 export default Component;
