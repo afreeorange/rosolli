@@ -13,6 +13,7 @@ import Shortcuts from "./Components/Shortcuts";
 import WindowSizeWarning from "./Components/WindowSizeWarning";
 
 import "./App.scss";
+import Genres from "./Pages/Genres";
 
 export default () => {
   const {

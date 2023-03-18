@@ -103,9 +103,13 @@ SELECT
   i.*
 FROM items i
 WHERE album_id = ?
+ORDER BY track, title ASC
 `,
 };
 
+/**
+ * TODO: This is sloooooooooooow (no surprises here)
+ */
 const injectCoverArt = async (track: Track): Promise<Track> => {
   /**
    * Try to read the album art associated with the track

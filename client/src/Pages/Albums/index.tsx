@@ -7,6 +7,8 @@ import { reactTableSettings } from "../Tracks";
 
 import styles from "./index.module.scss";
 import { useState } from "react";
+import { MdPlaylistAdd } from "react-icons/md";
+import { IoPlayOutline } from "react-icons/io5";
 
 const Album = () => {
   const {
@@ -23,16 +25,56 @@ const Album = () => {
 
   return (
     <div className={styles.one}>
-      <h1>{album.name}</h1>
+      <h1>
+        {album.name} {album.id}
+      </h1>
       <h2>{album.artist}</h2>
+
+      <hr />
+
+      <ul>
+        <li>{album.genre}</li>
+        <li>{album.label}</li>
+        <li>{album.year}</li>
+        <li>{album.id}</li>
+      </ul>
+
       <table>
+        {/* <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Track</th>
+            <th>Length</th>
+          </tr>
+        </thead> */}
         <tbody>
           {album.tracks?.map((_) => (
             <tr key={_.id}>
-              <td>{_.title}</td>
               <td>
-                <code>{_.readableLength}</code>
+                <div className={styles.buttons}>
+                  <button>
+                    <MdPlaylistAdd />
+                  </button>{" "}
+                  <button>
+                    <IoPlayOutline />
+                  </button>
+                </div>
               </td>
+              <td>{_.track}</td>
+              <td>{_.title}</td>
+
+              <td>{_.bitrate}</td>
+              <td>{_.channels}</td>
+              <td>
+                {_.disc} / {_.disctotal}
+              </td>
+              <td>
+                {_.encoder} / {_.format}
+              </td>
+              <td>{_.samplerate}</td>
+
+              <td>{_.readableLength}</td>
             </tr>
           ))}
         </tbody>
@@ -42,7 +84,7 @@ const Album = () => {
 };
 
 const Albums = () => {
-  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [selectedId, setSelectedId] = useState<number | null>(1259);
   const {
     current: { albums },
     set,

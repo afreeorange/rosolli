@@ -16,7 +16,7 @@ import { useWindowSize } from "../../Components/WindowSizeWarning";
 import { MdPlaylistAdd } from "react-icons/md";
 import { IoPlayOutline } from "react-icons/io5";
 
-const COLUMN_WIDTHS: Record<string, string> = {
+export const TRACKS_TABLE_COLUMN_WIDTHS: Record<string, string> = {
   __meta: "60px",
   title: "350px",
   album: "250px",
@@ -212,8 +212,8 @@ const Component = () => {
                 >
                   <td
                     style={{
-                      width: COLUMN_WIDTHS["__meta"],
-                      maxWidth: COLUMN_WIDTHS["__meta"],
+                      width: TRACKS_TABLE_COLUMN_WIDTHS["__meta"],
+                      maxWidth: TRACKS_TABLE_COLUMN_WIDTHS["__meta"],
                       padding: 0,
                     }}
                   >
@@ -238,8 +238,8 @@ const Component = () => {
                       }}
                       data-column-name={cell.column.columnDef.header}
                       style={{
-                        width: COLUMN_WIDTHS[cell.column.id],
-                        maxWidth: COLUMN_WIDTHS[cell.column.id],
+                        width: TRACKS_TABLE_COLUMN_WIDTHS[cell.column.id],
+                        maxWidth: TRACKS_TABLE_COLUMN_WIDTHS[cell.column.id],
                       }}
                     >
                       {flexRender(
