@@ -40,15 +40,18 @@ const Album = () => {
         <div>
           <h1>{album.name}</h1>
           <h2>{album.artist}</h2>
+          <ul>
+            <li>
+              {album.counts.tracks} track
+              {`${album.counts.tracks > 1 ? "s" : ""}`}
+            </li>
+            <li>{album.counts.readableTotalLength}</li>
+            <li>{album.genre}</li>
+            <li>{album.label}</li>
+            <li>{album.year}</li>
+          </ul>
         </div>
       </div>
-
-      <ul>
-        <li>{album.genre}</li>
-        <li>{album.label}</li>
-        <li>{album.year}</li>
-        <li>{album.id}</li>
-      </ul>
 
       <table>
         <thead>
@@ -108,6 +111,8 @@ const Album = () => {
           ))}
         </tbody>
       </table>
+
+      <p>Album ID {album.id}</p>
     </div>
   );
 };
@@ -143,7 +148,8 @@ const Albums = () => {
                 /**
                  * TODO: Do we need `null` albums?
                  */
-                let album = albums.filter((_) => _.id !== null)[index];
+
+                let album = albums.filter((_) => _.name !== "NO_ALBUM")[index];
                 let {
                   artist,
                   id,

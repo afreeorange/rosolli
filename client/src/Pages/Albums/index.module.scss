@@ -101,6 +101,9 @@ $album-art-size: 15em;
     // Album
     > div:nth-of-type(2) {
       padding: calc(var(--padding-panel) * 1) calc(var(--padding-panel) * 4);
+
+      ul {
+      }
     }
   }
 
