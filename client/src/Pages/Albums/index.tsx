@@ -40,11 +40,9 @@ const Album = () => {
         <div>
           <h1>{album.name}</h1>
           <h2>{album.artist}</h2>
+          <p></p>
           <ul>
-            <li>
-              {album.counts.tracks} track
-              {`${album.counts.tracks > 1 ? "s" : ""}`}
-            </li>
+            <li>ID {album.id}</li>
             <li>{album.counts.readableTotalLength}</li>
             <li>{album.genre}</li>
             <li>{album.label}</li>
