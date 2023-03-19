@@ -70,22 +70,49 @@
   }
 }
 
+$album-art-size: 15em;
+
 .one {
+  width: calc(var(--panel-size) * 2);
   height: 100vh;
   overflow-y: scroll;
-  width: calc(var(--panel-size) * 4.5);
   border-right: var(--line-style);
+  padding-bottom: calc(var(--padding-panel) * 8);
+
+  > div {
+    display: grid;
+    grid-template-columns: $album-art-size auto;
+    margin-bottom: calc(var(--padding-panel) * 2);
+
+    // Album Art
+    > div:nth-of-type(1) {
+      width: $album-art-size;
+      height: $album-art-size;
+      margin: calc(var(--padding-panel) * 1);
+      border: var(--line-style);
+
+      svg {
+        font-size: $album-art-size;
+        color: var(--color-background);
+        background: var(--color-foreground-lighter);
+      }
+    }
+
+    // Album
+    > div:nth-of-type(2) {
+      padding: calc(var(--padding-panel) * 1) calc(var(--padding-panel) * 4);
+    }
+  }
 
   h1 {
     font-size: calc(var(--font-size-base) * 2);
-    padding: calc(var(--padding-panel) * 1);
+    color: var(--color-highlight);
   }
 
   h2 {
     font-size: calc(var(--font-size-base) * 2);
     font-weight: 600;
     margin-bottom: calc(var(--padding-panel) * 2);
-    padding: calc(var(--padding-panel) * 1);
   }
 
   table {

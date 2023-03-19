@@ -1,21 +1,19 @@
 .component {
   h2 {
     padding: var(--padding-panel);
-    padding-bottom: 0;
     color: var(--color-highlight);
     font-weight: 800;
-
-    span {
-      color: var(--color-foreground);
-      font-weight: 600;
-    }
   }
 
   h3 {
+    color: var(--color-foreground);
+    padding: 0 var(--padding-panel);
+    font-weight: 600;
+  }
+
+  h4 {
     padding: var(--padding-panel);
     color: var(--color-foreground);
-    margin-top: 0;
-    padding-top: 0;
     font-weight: 300;
   }
 

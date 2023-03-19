@@ -1,13 +1,33 @@
-import {ErrorBoundary} from 'react-error-boundary'
+import React, { Component, ErrorInfo, ReactNode } from "react";
 
-const Component = ({error, resetErrorBoundary}) => {
-  return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
-    </div>
-  )
+interface Props {
+  children?: ReactNode;
 }
 
-export default Component;
+interface State {
+  hasError: boolean;
+}
+
+class ErrorBoundary extends Component<Props, State> {
+  public state: State = {
+    hasError: false,
+  };
+
+  public static getDerivedStateFromError(_: Error): State {
+    return { hasError: true };
+  }
+
+  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error("Uncaught error:", error, errorInfo);
+  }
+
+  public render() {
+    if (this.state.hasError) {
+      return <h1>Sorry.. there was an error</h1>;
+    }
+
+    return this.props.children;
+  }
+}
+
+export default ErrorBoundary;

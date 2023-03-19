@@ -1,6 +1,7 @@
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
 import { BiAlbum } from "react-icons/bi";
+import numeral from "numeral";
 
 import { trpc, useStore } from "../../State";
 import { reactTableSettings } from "../Tracks";
@@ -13,7 +14,14 @@ import { IoPlayOutline } from "react-icons/io5";
 const Album = () => {
   const {
     current: { album },
+    set,
   } = useStore();
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+
+  trpc.track.useQuery(selectedId, {
+    enabled: Boolean(selectedId),
+    onSuccess: (data) => (data ? set.current.track(data) : null),
+  });
 
   if (!album) {
     return (
@@ -25,12 +33,15 @@ const Album = () => {
 
   return (
     <div className={styles.one}>
-      <h1>
-        {album.name} {album.id}
-      </h1>
-      <h2>{album.artist}</h2>
-
-      <hr />
+      <div>
+        <div>
+          <BiAlbum />
+        </div>
+        <div>
+          <h1>{album.name}</h1>
+          <h2>{album.artist}</h2>
+        </div>
+      </div>
 
       <ul>
         <li>{album.genre}</li>
@@ -40,18 +51,29 @@ const Album = () => {
       </ul>
 
       <table>
-        {/* <thead>
+        <thead>
           <tr>
             <th></th>
+            <th data-alignment="right">#</th>
             <th>Title</th>
-            <th>Track</th>
-            <th>Length</th>
+            <th data-alignment="right">Length</th>
+            <th data-alignment="right">Disc</th>
           </tr>
-        </thead> */}
+        </thead>
         <tbody>
           {album.tracks?.map((_) => (
-            <tr key={_.id}>
-              <td>
+            <tr
+              key={_.id}
+              onClick={() => {
+                set.current.tabNumber(4);
+                setSelectedId(_.id);
+              }}
+            >
+              <td
+                style={{
+                  width: "60px",
+                }}
+              >
                 <div className={styles.buttons}>
                   <button>
                     <MdPlaylistAdd />
@@ -61,20 +83,27 @@ const Album = () => {
                   </button>
                 </div>
               </td>
-              <td>{_.track}</td>
+              <td
+                data-font-style="monospaced"
+                data-alignment="right"
+                style={{
+                  width: "40px",
+                }}
+              >
+                {_.track}
+              </td>
               <td>{_.title}</td>
-
-              <td>{_.bitrate}</td>
-              <td>{_.channels}</td>
-              <td>
-                {_.disc} / {_.disctotal}
+              <td data-alignment="right" data-font-style="monospaced">
+                {_.readableLength}
               </td>
-              <td>
-                {_.encoder} / {_.format}
+              <td
+                data-alignment="right"
+                style={{
+                  width: "40px",
+                }}
+              >
+                {_.disc}
               </td>
-              <td>{_.samplerate}</td>
-
-              <td>{_.readableLength}</td>
             </tr>
           ))}
         </tbody>

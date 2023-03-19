@@ -228,6 +228,7 @@ const Component = () => {
                   </td>
                   {realRow.getVisibleCells().map((cell) => (
                     <td
+                      data-trim-text
                       key={cell.id}
                       onDoubleClick={() =>
                         setPlayingId(cell.row.getValue("id"))

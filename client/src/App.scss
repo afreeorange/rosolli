@@ -190,8 +190,6 @@ hr {
           box-sizing: border-box;
           padding: calc(var(--padding-panel) / 2) var(--padding-panel);
           border-bottom: var(--line-style);
-
-          @include dots-text;
         }
 
         td:not(:last-of-type) {
@@ -224,11 +222,23 @@ hr {
       }
     }
 
+    *[data-alignment="right"] {
+      text-align: right;
+    }
+
+    *[data-font-style="monospaced"] {
+      @include monospaced-font;
+    }
+
+    *[data-trim-text] {
+      @include dots-text;
+    }
+
+    /* This is for the TracksPanel component that uses TanStack Table */
     td[data-column-name="Year"],
     td[data-column-name="Track"],
     td[data-column-name="Length"] {
-      font-family: var(--font-family-monospace);
-      font-size: 95%;
+      @include monospaced-font;
       text-align: right;
     }
 
@@ -270,4 +280,9 @@ hr {
       }
     }
   }
+}
+
+@mixin monospaced-font {
+  font-family: var(--font-family-monospace);
+  font-size: 95%;
 }
