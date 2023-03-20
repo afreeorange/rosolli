@@ -136,11 +136,62 @@ main {
 
 main {
   overflow-y: hidden;
-  background: var(--color-background);
   color: var(--color-foreground);
   font-size: var(--font-size-base);
   font-family: var(--font-family);
   line-height: var(--font-line-height);
+
+  background-color: var(--color-background);
+  background-image: linear-gradient(
+      30deg,
+      #fb4934 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #fb4934 87.5%,
+      #fb4934
+    ),
+    linear-gradient(
+      150deg,
+      #fb4934 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #fb4934 87.5%,
+      #fb4934
+    ),
+    linear-gradient(
+      30deg,
+      #fb4934 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #fb4934 87.5%,
+      #fb4934
+    ),
+    linear-gradient(
+      150deg,
+      #fb4934 12%,
+      transparent 12.5%,
+      transparent 87%,
+      #fb4934 87.5%,
+      #fb4934
+    ),
+    linear-gradient(
+      60deg,
+      #fb493477 25%,
+      transparent 25.5%,
+      transparent 75%,
+      #fb493477 75%,
+      #fb493477
+    ),
+    linear-gradient(
+      60deg,
+      #fb493477 25%,
+      transparent 25.5%,
+      transparent 75%,
+      #fb493477 75%,
+      #fb493477
+    );
+  background-size: 24px 42px;
+  background-position: 0 0, 0 0, 12px 21px, 12px 21px, 0 0, 12px 21px;
 
   display: grid;
   grid-template-columns: var(--panel-size) auto;

@@ -3,6 +3,8 @@
 .component {
   @include track-table;
   @include track-buttons;
+
+  background: var(--color-background);
 }
 
 .active {

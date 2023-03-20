@@ -12,7 +12,7 @@ const LIST: Record<string, string> = {
   a: "Artists",
   l: "Albums",
   t: "Tracks",
-  b: "Column Browse",
+  p: "Currently Playing",
   "1": "Browse",
   "2": "Settings",
   "3": "History",
@@ -56,6 +56,8 @@ const Component = () => {
   [1, 2, 3, 4, 5].map((_) =>
     useHotkeys(_.toString(), () => set.current.tabNumber(_))
   );
+
+  useHotkeys("p", () => set.current.tabNumber(5));
 
   return null;
 };

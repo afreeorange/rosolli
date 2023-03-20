@@ -10,6 +10,7 @@ $album-art-size: 15em;
   padding-bottom: calc(var(--padding-panel) * 8);
   padding-right: calc(var(--padding-panel) * 2);
   box-sizing: border-box;
+  background: var(--color-background);
 
   > div {
     display: grid;
