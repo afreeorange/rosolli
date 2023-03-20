@@ -52,7 +52,7 @@ const Album = () => {
             <IoPlayOutline /> Play Album
           </button>
           <button>
-            <AiOutlineStar /> Favorite Album
+            <AiOutlineStar /> Favorite
           </button>
         </div>
       </div>
