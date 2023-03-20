@@ -45,9 +45,9 @@ export default () => {
   };
 
   return (
-    <ErrorBoundary>
-      <State>
-        <main className={darkMode ? "dark" : undefined}>
+    <main className={darkMode ? "dark" : undefined}>
+      <ErrorBoundary>
+        <State>
           <Shortcuts />
           <Loading />
           <WindowSizeWarning />
@@ -57,7 +57,7 @@ export default () => {
           </section>
           <section ref={rightRef}>
             <Routes>
-              {/* <Route path="/genres" element={<Genres />} /> */}
+              <Route path="/genres" element={<Genres />} />
               {/* <Route path="/artists" element={<Artists />} /> */}
               <Route path="/albums" element={<Albums />} />
               <Route path="/tracks" element={<Tracks />} />
@@ -65,8 +65,8 @@ export default () => {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </section>
-        </main>
-      </State>
-    </ErrorBoundary>
+        </State>
+      </ErrorBoundary>
+    </main>
   );
 };

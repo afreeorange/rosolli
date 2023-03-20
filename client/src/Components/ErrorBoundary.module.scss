@@ -1,0 +1,28 @@
+.component {
+  background: var(--color-foreground);
+  width: 100vw;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    color: var(--color-background);
+    padding: calc(var(--padding-panel) * 4);
+  }
+
+  svg {
+    color: var(--color-highlight);
+    font-size: calc(var(--font-size-base) * 10);
+  }
+
+  p {
+    margin-top: calc(var(--padding-panel) * 2);
+    font-size: calc(var(--font-size-base) * 2);
+
+    small {
+      color: var(--color-foreground-light);
+    }
+  }
+}

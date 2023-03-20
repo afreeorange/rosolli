@@ -21,7 +21,7 @@
   }
 
   kbd {
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     border: 1px solid var(--color-foreground-light);
     display: inline-block;
     font-family: var(--font-family);

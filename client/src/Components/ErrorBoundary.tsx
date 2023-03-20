@@ -1,4 +1,7 @@
 import React from "react";
+import { IoSkullOutline } from "react-icons/io5";
+
+import styles from "./ErrorBoundary.module.scss";
 
 type Props = {
   children?: React.ReactNode;
@@ -23,7 +26,17 @@ class ErrorBoundary extends React.Component<Props, State> {
 
   public render() {
     if (this.state.hasError) {
-      return <h1>Sorry.. there was an error</h1>;
+      return (
+        <div className={styles.component}>
+          <div>
+            <IoSkullOutline />
+            <p>
+              Something terrible happened. <br /> Please reload. <br />
+              <small>Check the console for errors.</small>
+            </p>
+          </div>
+        </div>
+      );
     }
 
     return this.props.children;

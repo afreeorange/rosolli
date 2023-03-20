@@ -47,6 +47,7 @@
   --color-highlight: #fb4934;
 
   --line-style: 1px solid var(--color-foreground-lighter);
+  --border-radius: 5px;
 }
 
 .dark {
@@ -137,7 +138,6 @@ main {
   overflow-y: hidden;
   background: var(--color-background);
   color: var(--color-foreground);
-
   font-size: var(--font-size-base);
   font-family: var(--font-family);
   line-height: var(--font-line-height);
@@ -216,9 +216,13 @@ hr {
         th {
           padding: var(--padding-panel);
           color: var(--color-highlight);
+          // border-bottom: var(--line-style);
           text-align: left;
-          border-right: var(--line-style);
         }
+      }
+
+      th:not(:last-of-type) {
+        border-right: var(--line-style);
       }
     }
 

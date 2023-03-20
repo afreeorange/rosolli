@@ -37,12 +37,12 @@ const Component = () => {
             <span>{numeral(statistics.tracks).format("0,0")}</span>
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to={"/playlists"}>
             <span>Playlists</span>
             <span>{numeral(12).format("0,0")}</span>
           </NavLink>
-        </li>
+        </li> */}
         {/* <li>
           <NavLink to={"/"}>
             <span>Browse</span>

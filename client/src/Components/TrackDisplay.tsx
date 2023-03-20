@@ -12,13 +12,11 @@ const Component: React.FC<{ track: Track }> = ({ track }) => (
       }}
     ></div>
 
-    <h2>
-      {track.title}
-    </h2>
-    <h3>{track.artist}</h3>
-    <h4>
+    <h1>{track.title}</h1>
+    <h2>{track.artist}</h2>
+    <h3>
       {track.album} {track.year !== 0 && <span>({track.year})</span>}
-    </h4>
+    </h3>
   </div>
 );
 

@@ -23,7 +23,7 @@ export const TRACKS_TABLE_COLUMN_WIDTHS: Record<string, string> = {
   artist: "200px",
   readableLength: "100px",
   track: "80px",
-  year: "80px",
+  year: "60px",
 };
 
 const Component = () => {
@@ -214,7 +214,6 @@ const Component = () => {
                     style={{
                       width: TRACKS_TABLE_COLUMN_WIDTHS["__meta"],
                       maxWidth: TRACKS_TABLE_COLUMN_WIDTHS["__meta"],
-                      padding: 0,
                     }}
                   >
                     <div className={styles.buttons}>

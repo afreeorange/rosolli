@@ -104,6 +104,7 @@ readableLength
 - https://github.com/donavon/use-dark-mode
 - https://modernfontstacks.com
 - [Lucide Icons](https://lucide.dev)
+- https://www.magicpattern.design/tools/css-backgrounds
 
 ## License
 

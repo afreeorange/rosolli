@@ -1,17 +1,19 @@
 .component {
-  h2 {
-    padding: var(--padding-panel);
+  h1 {
     color: var(--color-highlight);
+    font-size: calc(var(--font-size-base) * 2);
     font-weight: 800;
+    padding: calc(var(--padding-panel) / 2);
+  }
+
+  h2 {
+    font-size: calc(var(--font-size-base) * 1.5);
+    color: var(--color-foreground);
+    font-weight: 600;
+    padding: 0 var(--padding-panel);
   }
 
   h3 {
-    color: var(--color-foreground);
-    padding: 0 var(--padding-panel);
-    font-weight: 600;
-  }
-
-  h4 {
     padding: var(--padding-panel);
     color: var(--color-foreground);
     font-weight: 300;

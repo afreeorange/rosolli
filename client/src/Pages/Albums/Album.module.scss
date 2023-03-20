@@ -1,0 +1,96 @@
+@import "../../App.scss";
+
+$album-art-size: 15em;
+
+.one {
+  width: calc(var(--panel-size) * 2);
+  height: 100vh;
+  overflow-y: scroll;
+  border-right: var(--line-style);
+  padding-bottom: calc(var(--padding-panel) * 8);
+  padding-right: calc(var(--padding-panel) * 2);
+  box-sizing: border-box;
+
+  > div {
+    display: grid;
+    grid-template-columns: $album-art-size auto;
+    margin-bottom: calc(var(--padding-panel) * 2);
+
+    // Album Art
+    > div:nth-of-type(1) {
+      width: $album-art-size;
+      height: $album-art-size;
+      margin: calc(var(--padding-panel) * 1);
+      border: var(--line-style);
+
+      svg {
+        font-size: $album-art-size;
+        color: var(--color-background);
+        background: var(--color-foreground-lighter);
+      }
+    }
+
+    // Album Info
+    > div:nth-of-type(2) {
+      padding: calc(var(--padding-panel) * 2) calc(var(--padding-panel) * 4);
+
+      // Enqueue and Play Butons
+      button {
+        border: var(--line-style);
+        border-radius: var(--border-radius);
+        background: none;
+        color: var(--color-foreground-light);
+        margin-top: calc(var(--padding-panel) * 2);
+        margin-right: calc(var(--padding-panel) * 2);
+        padding: calc(var(--padding-panel) * 1);
+
+        svg {
+          display: inline-block;
+          vertical-align: middle;
+        }
+
+        &:hover {
+          background: var(--color-highlight);
+          color: var(--color-background);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  h1 {
+    font-size: calc(var(--font-size-base) * 2);
+    color: var(--color-highlight);
+  }
+
+  h2 {
+    font-size: calc(var(--font-size-base) * 1.5);
+    font-weight: 600;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  ul {
+    width: 100%;
+    padding-top: calc(var(--padding-panel) * 1);
+    font-weight: 300;
+
+    li {
+      display: inline;
+
+      &:not(:last-of-type)::after {
+        content: " – ";
+      }
+    }
+  }
+
+  @include track-table;
+  @include track-buttons;
+
+  .albumId {
+    color: var(--color-foreground-light);
+    padding: calc(var(--padding-panel) * 2);
+  }
+}
