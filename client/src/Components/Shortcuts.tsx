@@ -5,19 +5,19 @@ import { useStore } from "../State";
 
 import styles from "./Shortcuts.module.scss";
 
-const LIST: Record<string, string> = {
-  d: "Toggle Dark Mode",
-  f: "Focus search box",
-  g: "Genres",
-  a: "Artists",
-  l: "Albums",
-  t: "Tracks",
-  p: "Currently Playing",
-  "1": "Browse",
-  "2": "Settings",
-  "3": "History",
-  "4": "Info",
-  "5": "Now Playing",
+// You can have more than one shortcut for an action.
+const LIST: Record<string, string[]> = {
+  "Toggle Dark Mode": ["d"],
+  "Focus search box": ["f", "/"],
+  Genres: ["g"],
+  Artists: ["a"],
+  Albums: ["l"],
+  Tracks: ["t"],
+  Browse: ["1", "b"],
+  Settings: ["2", "s"],
+  History: ["3", "h"],
+  Info: ["4", "i"],
+  "Currently Playing": ["5", "p"],
 };
 
 export const ShortcutList = () => (
@@ -27,10 +27,12 @@ export const ShortcutList = () => (
       <tbody>
         {Object.keys(LIST).map((_) => (
           <tr key={`shortcut-${_}`}>
-            <th>
-              <kbd>{_}</kbd>
-            </th>
-            <td>{LIST[_]}</td>
+            <th>{_}</th>
+            <td>
+              {LIST[_].map((__) => (
+                <kbd>{__}</kbd>
+              ))}
+            </td>
           </tr>
         ))}
       </tbody>
@@ -43,7 +45,11 @@ const Component = () => {
   const navigate = useNavigate();
 
   useHotkeys("d", () => set.preferences.darkMode(!preferences.darkMode));
+
   useHotkeys("f", () => document.getElementById("search")?.focus(), {
+    preventDefault: true,
+  });
+  useHotkeys("/", () => document.getElementById("search")?.focus(), {
     preventDefault: true,
   });
 
@@ -51,13 +57,19 @@ const Component = () => {
   useHotkeys("a", () => navigate("/artists"));
   useHotkeys("l", () => navigate("/albums"));
   useHotkeys("t", () => navigate("/tracks"));
-  useHotkeys("b", () => navigate("/"));
 
-  [1, 2, 3, 4, 5].map((_) =>
-    useHotkeys(_.toString(), () => set.current.tabNumber(_))
-  );
+  const _: [number, string][] = [
+    [1, "b"],
+    [2, "s"],
+    [3, "h"],
+    [4, "i"],
+    [5, "p"],
+  ];
 
-  useHotkeys("p", () => set.current.tabNumber(5));
+  _.map(([a, b]: [number, string]) => {
+    useHotkeys(a.toString(), () => set.current.tabNumber(a));
+    useHotkeys(b, () => set.current.tabNumber(a));
+  });
 
   return null;
 };

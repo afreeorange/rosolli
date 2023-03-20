@@ -13,7 +13,11 @@ export const reactTableSettings = {
 };
 
 const Component = () => {
-  const { showingSearchResults } = useStore();
+  const {
+    showingSearchResults,
+    searchTerm,
+    current: { tracks },
+  } = useStore();
 
   return (
     <div className={styles.wrapper}>
@@ -36,7 +40,13 @@ const Component = () => {
       </div>
       <div className={`${styles.bottom}`}>
         <section>
-          <Tracks />
+          {showingSearchResults && tracks.length === 0 ? (
+            <div className="waiting-text">
+              Could not find any tracks containing &#8220;{searchTerm}&#8221;
+            </div>
+          ) : (
+            <Tracks />
+          )}
         </section>
       </div>
     </div>

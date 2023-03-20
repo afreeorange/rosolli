@@ -13,7 +13,9 @@ const Albums = () => {
   const [selectedId, setSelectedId] = useState<number | null>(1259);
   const {
     current: { albums },
+    searchTerm,
     set,
+    showingSearchResults,
   } = useStore();
 
   trpc.album.useQuery(selectedId, {
@@ -22,6 +24,18 @@ const Albums = () => {
   });
 
   const filteredAlbums = albums.filter((_) => _.name !== "NO_ALBUM");
+
+  // We're searching and there weren't any matches for our search
+  if (showingSearchResults && albums.length === 0) {
+    return (
+      <div className={styles.all}>
+        <div className="waiting-text">
+          Couldn&#8217;t find any album names containing &#8220;{searchTerm}
+          &#8221;
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.all}>

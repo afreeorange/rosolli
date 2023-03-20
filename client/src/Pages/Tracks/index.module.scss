@@ -65,6 +65,7 @@
   height: 100%;
   display: grid;
   grid-template-rows: repeat(2, 50%);
+  background: var(--color-background);
 
   .top {
     display: grid;
