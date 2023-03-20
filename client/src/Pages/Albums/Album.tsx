@@ -95,7 +95,15 @@ const Album = () => {
               >
                 {_.track}
               </td>
-              <td>{_.title}</td>
+              <td
+                data-trim-text
+                style={{
+                  width: "400px",
+                  maxWidth: "400px",
+                }}
+              >
+                {_.title}
+              </td>
               <td data-alignment="right" data-font-style="monospaced">
                 {_.readableLength}
               </td>

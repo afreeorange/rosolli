@@ -21,6 +21,8 @@ const Albums = () => {
     onSuccess: (data) => (data ? set.current.album(data) : null),
   });
 
+  const filteredAlbums = albums.filter((_) => _.name !== "NO_ALBUM");
+
   return (
     <div className={styles.all}>
       <ul>
@@ -34,7 +36,7 @@ const Albums = () => {
                * NO_ALBUM. When we destructure {index, style} in the child
                * component loop, we don't want to overflow the index.
                */
-              itemCount={albums.length - 1}
+              itemCount={filteredAlbums.length}
               itemSize={85}
               overscanCount={reactTableSettings.overScanCount}
               style={{
@@ -45,7 +47,7 @@ const Albums = () => {
                 /**
                  * TODO: Do we need `null` albums?
                  */
-                let album = albums.filter((_) => _.name !== "NO_ALBUM")[index];
+                let album = filteredAlbums[index];
 
                 if (album) {
                   let {
