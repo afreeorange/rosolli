@@ -6,11 +6,16 @@
   align-items: center;
   justify-content: center;
 
+  > div {
+    width: 30em;
+    background: var(--color-background);
+    padding: calc(var(--padding-panel) * 4);
+  }
+
   svg {
     width: 5em;
     height: 5em;
     color: var(--color-foreground-light);
-    margin-left: -2em;
   }
 
   h1 {

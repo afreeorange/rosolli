@@ -7,14 +7,14 @@ import {
   Row,
 } from "@tanstack/react-table";
 import { useVirtual } from "@tanstack/react-virtual";
-
-import { useStore, trpc } from "../../State";
-import { TrackInList } from "@rosolli/server";
-
-import styles from "./TracksPanel.module.scss";
-import { useWindowSize } from "../../Components/WindowSizeWarning";
 import { MdPlaylistAdd } from "react-icons/md";
 import { IoPlayOutline } from "react-icons/io5";
+import { TrackInList } from "@rosolli/server";
+
+import { useStore, trpc } from "../../State";
+import { useWindowSize } from "../../Components/WindowSizeWarning";
+
+import styles from "./TracksPanel.module.scss";
 
 export const TRACKS_TABLE_COLUMN_WIDTHS: Record<string, string> = {
   __meta: "60px",

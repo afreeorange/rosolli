@@ -2,9 +2,9 @@ import Albums from "./AlbumsPanel";
 import Artists from "./ArtistsPanel";
 import Genres from "./GenresPanel";
 import Tracks from "./TracksPanel";
+import { useStore } from "../../State";
 
 import styles from "./index.module.scss";
-import { useStore } from "../../State";
 
 export const reactTableSettings = {
   cellHeight: 30,

@@ -140,61 +140,18 @@ main {
   font-size: var(--font-size-base);
   font-family: var(--font-family);
   line-height: var(--font-line-height);
-
-  background-color: var(--color-background);
-  background-image: linear-gradient(
-      30deg,
-      #fb4934 12%,
-      transparent 12.5%,
-      transparent 87%,
-      #fb4934 87.5%,
-      #fb4934
-    ),
-    linear-gradient(
-      150deg,
-      #fb4934 12%,
-      transparent 12.5%,
-      transparent 87%,
-      #fb4934 87.5%,
-      #fb4934
-    ),
-    linear-gradient(
-      30deg,
-      #fb4934 12%,
-      transparent 12.5%,
-      transparent 87%,
-      #fb4934 87.5%,
-      #fb4934
-    ),
-    linear-gradient(
-      150deg,
-      #fb4934 12%,
-      transparent 12.5%,
-      transparent 87%,
-      #fb4934 87.5%,
-      #fb4934
-    ),
-    linear-gradient(
-      60deg,
-      #fb493477 25%,
-      transparent 25.5%,
-      transparent 75%,
-      #fb493477 75%,
-      #fb493477
-    ),
-    linear-gradient(
-      60deg,
-      #fb493477 25%,
-      transparent 25.5%,
-      transparent 75%,
-      #fb493477 75%,
-      #fb493477
-    );
-  background-size: 24px 42px;
-  background-position: 0 0, 0 0, 12px 21px, 12px 21px, 0 0, 12px 21px;
-
   display: grid;
   grid-template-columns: var(--panel-size) auto;
+
+  background-color: var(--color-background);
+  background-size: 8px 8px;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-highlight) 0,
+    var(--color-highlight) 0.9px,
+    var(--color-background) 0,
+    var(--color-background) 50%
+  );
 
   transition: background var(--transition-duration);
 }

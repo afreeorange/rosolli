@@ -61,7 +61,7 @@
 }
 
 .wrapper {
-  width: 100%;
+  width: calc(var(--panel-size) * 4);
   height: 100%;
   display: grid;
   grid-template-rows: repeat(2, 50%);
