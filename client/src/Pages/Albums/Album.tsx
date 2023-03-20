@@ -44,10 +44,10 @@ const Album = () => {
             {album.year && album.year !== 0 ? <li>{album.year}</li> : null}
             {album.label ? <li>{album.label}</li> : null}
           </ul>
-          <button>
+          <button onClick={() => console.log(album.tracks)}>
             <MdPlaylistAdd /> Enqueue Album
           </button>
-          <button>
+          <button onClick={() => console.log(album.tracks)}>
             <IoPlayOutline /> Play Album
           </button>
         </div>
@@ -57,9 +57,9 @@ const Album = () => {
         <thead>
           <tr>
             <th></th>
-            <th data-alignment="right">#</th>
             <th>Title</th>
             <th data-alignment="right">Length</th>
+            <th data-alignment="right">#</th>
             <th data-alignment="right">Disc</th>
           </tr>
         </thead>
@@ -89,16 +89,6 @@ const Album = () => {
                 </div>
               </td>
               <td
-                data-font-style="monospaced"
-                data-alignment="right"
-                style={{
-                  width: "3em",
-                  maxWidth: "3em",
-                }}
-              >
-                {_.track}
-              </td>
-              <td
                 data-trim-text
                 style={{
                   width: "32em",
@@ -109,6 +99,16 @@ const Album = () => {
               </td>
               <td data-alignment="right" data-font-style="monospaced">
                 {_.readableLength}
+              </td>
+              <td
+                data-font-style="monospaced"
+                data-alignment="right"
+                style={{
+                  width: "3em",
+                  maxWidth: "3em",
+                }}
+              >
+                {_.track}
               </td>
               <td
                 data-alignment="right"
