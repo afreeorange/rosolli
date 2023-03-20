@@ -268,7 +268,7 @@ hr {
   .buttons {
     display: grid;
     grid-template-columns: repeat(3, 33%);
-    height: calc(30px + calc(var(--padding-panel) / 2));
+    height: 30px;
 
     button {
       min-width: 30px;

@@ -109,178 +109,180 @@ type State = {
   };
 };
 
-export const useStore = createStore<State>((set) => ({
-  genres: [],
-  albums: [],
-  artists: [],
-  tracks: [],
-
-  loading: true,
-
-  statistics: {},
-  searchTerm: null,
-  showingSearchResults: false,
-
-  current: {
+export const useStore = createStore<State>()(
+  devtools((set) => ({
     genres: [],
-
     albums: [],
-    album: null,
-
     artists: [],
-
     tracks: [],
-    track: null,
 
-    playingTrack: null,
-    tabNumber: 1,
-  },
+    loading: true,
 
-  preferences: {
-    trackInfoOpen: true,
-
-    /**
-     * TODO: Use system prefs... create a hierarchy of preferences. See
-     * index.html.
-     */
-    darkMode: Boolean(localStorage.getItem("darkMode")),
-    verticalTrackBrowse: false,
-  },
-
-  set: {
-    genres: (genres: Genres) => set((state) => ({ ...state, genres })),
-    artists: (artists: Artists) => set((state) => ({ ...state, artists })),
-    albums: (albums: Albums) => set((state) => ({ ...state, albums })),
-    tracks: (tracks: Tracks) => set((state) => ({ ...state, tracks })),
-
-    loading: (loading) =>
-      set((state) => ({
-        ...state,
-        loading,
-      })),
-
-    statistics: (statistics: Statistics) =>
-      set((state) => ({
-        ...state,
-        statistics,
-      })),
-    searchTerm: (searchTerm) =>
-      set((state) => ({
-        ...state,
-        searchTerm,
-      })),
-    showingSearchResults: (showingSearchResults) =>
-      set((state) => ({
-        ...state,
-        showingSearchResults,
-      })),
+    statistics: {},
+    searchTerm: null,
+    showingSearchResults: false,
 
     current: {
-      genres: (genres: Genres) =>
-        set((state) => ({
-          ...state,
-          current: {
-            ...state.current,
-            genres,
-          },
-        })),
-      artists: (artists: Artists) =>
-        set((state) => ({
-          ...state,
-          current: {
-            ...state.current,
-            artists,
-          },
-        })),
+      genres: [],
 
-      albums: (albums: Albums) =>
-        set((state) => ({
-          ...state,
-          current: {
-            ...state.current,
-            albums,
-          },
-        })),
-      album: (album: Album) =>
-        set((state) => ({
-          ...state,
-          current: {
-            ...state.current,
-            album,
-          },
-        })),
+      albums: [],
+      album: null,
 
-      tracks: (tracks: Tracks) =>
-        set((state) => ({
-          ...state,
-          current: {
-            ...state.current,
-            tracks,
-          },
-        })),
-      track: (track) =>
-        set((state) => ({
-          ...state,
-          current: {
-            ...state.current,
-            track,
-          },
-        })),
+      artists: [],
 
-      playingTrack: (playingTrack) =>
-        set((state) => ({
-          ...state,
-          current: {
-            ...state.current,
-            playingTrack,
-          },
-        })),
+      tracks: [],
+      track: null,
 
-      tabNumber: (tabNumber) =>
-        set((state) => ({
-          ...state,
-          current: {
-            ...state.current,
-            tabNumber,
-          },
-        })),
+      playingTrack: null,
+      tabNumber: 1,
     },
 
     preferences: {
-      trackInfoOpen: (trackInfoOpen) =>
-        set((state) => ({
-          ...state,
-          preferences: {
-            ...state.preferences,
-            trackInfoOpen,
-          },
-        })),
-      darkMode: (darkMode) => {
-        set((state) => ({
-          ...state,
-          preferences: {
-            ...state.preferences,
-            darkMode,
-          },
-        }));
+      trackInfoOpen: true,
 
-        if (darkMode) {
-          localStorage.setItem("darkMode", darkMode.toString());
-        } else {
-          localStorage.removeItem("darkMode");
-        }
-      },
-      verticalTrackBrowse: (verticalTrackBrowse) =>
+      /**
+       * TODO: Use system prefs... create a hierarchy of preferences. See
+       * index.html.
+       */
+      darkMode: Boolean(localStorage.getItem("darkMode")),
+      verticalTrackBrowse: false,
+    },
+
+    set: {
+      genres: (genres: Genres) => set((state) => ({ ...state, genres })),
+      artists: (artists: Artists) => set((state) => ({ ...state, artists })),
+      albums: (albums: Albums) => set((state) => ({ ...state, albums })),
+      tracks: (tracks: Tracks) => set((state) => ({ ...state, tracks })),
+
+      loading: (loading) =>
         set((state) => ({
           ...state,
-          preferences: {
-            ...state.preferences,
-            verticalTrackBrowse,
-          },
+          loading,
         })),
+
+      statistics: (statistics: Statistics) =>
+        set((state) => ({
+          ...state,
+          statistics,
+        })),
+      searchTerm: (searchTerm) =>
+        set((state) => ({
+          ...state,
+          searchTerm,
+        })),
+      showingSearchResults: (showingSearchResults) =>
+        set((state) => ({
+          ...state,
+          showingSearchResults,
+        })),
+
+      current: {
+        genres: (genres: Genres) =>
+          set((state) => ({
+            ...state,
+            current: {
+              ...state.current,
+              genres,
+            },
+          })),
+        artists: (artists: Artists) =>
+          set((state) => ({
+            ...state,
+            current: {
+              ...state.current,
+              artists,
+            },
+          })),
+
+        albums: (albums: Albums) =>
+          set((state) => ({
+            ...state,
+            current: {
+              ...state.current,
+              albums,
+            },
+          })),
+        album: (album: Album) =>
+          set((state) => ({
+            ...state,
+            current: {
+              ...state.current,
+              album,
+            },
+          })),
+
+        tracks: (tracks: Tracks) =>
+          set((state) => ({
+            ...state,
+            current: {
+              ...state.current,
+              tracks,
+            },
+          })),
+        track: (track) =>
+          set((state) => ({
+            ...state,
+            current: {
+              ...state.current,
+              track,
+            },
+          })),
+
+        playingTrack: (playingTrack) =>
+          set((state) => ({
+            ...state,
+            current: {
+              ...state.current,
+              playingTrack,
+            },
+          })),
+
+        tabNumber: (tabNumber) =>
+          set((state) => ({
+            ...state,
+            current: {
+              ...state.current,
+              tabNumber,
+            },
+          })),
+      },
+
+      preferences: {
+        trackInfoOpen: (trackInfoOpen) =>
+          set((state) => ({
+            ...state,
+            preferences: {
+              ...state.preferences,
+              trackInfoOpen,
+            },
+          })),
+        darkMode: (darkMode) => {
+          set((state) => ({
+            ...state,
+            preferences: {
+              ...state.preferences,
+              darkMode,
+            },
+          }));
+
+          if (darkMode) {
+            localStorage.setItem("darkMode", darkMode.toString());
+          } else {
+            localStorage.removeItem("darkMode");
+          }
+        },
+        verticalTrackBrowse: (verticalTrackBrowse) =>
+          set((state) => ({
+            ...state,
+            preferences: {
+              ...state.preferences,
+              verticalTrackBrowse,
+            },
+          })),
+      },
     },
-  },
-}));
+  }))
+);
 
 /**
  * This does a few things:

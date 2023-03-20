@@ -11,6 +11,7 @@ Just an overcomplicated way of teaching myself [tRPC](https://trpc.io/), [Prisma
 - [ ] Marquee of titles
 - [ ] Check for Database and connectivity
 - [ ] Scrubber
+- [x] Redux DevTools
 - [ ] Pagination of Tracks
 - [ ] Page Titles
 - [ ] Themes
