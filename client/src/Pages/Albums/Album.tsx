@@ -72,9 +72,11 @@ const Album = () => {
                 setSelectedId(_.id);
               }}
             >
+              {/* NOTE: These are based on --panel-size x 2 */}
               <td
                 style={{
-                  width: "60px",
+                  width: "4em",
+                  maxWidth: "4em",
                 }}
               >
                 <div className={styles.buttons}>
@@ -90,7 +92,8 @@ const Album = () => {
                 data-font-style="monospaced"
                 data-alignment="right"
                 style={{
-                  width: "40px",
+                  width: "3em",
+                  maxWidth: "3em",
                 }}
               >
                 {_.track}
@@ -98,8 +101,8 @@ const Album = () => {
               <td
                 data-trim-text
                 style={{
-                  width: "400px",
-                  maxWidth: "400px",
+                  width: "32em",
+                  maxWidth: "32em",
                 }}
               >
                 {_.title}
@@ -110,7 +113,8 @@ const Album = () => {
               <td
                 data-alignment="right"
                 style={{
-                  width: "40px",
+                  width: "3em",
+                  maxWidth: "3em",
                 }}
               >
                 {_.disc}

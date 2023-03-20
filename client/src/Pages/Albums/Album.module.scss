@@ -3,7 +3,7 @@
 $album-art-size: 15em;
 
 .one {
-  width: calc(var(--panel-size) * 2);
+  width: calc(var(--panel-size) * 2.5);
   height: 100vh;
   overflow-y: scroll;
   border-right: var(--line-style);
