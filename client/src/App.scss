@@ -267,8 +267,8 @@ hr {
 @mixin track-buttons {
   .buttons {
     display: grid;
-    grid-template-columns: repeat(2, 50%);
-    height: 30px;
+    grid-template-columns: repeat(3, 33%);
+    height: calc(30px + calc(var(--padding-panel) / 2));
 
     button {
       min-width: 30px;
@@ -276,7 +276,6 @@ hr {
       align-items: center;
       background: var(--color-background);
       border: 0;
-      border-bottom: var(--line-style);
       color: var(--color-highlight);
       cursor: pointer;
       display: flex;

@@ -10,6 +10,7 @@
     width: 30em;
     background: var(--color-background);
     padding: calc(var(--padding-panel) * 4);
+    padding-top: calc(var(--padding-panel) * 40);
   }
 
   svg {

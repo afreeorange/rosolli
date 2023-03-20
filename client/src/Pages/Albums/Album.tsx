@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { MdPlaylistAdd } from "react-icons/md";
 import { IoPlayOutline } from "react-icons/io5";
+import { AiOutlineStar } from "react-icons/ai";
 import { BiAlbum } from "react-icons/bi";
 
 import { trpc, useStore } from "../../State";
@@ -50,6 +51,9 @@ const Album = () => {
           <button onClick={() => console.log(album.tracks)}>
             <IoPlayOutline /> Play Album
           </button>
+          <button>
+            <AiOutlineStar /> Favorite Album
+          </button>
         </div>
       </div>
 
@@ -75,24 +79,27 @@ const Album = () => {
               {/* NOTE: These are based on --panel-size x 2 */}
               <td
                 style={{
-                  width: "4em",
-                  maxWidth: "4em",
+                  width: "90px",
+                  maxWidth: "90px",
                 }}
               >
                 <div className={styles.buttons}>
                   <button>
                     <MdPlaylistAdd />
-                  </button>{" "}
+                  </button>
                   <button>
                     <IoPlayOutline />
+                  </button>
+                  <button>
+                    <AiOutlineStar />
                   </button>
                 </div>
               </td>
               <td
                 data-trim-text
                 style={{
-                  width: "32em",
-                  maxWidth: "32em",
+                  width: "33em",
+                  maxWidth: "33em",
                 }}
               >
                 {_.title}

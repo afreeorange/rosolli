@@ -9,6 +9,7 @@ import {
 import { useVirtual } from "@tanstack/react-virtual";
 import { MdPlaylistAdd } from "react-icons/md";
 import { IoPlayOutline } from "react-icons/io5";
+import { AiOutlineStar } from "react-icons/ai";
 import { TrackInList } from "@rosolli/server";
 
 import { useStore, trpc } from "../../State";
@@ -17,7 +18,7 @@ import { useWindowSize } from "../../Components/WindowSizeWarning";
 import styles from "./TracksPanel.module.scss";
 
 export const TRACKS_TABLE_COLUMN_WIDTHS: Record<string, string> = {
-  __meta: "60px",
+  __meta: "70px",
   title: "350px",
   album: "250px",
   artist: "200px",
@@ -99,6 +100,7 @@ const Component = () => {
       {
         accessorKey: "year",
         header: "Year",
+        accessorFn: ({ year }) => (year && year !== 0 ? year : ""),
       },
       // {
       //   accessorKey: "genre",
@@ -131,7 +133,7 @@ const Component = () => {
   const { virtualItems: virtualRows, totalSize } = useVirtual({
     parentRef: containerRef,
     size: data.length,
-    overscan: 100,
+    overscan: 10,
   });
 
   /**
@@ -219,9 +221,12 @@ const Component = () => {
                     <div className={styles.buttons}>
                       <button>
                         <MdPlaylistAdd />
-                      </button>{" "}
+                      </button>
                       <button>
                         <IoPlayOutline />
+                      </button>
+                      <button>
+                        <AiOutlineStar />
                       </button>
                     </div>
                   </td>
