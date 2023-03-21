@@ -8,6 +8,7 @@ import { BiAlbum } from "react-icons/bi";
 import { trpc, useStore } from "../../State";
 
 import styles from "./Album.module.scss";
+import { FaHashtag } from "react-icons/fa";
 
 const Album = () => {
   const {
@@ -64,7 +65,9 @@ const Album = () => {
             <th></th>
             <th>Title</th>
             <th data-alignment="right">Length</th>
-            <th data-alignment="right">#</th>
+            <th data-alignment="right">
+              <FaHashtag />
+            </th>
             <th data-alignment="right">
               <BsDisc />
             </th>
