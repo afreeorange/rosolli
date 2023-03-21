@@ -24,6 +24,11 @@
       padding-left: calc(var(--padding-panel) * 2);
     }
 
+    td {
+      padding-right: calc(var(--padding-panel) * 2);
+      text-align: right;
+    }
+
     kbd {
       border-radius: var(--border-radius);
       border: var(--line-style);
