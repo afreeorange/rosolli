@@ -1,7 +1,7 @@
 @import "../../App.scss";
 
 // NOTE: Omit units! This is imported by JS/TS.
-$cellHeight: 75;
+$cellHeight: 55;
 
 :export {
   cellHeight: $cellHeight;
@@ -13,7 +13,6 @@ $cellHeight: 75;
   flex-shrink: 0;
   flex-direction: row;
   height: 100%;
-  overflow-x: scroll;
 }
 
 .all {
@@ -33,19 +32,11 @@ $cellHeight: 75;
       cursor: pointer;
 
       strong {
-        display: block;
-        width: calc(var(--panel-size) - 3em);
         font-weight: 600;
         @include dots-text;
       }
 
-      em {
-        display: block;
-        width: calc(var(--panel-size) - 3em);
-        font-style: normal;
-        @include dots-text;
-      }
-
+      // Tracks and length
       > span {
         display: grid;
         grid-template-columns: repeat(3, 33%);

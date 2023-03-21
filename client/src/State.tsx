@@ -110,6 +110,11 @@ type State = {
 };
 
 export const useStore = createStore<State>()(
+  /**
+   * TODO: This is slow when saearching
+   * https://github.com/reduxjs/redux-devtools-extension/blob/master/docs/Troubleshooting.md#excessive-use-of-memory-and-cpu
+   * https://github.com/reduxjs/redux-devtools-extension/blob/master/docs/API/Arguments.md#actionsanitizer--statesanitizer
+   */
   devtools((set) => ({
     genres: [],
     albums: [],

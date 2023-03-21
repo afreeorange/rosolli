@@ -88,8 +88,8 @@ const Album = () => {
               {/* NOTE: These are based on --panel-size x 2 */}
               <td
                 style={{
-                  width: "90px",
-                  maxWidth: "90px",
+                  width: "75px",
+                  maxWidth: "75px",
                 }}
               >
                 <div className={styles.buttons}>

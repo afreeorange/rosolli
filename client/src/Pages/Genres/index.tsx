@@ -1,36 +1,34 @@
 import { useState } from "react";
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
-import { BiAlbum } from "react-icons/bi";
+import { TbDna2 } from "react-icons/tb";
 
 import { trpc, useStore } from "../../State";
 import { reactTableSettings } from "../Tracks";
-import Album from "./Album";
 
 import styles from "./index.module.scss";
+import numeral from "numeral";
 
 const Albums = () => {
-  const [selectedId, setSelectedId] = useState<number | null>(1259);
+  const [selectedGenre, setSelectedGenre] = useState<string | null>(null);
   const {
-    current: { albums },
+    current: { genres },
     searchTerm,
     set,
     showingSearchResults,
   } = useStore();
 
-  trpc.album.useQuery(selectedId, {
-    enabled: Boolean(selectedId),
-    onSuccess: (data) => (data ? set.current.album(data) : null),
-  });
-
-  const filteredAlbums = albums.filter((_) => _.name !== "NO_ALBUM");
+  // trpc.genres.useQuery(selectedGenre, {
+  //   enabled: Boolean(selectedGenre),
+  //   onSuccess: (data) => (data ? set.current.album(data) : null),
+  // });
 
   // We're searching and there weren't any matches for our search
-  if (showingSearchResults && albums.length === 0) {
+  if (showingSearchResults && genres.length === 0) {
     return (
       <div className={styles.all}>
         <div className="waiting-text">
-          Couldn&#8217;t find any album names containing &#8220;{searchTerm}
+          Couldn&#8217;t find any genres containing &#8220;{searchTerm}
           &#8221;
         </div>
       </div>
@@ -50,7 +48,7 @@ const Albums = () => {
                * NO_ALBUM. When we destructure {index, style} in the child
                * component loop, we don't want to overflow the index.
                */
-              itemCount={filteredAlbums.length}
+              itemCount={genres.length}
               itemSize={parseInt(styles.cellHeight)}
               overscanCount={reactTableSettings.overScanCount}
               style={{
@@ -61,39 +59,40 @@ const Albums = () => {
                 /**
                  * TODO: Do we need `null` albums?
                  */
-                let album = filteredAlbums[index];
+                let genre = genres[index];
 
-                if (album) {
+                if (genre) {
                   let {
-                    artist,
-                    id,
+                    counts: { albums, artists, tracks },
                     name,
-                    year,
-                    counts: { tracks, readableTotalLength: length },
-                  } = album;
+                  } = genre;
 
                   return (
                     <li
-                      onClick={() => setSelectedId(id)}
-                      key={`album-${name}`}
+                      onClick={() => setSelectedGenre(name)}
+                      key={`genre-${name}`}
                       style={style}
-                      className={id === selectedId ? styles.active : undefined}
+                      className={
+                        name === selectedGenre ? styles.active : undefined
+                      }
                     >
                       <strong>{name}</strong>
-                      <em data-artist={artist}>
-                        {artist || "(Unknown Artist)"}
-                      </em>
                       <span>
                         <span>
-                          {tracks} {`${tracks > 1 ? "tracks" : "track"}`}
+                          {numeral(artists).format("0,0")} artist
+                          {artists > 1 && "s"}
                         </span>
-                        <span>{length}</span>
-                        <span>{!year || year === 0 ? "" : year}</span>
+                        <span>
+                          {numeral(albums).format("0,0")} album
+                          {albums > 1 && "s"}
+                        </span>
+                        <span>
+                          {numeral(tracks).format("0,0")} track
+                          {tracks > 1 && "s"}
+                        </span>
                       </span>
                     </li>
                   );
-                } else {
-                  console.log(">>>", index, album);
                 }
 
                 return null;
@@ -109,7 +108,6 @@ const Albums = () => {
 const Component = () => (
   <div className={styles.wrapper}>
     <Albums />
-    <Album />
   </div>
 );
 
