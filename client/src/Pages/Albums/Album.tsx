@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MdPlaylistAdd } from "react-icons/md";
 import { IoPlayOutline } from "react-icons/io5";
 import { AiOutlineStar } from "react-icons/ai";
+import { BsDisc } from "react-icons/bs";
 import { BiAlbum } from "react-icons/bi";
 
 import { trpc, useStore } from "../../State";
@@ -46,10 +47,10 @@ const Album = () => {
             {album.label ? <li>{album.label}</li> : null}
           </ul>
           <button onClick={() => console.log(album.tracks)}>
-            <MdPlaylistAdd /> Enqueue Album
+            <MdPlaylistAdd /> Enqueue
           </button>
           <button onClick={() => console.log(album.tracks)}>
-            <IoPlayOutline /> Play Album
+            <IoPlayOutline /> Play
           </button>
           <button>
             <AiOutlineStar /> Favorite
@@ -64,7 +65,9 @@ const Album = () => {
             <th>Title</th>
             <th data-alignment="right">Length</th>
             <th data-alignment="right">#</th>
-            <th data-alignment="right">Disc</th>
+            <th data-alignment="right">
+              <BsDisc />
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -75,6 +78,9 @@ const Album = () => {
                 set.current.tabNumber(4);
                 setSelectedId(_.id);
               }}
+              className={
+                selectedId && _.id === selectedId ? styles.active : undefined
+              }
             >
               {/* NOTE: These are based on --panel-size x 2 */}
               <td
@@ -98,21 +104,28 @@ const Album = () => {
               <td
                 data-trim-text
                 style={{
-                  width: "33em",
-                  maxWidth: "33em",
+                  width: "330px",
+                  maxWidth: "330px",
                 }}
               >
                 {_.title}
               </td>
-              <td data-alignment="right" data-font-style="monospaced">
+              <td
+                data-alignment="right"
+                data-font-style="monospaced"
+                style={{
+                  width: "100px",
+                  maxWidth: "100px",
+                }}
+              >
                 {_.readableLength}
               </td>
               <td
                 data-font-style="monospaced"
                 data-alignment="right"
                 style={{
-                  width: "3em",
-                  maxWidth: "3em",
+                  width: "35px",
+                  maxWidth: "35px",
                 }}
               >
                 {_.track}
@@ -120,8 +133,8 @@ const Album = () => {
               <td
                 data-alignment="right"
                 style={{
-                  width: "3em",
-                  maxWidth: "3em",
+                  width: "25px",
+                  maxWidth: "25px",
                 }}
               >
                 {_.disc}

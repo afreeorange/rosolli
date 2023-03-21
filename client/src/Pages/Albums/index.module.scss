@@ -1,5 +1,12 @@
 @import "../../App.scss";
 
+// NOTE: Omit units! This is imported by JS/TS.
+$cellHeight: 75;
+
+:export {
+  cellHeight: $cellHeight;
+}
+
 .wrapper {
   display: flex;
   flex-grow: 0;
@@ -25,7 +32,9 @@
       display: grid;
 
       // NOTE: Check this size with the module!
-      grid-template-columns: calc(85px - calc(var(--padding-panel) * 2)) auto;
+      grid-template-columns:
+        calc($cellHeight * 1px - calc(var(--padding-panel) * 2))
+        auto;
       padding: var(--padding-panel);
       cursor: pointer;
 

@@ -21,6 +21,7 @@ Just an overcomplicated way of teaching myself [tRPC](https://trpc.io/), [Prisma
 - [ ] Persistence
 - [ ] Electron?
 - [ ] Toasts
+- [ ] Arrow-keys for navigation
 - [ ] ±10s
 - [ ] User preferences
   - [ ] ±10s - Adjustable
@@ -106,6 +107,7 @@ readableLength
 - https://modernfontstacks.com
 - [Lucide Icons](https://lucide.dev)
 - https://www.magicpattern.design/tools/css-backgrounds
+- https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/
 
 ## License
 

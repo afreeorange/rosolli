@@ -1,5 +1,27 @@
 /* Any common styling for all components of this page */
 
+.wrapper {
+  width: calc(var(--panel-size) * 4);
+  height: 100%;
+  display: grid;
+  grid-template-rows: repeat(2, 50%);
+  background: var(--color-background);
+
+  .top {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+
+    section:not(:last-of-type) {
+      border-right: var(--line-style);
+    }
+  }
+
+  .bottom {
+    border-top: var(--line-style);
+    z-index: 1;
+  }
+}
+
 .panel {
   height: 100%;
   background: var(--color-background);
@@ -20,7 +42,7 @@
       overflow: hidden;
       transition: all var(--transition-duration);
 
-      padding: calc(var(--padding-panel) / 2) var(--padding-panel);
+      padding: calc(var(--padding-panel) / 4) var(--padding-panel);
       cursor: pointer;
     }
 
@@ -57,27 +79,5 @@
         color: var(--color-background);
       }
     }
-  }
-}
-
-.wrapper {
-  width: calc(var(--panel-size) * 4);
-  height: 100%;
-  display: grid;
-  grid-template-rows: repeat(2, 50%);
-  background: var(--color-background);
-
-  .top {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-
-    section:not(:last-of-type) {
-      border-right: var(--line-style);
-    }
-  }
-
-  .bottom {
-    border-top: var(--line-style);
-    z-index: 1;
   }
 }

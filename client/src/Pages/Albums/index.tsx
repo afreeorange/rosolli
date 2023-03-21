@@ -51,7 +51,7 @@ const Albums = () => {
                * component loop, we don't want to overflow the index.
                */
               itemCount={filteredAlbums.length}
-              itemSize={85}
+              itemSize={parseInt(styles.cellHeight)}
               overscanCount={reactTableSettings.overScanCount}
               style={{
                 lineHeight: 1.5,
@@ -85,7 +85,7 @@ const Albums = () => {
 
                       <span>
                         <strong>
-                          {name} - {id}
+                          {name}
                         </strong>
                         <em data-artist={artist}>
                           {artist || "(Unknown Artist)"}

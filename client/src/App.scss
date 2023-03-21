@@ -33,7 +33,7 @@
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   --font-family-monospace: Menlo, Consolas, Monaco, Liberation Mono,
     Lucida Console, monospace;
-  --font-size-base: 16px;
+  --font-size-base: 14px;
   --font-line-height: 1.25;
 
   --padding-panel: 0.4em;
@@ -144,11 +144,11 @@ main {
   grid-template-columns: var(--panel-size) auto;
 
   background-color: var(--color-background);
-  background-size: 8px 8px;
+  background-size: 0.75em 0.75em;
   background-image: repeating-linear-gradient(
     -45deg,
     var(--color-highlight) 0,
-    var(--color-highlight) 0.9px,
+    var(--color-highlight) 1px,
     var(--color-background) 0,
     var(--color-background) 50%
   );
@@ -195,8 +195,7 @@ hr {
     tbody {
       tr {
         td:not(:first-of-type) {
-          box-sizing: border-box;
-          padding: calc(var(--padding-panel) / 2) var(--padding-panel);
+          padding: 0 var(--padding-panel);
           border-bottom: var(--line-style);
         }
 
@@ -268,17 +267,17 @@ hr {
   .buttons {
     display: grid;
     grid-template-columns: repeat(3, 33%);
-    height: 30px;
 
     button {
+      height: 23px; // TODO: Not sure why I have to subtract 2 from 30px...
       min-width: 30px;
 
-      align-items: center;
       background: var(--color-background);
       border: 0;
       color: var(--color-highlight);
       cursor: pointer;
       display: flex;
+      align-items: center;
       justify-content: center;
 
       &:not(:last-of-type) {
@@ -296,4 +295,10 @@ hr {
 @mixin monospaced-font {
   font-family: var(--font-family-monospace);
   font-size: 95%;
+}
+
+$track-row-height: 25;
+
+:export {
+  trackRowHeight: $track-row-height;
 }

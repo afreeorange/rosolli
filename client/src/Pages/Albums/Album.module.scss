@@ -3,12 +3,11 @@
 $album-art-size: 15em;
 
 .one {
-  width: calc(var(--panel-size) * 2.5);
+  width: calc(var(--panel-size) * 2);
   height: 100vh;
   overflow-y: scroll;
   border-right: var(--line-style);
   padding-bottom: calc(var(--padding-panel) * 8);
-  padding-right: calc(var(--padding-panel) * 2);
   box-sizing: border-box;
   background: var(--color-background);
 
@@ -43,7 +42,8 @@ $album-art-size: 15em;
         color: var(--color-foreground-light);
         margin-top: calc(var(--padding-panel) * 2);
         margin-right: calc(var(--padding-panel) * 2);
-        padding: calc(var(--padding-panel) * 1);
+        padding: calc(var(--padding-panel) * 1 / 2)
+          calc(var(--padding-panel) * 1);
 
         svg {
           display: inline-block;
@@ -71,6 +71,12 @@ $album-art-size: 15em;
 
   table {
     width: 100%;
+
+    tr.active {
+      background: var(--color-highlight);
+      color: var(--color-background);
+      transition: all var(--transition-duration);
+    }
   }
 
   ul {

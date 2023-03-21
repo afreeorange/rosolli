@@ -22,7 +22,7 @@ export const TRACKS_TABLE_COLUMN_WIDTHS: Record<string, string> = {
   title: "350px",
   album: "250px",
   artist: "200px",
-  readableLength: "100px",
+  readableLength: "80px",
   track: "80px",
   year: "60px",
 };
@@ -205,6 +205,9 @@ const Component = () => {
               return (
                 <tr
                   key={realRow.id}
+                  style={{
+                    height: "25px",
+                  }}
                   className={
                     selectedId &&
                     parseInt(realRow.getValue("id")) === selectedId

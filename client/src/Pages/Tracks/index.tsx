@@ -7,7 +7,7 @@ import { useStore } from "../../State";
 import styles from "./index.module.scss";
 
 export const reactTableSettings = {
-  cellHeight: 30,
+  cellHeight: 25,
   overScanCount: 10,
   paddingBottom: "4em",
 };
