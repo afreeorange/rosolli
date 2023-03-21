@@ -33,7 +33,7 @@ const Component = () => {
               itemSize={reactTableSettings.cellHeight}
               overscanCount={reactTableSettings.overScanCount}
               style={{
-                paddingBottom: reactTableSettings.paddingBottom,
+                paddingBottom: reactTableSettings.cellHeight * 2,
                 lineHeight: 1.5,
               }}
             >
