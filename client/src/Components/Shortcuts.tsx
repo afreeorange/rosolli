@@ -45,20 +45,26 @@ const Component = () => {
   const { set, preferences } = useStore();
   const navigate = useNavigate();
 
+  // DARK MODE 🧛‍♂️
   useHotkeys("d", () => set.preferences.darkMode(!preferences.darkMode));
 
+  // Search Stuff
   useHotkeys("f", () => document.getElementById("search")?.focus(), {
     preventDefault: true,
   });
   useHotkeys("/", () => document.getElementById("search")?.focus(), {
     preventDefault: true,
   });
+  useHotkeys("esc", () => set.searchTerm(""));
+  useHotkeys("c", () => set.searchTerm(""));
 
+  // List
   useHotkeys("g", () => navigate("/genres"));
   useHotkeys("a", () => navigate("/artists"));
   useHotkeys("l", () => navigate("/albums"));
   useHotkeys("t", () => navigate("/tracks"));
 
+  // Tabs
   const _: [number, string][] = [
     [1, "b"],
     [2, "s"],
@@ -66,7 +72,6 @@ const Component = () => {
     [4, "i"],
     [5, "p"],
   ];
-
   _.map(([a, b]: [number, string]) => {
     useHotkeys(a.toString(), () => set.current.tabNumber(a));
     useHotkeys(b, () => set.current.tabNumber(a));
