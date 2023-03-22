@@ -265,11 +265,12 @@ hr {
 
 @mixin track-buttons {
   .buttons {
-    display: grid;
-    grid-template-columns: repeat(3, 33%);
+    display: flex;
+    flex-direction: row;
+    max-width: 75px;
+    height: 25px;
 
     button {
-      height: 23px; // TODO: Not sure why I have to subtract 2 from 30px...
       min-width: 25px;
 
       background: var(--color-background);

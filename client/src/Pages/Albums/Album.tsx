@@ -4,11 +4,11 @@ import { IoPlayOutline } from "react-icons/io5";
 import { AiOutlineStar } from "react-icons/ai";
 import { BsDisc } from "react-icons/bs";
 import { BiAlbum } from "react-icons/bi";
+import { FaHashtag } from "react-icons/fa";
 
 import { trpc, useStore } from "../../State";
 
 import styles from "./Album.module.scss";
-import { FaHashtag } from "react-icons/fa";
 
 const Album = () => {
   const {
@@ -45,7 +45,11 @@ const Album = () => {
             <li>{album.counts.readableTotalLength}</li>
             {album.genre ? <li>{album.genre}</li> : null}
             {album.year && album.year !== 0 ? <li>{album.year}</li> : null}
-            {album.label ? <li>{album.label}</li> : null}
+            {album.label ? (
+              <li>
+                <em>{album.label}</em>
+              </li>
+            ) : null}
           </ul>
           <button onClick={() => console.log(album.tracks)}>
             <MdPlaylistAdd /> Enqueue
@@ -147,7 +151,7 @@ const Album = () => {
         </tbody>
       </table>
 
-      <p className={styles.albumId}>Album ID {album.id}</p>
+      <p>Album ID {album.id}</p>
     </div>
   );
 };

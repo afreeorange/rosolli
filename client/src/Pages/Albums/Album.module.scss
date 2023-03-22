@@ -69,16 +69,6 @@ $album-art-size: 15em;
     font-weight: 600;
   }
 
-  table {
-    width: 100%;
-
-    tr.active {
-      background: var(--color-highlight);
-      color: var(--color-background);
-      transition: all var(--transition-duration);
-    }
-  }
-
   ul {
     width: 100%;
     padding-top: calc(var(--padding-panel) * 1);
@@ -93,10 +83,20 @@ $album-art-size: 15em;
     }
   }
 
+  table {
+    width: 100%;
+
+    tr.active {
+      background: var(--color-highlight);
+      color: var(--color-background);
+      transition: all var(--transition-duration);
+    }
+  }
+
   @include track-table;
   @include track-buttons;
 
-  .albumId {
+  p:last-of-type {
     color: var(--color-foreground-light);
     padding: calc(var(--padding-panel) * 2);
   }

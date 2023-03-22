@@ -28,7 +28,7 @@ $cellHeight: 55;
 
     li {
       border-bottom: var(--line-style);
-      padding: var(--padding-panel);
+      padding: calc(var(--padding-panel) * 1) calc(var(--padding-panel) * 2);
       cursor: pointer;
 
       strong {

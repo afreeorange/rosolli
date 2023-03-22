@@ -42,12 +42,14 @@
     height: 100%;
   }
 
+  // NOTE: In our home-grown tabber, all panels are mounted!
   div[role="panel"] {
     display: none;
   }
 
   div[role="selected-panel"] {
     height: 100%;
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 }

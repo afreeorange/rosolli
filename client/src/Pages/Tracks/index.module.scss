@@ -9,7 +9,9 @@
 
   .top {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+
+    // TODO: What's the 'proper' way to split into thirds?
+    grid-template-columns: repeat(3, 33.3333%);
 
     section:not(:last-of-type) {
       border-right: var(--line-style);

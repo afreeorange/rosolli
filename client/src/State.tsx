@@ -115,7 +115,8 @@ export const useStore = createStore<State>()(
    * https://github.com/reduxjs/redux-devtools-extension/blob/master/docs/Troubleshooting.md#excessive-use-of-memory-and-cpu
    * https://github.com/reduxjs/redux-devtools-extension/blob/master/docs/API/Arguments.md#actionsanitizer--statesanitizer
    */
-  devtools((set) => ({
+  // devtools((set) => ({
+  (set) => ({
     genres: [],
     albums: [],
     artists: [],
@@ -286,7 +287,8 @@ export const useStore = createStore<State>()(
           })),
       },
     },
-  }))
+    // }))
+  })
 );
 
 /**

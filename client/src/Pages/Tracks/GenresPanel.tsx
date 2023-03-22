@@ -15,15 +15,14 @@ const Component = () => {
   return (
     <div className={styles.panel}>
       <ul>
-        <li
+        {/* <li
           style={{
             height: reactTableSettings.cellHeight,
-            lineHeight: 1.5,
           }}
         >
           <span>All Genres</span>{" "}
           <span>{numeral(genres.length).format("0,0")}</span>
-        </li>
+        </li> */}
         <AutoSizer>
           {({ height, width }) => (
             <List
@@ -32,16 +31,12 @@ const Component = () => {
               itemCount={genres.length}
               itemSize={reactTableSettings.cellHeight}
               overscanCount={reactTableSettings.overScanCount}
-              style={{
-                paddingBottom: reactTableSettings.cellHeight * 2,
-                lineHeight: 1.5,
-              }}
             >
               {({ index, style }: { index: number; style: any }) => (
                 <li
                   onClick={() => console.log(genres[index])}
                   key={`genre-${genres[index]}`}
-                  style={style}
+                  style={{ ...style, display: "flex", alignItems: "center" }}
                 >
                   {genres[index].name}
                 </li>

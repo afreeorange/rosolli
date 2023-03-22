@@ -9,6 +9,7 @@ import styles from "./Shortcuts.module.scss";
 const LIST: Record<string, string[]> = {
   "Toggle Dark Mode": ["d"],
   "Focus search box": ["f", "/"],
+  "Clear search box": ["Esc", "c"],
   Genres: ["g"],
   Artists: ["a"],
   Albums: ["l"],

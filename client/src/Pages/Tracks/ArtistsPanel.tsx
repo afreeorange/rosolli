@@ -32,16 +32,13 @@ const Component = () => {
               itemCount={artists.length}
               itemSize={reactTableSettings.cellHeight}
               overscanCount={reactTableSettings.overScanCount}
-              style={{
-                paddingBottom: reactTableSettings.cellHeight * 2,
-                lineHeight: 1.5,
-              }}
             >
+              {/* TODO: Type `style` */}
               {({ index, style }: { index: number; style: any }) => (
                 <li
                   onClick={() => console.log(artists[index])}
                   key={`artist-${artists[index]}`}
-                  style={style}
+                  style={{ ...style, display: "flex", alignItems: "center" }}
                 >
                   {artists[index].name}
                 </li>

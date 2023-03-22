@@ -31,13 +31,12 @@ const Component = () => {
               itemCount={albums.length}
               itemSize={reactTableSettings.cellHeight}
               overscanCount={reactTableSettings.overScanCount}
-              style={{
-                paddingBottom: reactTableSettings.cellHeight * 2,
-                lineHeight: 1.5,
-              }}
             >
               {({ index, style }: { index: number; style: any }) => (
-                <li key={`album-${albums[index].name}`} style={style}>
+                <li
+                  key={`album-${albums[index].name}`}
+                  style={{ ...style, display: "flex", alignItems: "center" }}
+                >
                   {albums[index].name}
                 </li>
               )}
