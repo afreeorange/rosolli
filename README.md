@@ -8,10 +8,15 @@ Just an overcomplicated way of teaching myself [tRPC](https://trpc.io/), [Prisma
 
 - [x] Search!
 - [ ] Global play/pause with keystrokes
-- [ ] Marquee of titles
+- [ ] Marquee of titles?
+- [ ] Favorites
+  - [ ] Albums
+  - [ ] Songs
+  - [ ] Artists
 - [ ] Check for Database and connectivity
 - [ ] Scrubber
-- [ ] <kbd>Esc</kbd> to clear search box
+- [ ] [Sticky Header](https://codesandbox.io/s/0mk3qwpl4l?file=%2Fsrc%2Findex.js) 
+- [x] <kbd>Esc</kbd> to clear search box
 - [x] Redux DevTools
 - [ ] Pagination of Tracks
 - [ ] Page Titles
