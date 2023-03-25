@@ -16,6 +16,7 @@ import { useStore, trpc } from "../../State";
 import { useWindowSize } from "../../Components/WindowSizeWarning";
 
 import styles from "./TracksPanel.module.scss";
+import { BsSuitHeart } from "react-icons/bs";
 
 export const TRACKS_TABLE_COLUMN_WIDTHS: Record<string, string> = {
   __meta: "70px",
@@ -97,11 +98,11 @@ const Component = () => {
       //   header: "Track",
       //   accessorFn: (row) => `${row.track}/${row.tracktotal}`,
       // },
-      {
-        accessorKey: "year",
-        header: "Year",
-        accessorFn: ({ year }) => (year && year !== 0 ? year : ""),
-      },
+      // {
+      //   accessorKey: "year",
+      //   header: "Year",
+      //   accessorFn: ({ year }) => (year && year !== 0 ? year : ""),
+      // },
       // {
       //   accessorKey: "genre",
       //   header: "Genre",
@@ -229,7 +230,7 @@ const Component = () => {
                         <IoPlayOutline />
                       </button>
                       <button>
-                        <AiOutlineStar />
+                        <BsSuitHeart />
                       </button>
                     </div>
                   </td>
