@@ -9,6 +9,7 @@ import { FaHashtag } from "react-icons/fa";
 import { trpc, useStore } from "../../State";
 
 import styles from "./Album.module.scss";
+import { HiOutlineHeart } from "react-icons/hi2";
 
 const Album = () => {
   const {
@@ -58,7 +59,7 @@ const Album = () => {
             <IoPlayOutline /> Play
           </button>
           <button>
-            <AiOutlineStar /> Favorite
+            <HiOutlineHeart /> Favorite
           </button>
         </div>
       </div>
@@ -104,7 +105,7 @@ const Album = () => {
                     <IoPlayOutline />
                   </button>
                   <button>
-                    <AiOutlineStar />
+                    <HiOutlineHeart />
                   </button>
                 </div>
               </td>

@@ -16,6 +16,7 @@ import { useStore, trpc } from "../../State";
 import { useWindowSize } from "../../Components/WindowSizeWarning";
 
 import styles from "./TracksPanel.module.scss";
+import { BsSuitHeart } from "react-icons/bs";
 
 export const TRACKS_TABLE_COLUMN_WIDTHS: Record<string, string> = {
   __meta: "70px",
@@ -229,7 +230,7 @@ const Component = () => {
                         <IoPlayOutline />
                       </button>
                       <button>
-                        <AiOutlineStar />
+                        <BsSuitHeart />
                       </button>
                     </div>
                   </td>
