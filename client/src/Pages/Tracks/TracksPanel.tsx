@@ -22,7 +22,7 @@ export const TRACKS_TABLE_COLUMN_WIDTHS: Record<string, string> = {
   title: "350px",
   album: "250px",
   artist: "200px",
-  readableLength: "80px",
+  readableLength: "65px",
   track: "80px",
   year: "60px",
 };
@@ -97,11 +97,11 @@ const Component = () => {
       //   header: "Track",
       //   accessorFn: (row) => `${row.track}/${row.tracktotal}`,
       // },
-      {
-        accessorKey: "year",
-        header: "Year",
-        accessorFn: ({ year }) => (year && year !== 0 ? year : ""),
-      },
+      // {
+      //   accessorKey: "year",
+      //   header: "Year",
+      //   accessorFn: ({ year }) => (year && year !== 0 ? year : ""),
+      // },
       // {
       //   accessorKey: "genre",
       //   header: "Genre",
