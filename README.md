@@ -60,11 +60,12 @@ https://thomaspark.co/projects/expandingalbums/
 - [ ] [Panels](https://react-resizable-panels.vercel.app/examples/horizontal)
 - [x] Data Loading State
 - [ ] Drag and Drop Albums, Tracks, Artists
-- [x] Router
+- [ ] Router
   - [ ] Links to Songs
   - [ ] Links to Albums
   - [ ] Links to Genres
   - [ ] Links to Tracks (activate tab)
+- [ ] Review [AirSonic](https://github.com/airsonic-advanced/airsonic-advanced) and its features and maybe steal some nice ideas 
 
 ## Development Notes
 
