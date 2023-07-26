@@ -6,6 +6,10 @@ Just an overcomplicated way of teaching myself [tRPC](https://trpc.io/), [Prisma
 
 ## TODO
 
+https://thomaspark.co/2021/03/needledrop-a-turntable-interface-for-music-playback/
+
+https://thomaspark.co/projects/expandingalbums/
+
 - [x] Search!
 - [ ] Global play/pause with keystrokes
 - [ ] Marquee of titles?
@@ -15,7 +19,7 @@ Just an overcomplicated way of teaching myself [tRPC](https://trpc.io/), [Prisma
   - [ ] Artists
 - [ ] Check for Database and connectivity
 - [ ] Scrubber
-- [ ] [Sticky Header](https://codesandbox.io/s/0mk3qwpl4l?file=%2Fsrc%2Findex.js) 
+- [ ] [Sticky Header](https://codesandbox.io/s/0mk3qwpl4l?file=%2Fsrc%2Findex.js)
 - [x] <kbd>Esc</kbd> to clear search box
 - [x] Redux DevTools
 - [ ] Pagination of Tracks
