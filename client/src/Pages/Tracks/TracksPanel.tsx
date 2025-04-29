@@ -6,7 +6,7 @@ import {
   flexRender,
   Row,
 } from "@tanstack/react-table";
-import { useVirtual } from "@tanstack/react-virtual";
+import { useVirtualizer } from "@tanstack/react-virtual";
 import { MdPlaylistAdd } from "react-icons/md";
 import { IoPlayOutline } from "react-icons/io5";
 import { AiOutlineStar } from "react-icons/ai";
@@ -131,10 +131,11 @@ const Component = () => {
   /**
    * We will have a giant list and will need to virtualize. Set this up.
    */
-  const { virtualItems: virtualRows, totalSize } = useVirtual({
-    parentRef: containerRef,
-    size: data.length,
-    overscan: 10,
+  const rowVirtualizer = useVirtualizer({
+    // getScrollElement: () => containerRef.current,
+    count: data.length,
+    getScrollElement: () => containerRef.current,
+    estimateSize: () => 100,
   });
 
   /**
@@ -154,20 +155,20 @@ const Component = () => {
    * ☝️ The number you get from that should stabilize and not change after you
    * play around with the track listing!
    */
-  const paddingTop = virtualRows.length > 0 ? virtualRows?.[0]?.start || 0 : 0;
-  const paddingBottom =
-    virtualRows.length > 0
-      ? totalSize - (virtualRows?.[virtualRows.length - 1]?.end || 0)
-      : 0;
+  // const paddingTop = rowVirtualizer..length > 0 ? rowVirtualizer.?.[0]?.start || 0 : 0;
+  // const paddingBottom =
+  //   virtualRows.length > 0
+  //     ? totalSize - (virtualRows?.[virtualRows.length - 1]?.end || 0)
+  //     : 0;
 
   return (
     <div className={`panel ${styles.component}`}>
       <div
         style={{
           overflowY: "scroll",
-          height: showingSearchResults
-            ? windowHeight + "px"
-            : windowHeight / 2 + "px",
+          // height: showingSearchResults
+          //   ? windowHeight + "px"
+          //   : windowHeight / 2 + "px",
         }}
         ref={containerRef}
       >
@@ -194,13 +195,13 @@ const Component = () => {
           </thead>
 
           <tbody>
-            {paddingTop > 0 && (
+            {/* {paddingTop > 0 && (
               <tr>
                 <td style={{ height: `${paddingTop}px` }} />
               </tr>
-            )}
+            )} */}
 
-            {virtualRows.map((vrow) => {
+            {rowVirtualizer.getVirtualItems().map((vrow) => {
               const realRow = rows[vrow.index] as Row<TrackInList>;
 
               return (
@@ -261,11 +262,11 @@ const Component = () => {
               );
             })}
 
-            {paddingBottom > 0 && (
+            {/* {paddingBottom > 0 && (
               <tr>
                 <td style={{ height: `${paddingBottom}px` }} />
               </tr>
-            )}
+            )} */}
           </tbody>
         </table>
       </div>
