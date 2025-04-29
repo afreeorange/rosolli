@@ -4,6 +4,12 @@ A frontend to [Beets](https://github.com/beetbox/beets). Can be used without Bee
 
 Just an overcomplicated way of teaching myself [tRPC](https://trpc.io/), [Prisma](https://www.prisma.io/) (maybe), [Vite](https://vitejs.dev/), [Tanstack stuff](https://tanstack.com/), and other newish things. This entire project can be done with REST, Express, and something lightweight like Mithril or Svelte with little fuss...
 
+## Screenshots
+
+![](https://public.nikhil.io/rosolli-01.png)
+
+![](https://public.nikhil.io/rosolli-02.png)
+
 ## Development
 
 ```bash
