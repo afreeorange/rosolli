@@ -4,6 +4,16 @@ A frontend to [Beets](https://github.com/beetbox/beets). Can be used without Bee
 
 Just an overcomplicated way of teaching myself [tRPC](https://trpc.io/), [Prisma](https://www.prisma.io/) (maybe), [Vite](https://vitejs.dev/), [Tanstack stuff](https://tanstack.com/), and other newish things. This entire project can be done with REST, Express, and something lightweight like Mithril or Svelte with little fuss...
 
+## Development
+
+```bash
+# Install dependencies
+pnpm i
+
+# Start development server
+DATABASE=/path/to/beets.db pnpm dev
+```
+
 ## TODO
 
 https://thomaspark.co/2021/03/needledrop-a-turntable-interface-for-music-playback/
@@ -56,6 +66,7 @@ https://thomaspark.co/projects/expandingalbums/
 - [ ] Click to Copy
 - [ ] Adjustable table cols with truncation
 - [ ] Debounce Search
+- [ ] FFMpeg!
 - [ ] Search Loading state
 - [ ] [Panels](https://react-resizable-panels.vercel.app/examples/horizontal)
 - [x] Data Loading State
@@ -65,7 +76,7 @@ https://thomaspark.co/projects/expandingalbums/
   - [ ] Links to Albums
   - [ ] Links to Genres
   - [ ] Links to Tracks (activate tab)
-- [ ] Review [AirSonic](https://github.com/airsonic-advanced/airsonic-advanced) and its features and maybe steal some nice ideas 
+- [ ] Review [AirSonic](https://github.com/airsonic-advanced/airsonic-advanced) and its features and maybe steal some nice ideas
 
 ## Development Notes
 
